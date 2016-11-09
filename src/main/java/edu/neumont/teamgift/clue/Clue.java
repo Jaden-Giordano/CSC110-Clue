@@ -1,4 +1,4 @@
-package edu.neumont.teamgift.clue;
+package main.java.edu.neumont.teamgift.clue;
 
 public class Clue {
 
