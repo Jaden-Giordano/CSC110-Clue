@@ -25,9 +25,9 @@ class Player {
 		return Deck;
 	}
 
-	public void addCard(Card newCard) {
+	/*public void addCard(Card newCard) {
 		cards.add(newCard);
-	}
+	}*/
 
 	public Vector2i getPosition() {
 		return position;
