@@ -2,7 +2,6 @@ package edu.neumont.teamgift.clue.front;
 
 import edu.neumont.teamgift.clue.Vector2i;
 
-import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
 
 public class FrontEndManager {
@@ -20,8 +19,7 @@ public class FrontEndManager {
             loop();
 
             // Free the window callbacks and destroy the window
-            glfwFreeCallbacks(display.getWindow());
-            glfwDestroyWindow(display.getWindow());
+            display.destroy();
         } finally {
             // Terminate GLFW and free the error callback
             glfwTerminate();

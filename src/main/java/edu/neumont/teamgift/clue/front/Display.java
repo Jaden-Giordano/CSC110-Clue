@@ -1,20 +1,22 @@
 package edu.neumont.teamgift.clue.front;
 
 import edu.neumont.teamgift.clue.Vector2i;
-import org.lwjgl.glfw.*;
+import org.lwjgl.glfw.GLFWErrorCallback;
+import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.opengl.GL;
 
+import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
-import static org.lwjgl.system.MemoryUtil.*;
+import static org.lwjgl.system.MemoryUtil.NULL;
 
-public class Display {
+class Display {
 
     private long window;
 
     private Vector2i size;
 
-    public Display(Vector2i size) {
+    Display(Vector2i size) {
         this.size = size;
         init();
     }
@@ -72,15 +74,20 @@ public class Display {
         glClearColor(1.0f, 0.0f, 0.0f, 0.0f);
     }
 
-    public void clear() {
+    void clear() {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
     }
 
-    public void swapBuffers() {
+    void swapBuffers() {
         glfwSwapBuffers(window); // swap the color buffers
     }
 
-    public long getWindow() {
+    void destroy() {
+        glfwFreeCallbacks(getWindow());
+        glfwDestroyWindow(getWindow());
+    }
+
+    long getWindow() {
         return window;
     }
 

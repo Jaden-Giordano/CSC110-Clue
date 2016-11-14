@@ -4,10 +4,10 @@ import edu.neumont.teamgift.clue.Player;
 import edu.neumont.teamgift.clue.board.Board;
 import edu.neumont.teamgift.clue.board.tiles.interfaces.PlayerContaining;
 
-public class Pathway extends Tile implements PlayerContaining {
+public class Door extends Tile implements PlayerContaining {
 
-    public Pathway(Board b) {
-        super(b, 1);
+    public Door(Board b) {
+        super(b, 2);
     }
 
     @Override
@@ -18,5 +18,4 @@ public class Pathway extends Tile implements PlayerContaining {
         }
         return null;
     }
-
 }

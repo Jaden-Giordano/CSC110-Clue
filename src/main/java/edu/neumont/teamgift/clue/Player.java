@@ -2,7 +2,7 @@ package edu.neumont.teamgift.clue;
 
 import edu.neumont.teamgift.clue.cards.Deck;
 
-class Player {
+public class Player {
 
 	private int id;
 	private String name;
