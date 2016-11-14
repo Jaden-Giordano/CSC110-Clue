@@ -14,15 +14,23 @@ class Player {
 		return name;
 	}
 
-	public void setCharacterName(String Name) {
-		name = Name;
-	}
-
 	public int getid() {
 		return id;
 	}
 
-	public void setid(int ID) {
-		id = ID;
+	public Deck getDeck() {
+		return Deck;
+	}
+
+	public void addCard(Card newCard) {
+		cards.add(newCard);
+	}
+
+	public Vector2i getPosition() {
+		return position;
+	}
+
+	public void setPosition(Vector2i newPosition) {
+		position = newPosition;
 	}
 }
