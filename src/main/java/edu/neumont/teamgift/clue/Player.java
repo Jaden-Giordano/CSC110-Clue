@@ -1,5 +1,7 @@
 package edu.neumont.teamgift.clue;
 
+import edu.neumont.teamgift.clue.cards.Deck;
+
 class Player {
 
 	private int id;
@@ -16,7 +18,7 @@ class Player {
 	}
 
 	public Deck getDeck() {
-		return Deck;
+		return deck;
 	}
 
 	/*public void addCard(Card newCard) {
