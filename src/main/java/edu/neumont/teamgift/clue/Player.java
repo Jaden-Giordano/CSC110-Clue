@@ -1,11 +1,5 @@
 package edu.neumont.teamgift.clue;
 
-import edu.neumont.teamgift.clue.cards.Card;
-import edu.neumont.teamgift.clue.cards.Deck;
-
-import java.util.ArrayList;
-import java.util.List;
-
 class Player {
 
 	private int id;

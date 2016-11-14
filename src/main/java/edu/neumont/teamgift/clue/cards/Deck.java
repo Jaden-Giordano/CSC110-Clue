@@ -1,5 +1,5 @@
 package edu.neumont.teamgift.clue.cards;
 
-class Deck {
+public class Deck {
 
 }
