@@ -5,6 +5,7 @@ import java.util.Random;
 
 public class Dealer {
 	private ArrayList<Card> cards = new ArrayList<Card>();
+	private ArrayList<Card> killerCaseFile = new ArrayList<Card>();
 
 	public void createCards() {
 		String[] weapons = { "Rope", "Lead Pipe", "Knife", "Wrench", "Candlestick", "Pistol" };
@@ -45,9 +46,40 @@ public class Dealer {
 		}
 
 	}
-	public void printCards(){
-		for(int i = 0; i < cards.size(); i++){
-			System.out.println(i +". "+ cards.get(i).getName() + " Type: " + cards.get(i).getType());
+
+	public void printCards() {
+		for (int i = 0; i < cards.size(); i++) {
+			System.out.println(i + ". " + cards.get(i).getName() + " Type: " + cards.get(i).getType());
+		}
+	}
+
+	public void printKillerCaseFile() {
+		for (int i = 0; i < killerCaseFile.size(); i++) {
+			System.out.println(i + ". " + killerCaseFile.get(i).getName() + " Type: " + killerCaseFile.get(i).getType());
+		}
+	}
+
+	public void setKiller() {
+		boolean weaponPicked = false;
+		boolean roomPicked = false;
+		boolean personPicked = false;
+		for (int i = 0; i < cards.size(); i++) {
+			if (cards.get(i).getType() == Type.Weapon && !weaponPicked) {
+				killerCaseFile.add(cards.get(i));
+				cards.remove(i);
+				weaponPicked = true;
+			}
+			if (cards.get(i).getType() == Type.Player && !personPicked) {
+				killerCaseFile.add(cards.get(i));
+				cards.remove(i);
+				personPicked = true;
+			}
+			if (cards.get(i).getType() == Type.Room && !roomPicked) {
+				killerCaseFile.add(cards.get(i));
+				cards.remove(i);
+				roomPicked = true;
+			}
+
 		}
 	}
 
