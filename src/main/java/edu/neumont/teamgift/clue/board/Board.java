@@ -35,7 +35,6 @@ public class Board {
                 for (int j = 0; j < tiles[i].length; j++) {
                     tiles[i][j] = TileRegistry.getTile(this, Integer.parseInt(sRow[j]));
                 }
-
             }
         } catch (IOException e) {
             System.out.println("Error loading board file.");
@@ -44,6 +43,10 @@ public class Board {
 
     public Player[] getPlayers() {
         return (Player[]) players.toArray();
+    }
+
+    public void addPlayer(String name) {
+        this.players.add(new Player(this, players.size(), name));
     }
 
 }
