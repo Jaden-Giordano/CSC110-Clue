@@ -10,7 +10,6 @@ public abstract class Tile {
     private int ID;
     private Vector2i position;
 
-
     Tile(Board board, int ID) {
         this.board = board;
 
