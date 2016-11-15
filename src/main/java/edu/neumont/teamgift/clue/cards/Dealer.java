@@ -1,11 +1,10 @@
 package edu.neumont.teamgift.clue.cards;
 
-import java.util.ArrayList;
 import java.util.Random;
 
 public class Dealer {
-	private ArrayList<Card> cards = new ArrayList<Card>();
-	private ArrayList<Card> killerCaseFile = new ArrayList<Card>();
+	Deck cards = new Deck();
+	Deck killerCaseFile = new Deck();
 
 	public void createCards() {
 		String[] weapons = { "Rope", "Lead Pipe", "Knife", "Wrench", "Candlestick", "Pistol" };
@@ -20,6 +19,7 @@ public class Dealer {
 				Card c = new Card();
 				c.setName(weapons[i]);
 				c.setType(Type.Weapon);
+				
 				cards.add(c);
 			} else if (i < weapons.length + people.length) {
 				Card c = new Card();
