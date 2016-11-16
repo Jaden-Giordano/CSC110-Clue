@@ -19,7 +19,6 @@ public class Dealer {
 				Card c = new Card();
 				c.setName(weapons[i]);
 				c.setType(Type.Weapon);
-				
 				cards.add(c);
 			} else if (i < weapons.length + people.length) {
 				Card c = new Card();
@@ -55,7 +54,8 @@ public class Dealer {
 
 	public void printKillerCaseFile() {
 		for (int i = 0; i < killerCaseFile.size(); i++) {
-			System.out.println(i + ". " + killerCaseFile.get(i).getName() + " Type: " + killerCaseFile.get(i).getType());
+			System.out
+					.println(i + ". " + killerCaseFile.get(i).getName() + " Type: " + killerCaseFile.get(i).getType());
 		}
 	}
 
