@@ -1,4 +1,4 @@
-package edu.neumont.teamgift.clue.cards;
+package edu.neumont.teamgift.clue;
 
 import java.util.Random;
 

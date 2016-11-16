@@ -1,7 +1,6 @@
 package edu.neumont.teamgift.clue;
 
 import edu.neumont.teamgift.clue.cards.Dealer;
-import edu.neumont.teamgift.clue.cards.Die;
 import edu.neumont.teamgift.clue.front.FrontEndManager;
 
 public class Clue {
