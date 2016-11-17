@@ -1,5 +1,7 @@
 package edu.neumont.teamgift.clue;
 
+import edu.neumont.teamgift.clue.board.Die;
+
 public class Clue {
 
 	public static void main(String[] args) {
