@@ -58,4 +58,19 @@ public class Player {
         return this.board;
     }
 
+    /**
+     * Attempts to make a move on the board.
+     * @param newPosition The new position to move to.
+     * @param maxDistance The max number of tiles they can travel.
+     * @return Returns the amount of tiles it took for that make the move;
+     * Returns -1 if move was not able to be made.
+     */
+    public int makeMove(Vector2i newPosition, int maxDistance) {
+        Path p = new Path(getBoard(), getPosition(), newPosition, maxDistance);
+        if (p.isPossible()) {
+            return p.getMoves();
+        }
+        return -1;
+    }
+
 }

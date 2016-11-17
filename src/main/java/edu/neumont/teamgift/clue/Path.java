@@ -105,4 +105,8 @@ class Path {
         return possible;
     }
 
+    int getMoves() {
+        return closedList.size();
+    }
+
 }

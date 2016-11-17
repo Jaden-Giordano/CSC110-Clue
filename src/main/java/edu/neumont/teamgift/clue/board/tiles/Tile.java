@@ -14,7 +14,7 @@ public abstract class Tile implements Comparable<Tile> {
         this.board = board;
 
         this.ID = ID;
-        this.position = new Vector2i();
+        this.position = Vector2i.zero();
     }
 
     @SuppressWarnings("WeakerAccess")

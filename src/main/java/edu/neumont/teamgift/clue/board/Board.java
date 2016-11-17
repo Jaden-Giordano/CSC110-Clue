@@ -29,7 +29,8 @@ public class Board {
     /**
      * List of rooms, which are used for movements.
      */
-    @SuppressWarnings({"MismatchedQueryAndUpdateOfCollection", "FieldCanBeLocal"})
+    @SuppressWarnings({"MismatchedQueryAndUpdateOfCollection",
+            "FieldCanBeLocal"})
     private List<Room> rooms;
 
     /**
