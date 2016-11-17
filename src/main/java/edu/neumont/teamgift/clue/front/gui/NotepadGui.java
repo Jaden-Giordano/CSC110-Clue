@@ -1,7 +1,16 @@
 package edu.neumont.teamgift.clue.front.gui;
 
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+
+import edu.neumont.teamgift.clue.Notepad;
 
 public class NotepadGui extends JFrame{
 	enum Suspects{
@@ -36,12 +45,13 @@ public class NotepadGui extends JFrame{
 		setUpNotepad();
 	}
 	private void setUpNotepad() {
+		Notepad notepad = new Notepad();
 		JPanel panel = new JPanel();
 		panel.setPreferredSize(new Dimension(700, 3000));
 	    add(panel);
 		final int COLUMN = 2;
 		panel.setLayout(new GridLayout(0, COLUMN));
-		JScrollPane notepad = new JScrollPane(panel);
+		JScrollPane notpad = new JScrollPane(panel);
 		notpad.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
 		add(notpad);
 		JLabel suspectsLabel = new JLabel("Suspects: ");
