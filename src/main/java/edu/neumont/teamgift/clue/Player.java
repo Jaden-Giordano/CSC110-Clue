@@ -31,6 +31,11 @@ public class Player {
     private Vector2i position;
 
     /**
+     * If the player made false accusation and lost the game set to false.
+     */
+    private boolean inGame = true;
+
+    /**
      * Creates a player initializing its board, the id, and its name.
      * @param parentBoard The board the player is on.
      * @param playerID The id of the player.
@@ -88,8 +93,6 @@ public class Player {
         return -1;
     }
 
-    public boolean isInGame() {
-        return board != null;
-    }
+    
 
 }
