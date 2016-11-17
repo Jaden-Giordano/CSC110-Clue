@@ -93,23 +93,34 @@ public class Vector2i implements Comparable<Vector2i> {
 
     /**
      * Subtracts this vector by another.
-     * @param b The other vector
-     * @return A new vector of the
+     * @param b The other vector.
+     * @return A new vector of this vector subtracted by the other vector.
      */
     public final Vector2i sub(final Vector2i b) {
         return sub(this, b);
     }
 
+    /**
+     * Multiplies this vector by another.
+     * @param b The other vector.
+     * @return A new vector for the product of the vectors.
+     */
     public final Vector2i multiply(final Vector2i b) {
         return multiply(this, b);
     }
 
+    /**
+     * Divides this vector by another.
+     * @param b The other vector.
+     * @return A new vector for the quotient of the vectors.
+     * @throws ArithmeticException Denominator cannot contain a zero.
+     */
     public final Vector2i divide(final Vector2i b) throws ArithmeticException {
         return add(this, b);
     }
 
     @Override
-    public int compareTo(Vector2i o) {
+    public final int compareTo(final Vector2i o) {
         if (x == o.x && y == o.y)
             return 0;
 
