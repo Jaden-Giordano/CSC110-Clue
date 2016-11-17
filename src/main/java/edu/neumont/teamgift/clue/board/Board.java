@@ -12,26 +12,57 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * The main board of the game containing the players, tiles, and rooms.
+ */
 public class Board {
 
+    /**
+     * The width and height of the board in tiles.
+     */
     private int width, height;
 
+    /**
+     * Each tile on the board.
+     */
     private Tile[][] tiles;
+    /**
+     * List of rooms, which are used for movements.
+     */
+    @SuppressWarnings("MismatchedQueryAndUpdateOfCollection")
     private List<Room> rooms;
 
+    /**
+     * All the players, currently active on the board.
+     */
     private List<Player> players;
 
-    public Board(String path) {
+    /**
+     * Creation of the board: population of tiles, rooms, and players.
+     * @param path The filepath to the board file, containing a 2D map of
+     *             tile ids.
+     */
+    public Board(final String path) {
         rooms = new ArrayList<>();
         players = new ArrayList<>();
 
         loadFromFile(path);
     }
 
-    private void loadFromFile(String path) {
+    /**
+     * Populates the tiles from a file.
+     * @param path The filepath to the board file, containing a
+     *             2D map of tile ids.
+     */
+    private void loadFromFile(final String path) {
         try (BufferedReader br = new BufferedReader(new FileReader(path))) {
             String currentLine;
-            for (int i = -1; (currentLine = br.readLine()) != null; i++) {
+            for (int i = -1; true; i++) {
+                currentLine = br.readLine();
+                if (currentLine == null) {
+                    break;
+                }
+
                 if (i == -1) {
                     String[] size = currentLine.split(",");
                     width = Integer.parseInt(size[0]);
@@ -42,7 +73,8 @@ public class Board {
 
                 String[] sRow = currentLine.split(" ");
                 for (int j = 0; j < tiles[i].length; j++) {
-                    tiles[i][j] = TileRegistry.getTile(this, Integer.parseInt(sRow[j]));
+                    tiles[i][j] = TileRegistry.getTile(this,
+                            Integer.parseInt(sRow[j]));
                 }
             }
         } catch (IOException e) {
@@ -50,27 +82,34 @@ public class Board {
         }
     }
 
-    public Player[] getPlayers() {
+    /**
+     * @return Returns all the players active on the board.
+     */
+    public final Player[] getPlayers() {
         return (Player[]) players.toArray();
     }
 
-    public void addPlayer(String name) {
+    /**
+     * Adds a player to the board, generating an id, and setting the name.
+     * @param name The name of the new player.
+     */
+    public final void addPlayer(final String name) {
         this.players.add(new Player(this, players.size(), name));
     }
 
-    public Tile getTile(Vector2i position) {
-        if ((position.x < 0 || position.x >= height) || (position.y < 0 || position.y >= width))
-            throw new IllegalArgumentException("The tile you are looking for doesn't exist; it is out of the bounds of the board.");
+    /**
+     * Gets a tile at a specific location on the board.
+     * @param position The position of the tile on the board.
+     * @return Returns the tile corresponding to the position specified.
+     */
+    public final Tile getTile(final Vector2i position) {
+        if ((position.x < 0 || position.x >= height)
+                || (position.y < 0 || position.y >= width)) {
+            throw new IllegalArgumentException("The tile you are looking for "
+                    + "doesn't exist; it is out of the bounds of the board.");
+        }
 
         return tiles[position.y][position.x];
-    }
-
-    public int getWidth() {
-        return width;
-    }
-
-    public int getHeight() {
-        return height;
     }
 
 }

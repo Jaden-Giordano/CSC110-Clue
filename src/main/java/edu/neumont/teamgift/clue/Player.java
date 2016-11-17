@@ -5,57 +5,57 @@ import edu.neumont.teamgift.clue.cards.Deck;
 
 public class Player {
 
-	private Board board;
+    private Board board;
 
-	private int id;
-	private String name;
-	private Deck deck;
-	private Vector2i position;
-	private boolean inGame = true;
+    private int id;
+    private String name;
+    private Deck deck;
+    private Vector2i position;
+    private boolean inGame = true;
 
-	public boolean getInGame() {
-		return inGame;
-	}
+    public boolean getInGame() {
+        return inGame;
+    }
 
-	public void setInGame() {
-		inGame = false;
-	}
+    public void setInGame() {
+        inGame = false;
+    }
 
-	public Player(Board board, int id, String name) {
-		this.board = board;
+    public Player(Board board, int id, String name) {
+        this.board = board;
 
-		this.id = id;
-		this.name = name;
+        this.id = id;
+        this.name = name;
 
-		this.deck = new Deck();
-	}
+        this.deck = new Deck();
+    }
 
-	public String getName() {
-		return name;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public int getID() {
-		return id;
-	}
+    public int getID() {
+        return id;
+    }
 
-	public Deck getDeck() {
-		return deck;
-	}
+    public Deck getDeck() {
+        return deck;
+    }
 
 	/*
-	 * public void addCard(Card newCard) { cards.add(newCard); }
+     * public void addCard(Card newCard) { cards.add(newCard); }
 	 */
 
-	public Vector2i getPosition() {
-		return position;
-	}
+    public Vector2i getPosition() {
+        return position;
+    }
 
-	public void setPosition(Vector2i newPosition) {
-		position = newPosition;
-	}
+    public void setPosition(Vector2i newPosition) {
+        position = newPosition;
+    }
 
-	public Board getBoard() {
-		return this.board;
-	}
+    public Board getBoard() {
+        return this.board;
+    }
 
 }

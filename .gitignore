@@ -17,7 +17,6 @@ local.properties
 .idea/copyright/
 .idea/*.xml
 *.iml
-.idea/uiDesigner.xml
 .idea/libraries
 /out/
 /target/
