@@ -1,54 +1,33 @@
 package edu.neumont.teamgift.clue.front.gui;
 
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GridLayout;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-import javax.swing.JScrollPane;
+import javax.swing.*;
 
 import edu.neumont.teamgift.clue.Notepad;
 
-public class NotepadGui extends JFrame{
-	enum Suspects{
-		Colonel_Mustard,
-		Professor_Plum,
-		Mr_Green,
-		Mrs_Peacock,
-		Miss_Scarlett,
-		Mrs_White
+import java.awt.*;
+
+public class NotepadGui extends JFrame {
+	enum Suspects {
+		Colonel_Mustard, Professor_Plum, Mr_Green, Mrs_Peacock, Miss_Scarlett, Mrs_White
 	}
-	enum Weapons{
-		Knife,
-		Candlestick,
-		Revolver,
-		Rope,
-		Lead_Pipe,
-		Wrench
+
+	enum Weapons {
+		Knife, Candlestick, Revolver, Rope, Lead_Pipe, Wrench
 	}
-	enum Rooms{
-		Hall,
-		Lounge,
-		Dining_Room,
-		Kitchen,
-		Ballroom,
-		Conservatory,
-		Billiard_Room,
-		Library,
-		Study
+
+	enum Rooms {
+		Hall, Lounge, Dining_Room, Kitchen, Ballroom, Conservatory, Billiard_Room, Library, Study
 	}
-	
-	public NotepadGui(){
+
+	public NotepadGui() {
 		setUpNotepad();
 	}
+
 	private void setUpNotepad() {
 		Notepad notepad = new Notepad();
 		JPanel panel = new JPanel();
 		panel.setPreferredSize(new Dimension(700, 3000));
-	    add(panel);
+		add(panel);
 		final int COLUMN = 2;
 		panel.setLayout(new GridLayout(0, COLUMN));
 		JScrollPane notpad = new JScrollPane(panel);
@@ -60,8 +39,8 @@ public class NotepadGui extends JFrame{
 		JLabel organizationalSpace = new JLabel(" ");
 		organizationalSpace.setFont(new Font("Serif", Font.PLAIN, 40));
 		panel.add(organizationalSpace);
-		//JButton difWindow = new JButton("open new");
-		//difWindow.addActionListener(new NewWindowButton(difWindow));
+		// JButton difWindow = new JButton("open new");
+		// difWindow.addActionListener(new NewWindowButton(difWindow));
 		int suspectIndex = 0;
 		for (Suspects i : Suspects.values()) {
 			JLabel suspectLabel = new JLabel("" + i);
@@ -81,7 +60,7 @@ public class NotepadGui extends JFrame{
 		organizationalSpace.setFont(new Font("Serif", Font.PLAIN, 40));
 		panel.add(organizationalSpace);
 		int weaponIndex = 0;
-		for (Weapons i : Weapons.values()){
+		for (Weapons i : Weapons.values()) {
 			JLabel weaponLabel = new JLabel("" + i);
 			weaponLabel.setFont(new Font("Serif", Font.PLAIN, 30));
 			panel.add(weaponLabel);
@@ -99,7 +78,7 @@ public class NotepadGui extends JFrame{
 		organizationalSpace.setFont(new Font("Serif", Font.PLAIN, 40));
 		panel.add(organizationalSpace);
 		int roomsIndex = 0;
-		for(Rooms i : Rooms.values()){
+		for (Rooms i : Rooms.values()) {
 			JLabel roomLabel = new JLabel("" + i);
 			roomLabel.setFont(new Font("Serif", Font.PLAIN, 30));
 			panel.add(roomLabel);
@@ -110,17 +89,16 @@ public class NotepadGui extends JFrame{
 			panel.add(roomsButton);
 			roomsIndex++;
 		}
-		
-		
+
 	}
+
 	public static void main(String[] args) {
-	        NotepadGui gui = new NotepadGui();
-	        
-	        gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-	        gui.setSize(700, 2000);
-	        gui.setVisible(true);
-	        gui.setTitle("Notepad Gui");
-	        
+		NotepadGui gui = new NotepadGui();
+
+		gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		gui.setSize(700, 2000);
+		gui.setVisible(true);
+		gui.setTitle("Notepad Gui");
+
 	}
 }
-
