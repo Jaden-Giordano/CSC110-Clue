@@ -27,12 +27,16 @@ public class FrontEndManager {
         }
     }
 
+    public static FrontEndManager getInstance() {
+        return myInstance;
+    }
+
     private void loop() {
 
 
         // Run the rendering loop until the user has attempted to close
         // the window or has pressed the ESCAPE key.
-        while ( !glfwWindowShouldClose(display.getWindow()) ) {
+        while (!glfwWindowShouldClose(display.getWindow())) {
             display.clear();
 
             update();
@@ -46,16 +50,12 @@ public class FrontEndManager {
         }
     }
 
-    private void update(){
+    private void update() {
 
     }
 
     private void draw() {
 
-    }
-
-    public static FrontEndManager getInstance() {
-        return myInstance;
     }
 
 }

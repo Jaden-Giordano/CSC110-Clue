@@ -3,7 +3,7 @@ package edu.neumont.teamgift.clue.board.tiles;
 import edu.neumont.teamgift.clue.Vector2i;
 import edu.neumont.teamgift.clue.board.Board;
 
-public abstract class Tile {
+public abstract class Tile implements Comparable<Tile> {
 
     private Board board;
 
@@ -36,4 +36,10 @@ public abstract class Tile {
     public void setPosition(Vector2i position) {
         this.position = position;
     }
+
+    @Override
+    public int compareTo(Tile o) {
+        return position.compareTo(o.position);
+    }
+
 }
