@@ -5,56 +5,57 @@ import edu.neumont.teamgift.clue.cards.Deck;
 
 public class Player {
 
-    private Board board;
+	private Board board;
 
-    private int id;
-    private String name;
-    private Deck deck;
-    private Vector2i position;
+	private int id;
+	private String name;
+	private Deck deck;
+	private Vector2i position;
+	private boolean inGame = true;
 
-    public Player(Board board, int id, String name) {
-        this.board = board;
+	public boolean getInGame() {
+		return inGame;
+	}
 
-        this.id = id;
-        this.name = name;
+	public void setInGame() {
+		inGame = false;
+	}
 
-        this.position = new Vector2i();
+	public Player(Board board, int id, String name) {
+		this.board = board;
 
-        this.deck = new Deck();
-    }
+		this.id = id;
+		this.name = name;
 
-    public String getName() {
-        return name;
-    }
+		this.deck = new Deck();
+	}
 
-    public int getID() {
-        return id;
-    }
+	public String getName() {
+		return name;
+	}
 
-    public Deck getDeck() {
-        return deck;
-    }
+	public int getID() {
+		return id;
+	}
 
-	/*public void addCard(Card newCard) {
-        cards.add(newCard);
-	}*/
+	public Deck getDeck() {
+		return deck;
+	}
 
-    public Vector2i getPosition() {
-        return position;
-    }
+	/*
+	 * public void addCard(Card newCard) { cards.add(newCard); }
+	 */
 
-    public void setPosition(Vector2i newPosition) {
-        position = newPosition;
-    }
+	public Vector2i getPosition() {
+		return position;
+	}
 
-    public Board getBoard() {
-        return this.board;
-    }
+	public void setPosition(Vector2i newPosition) {
+		position = newPosition;
+	}
 
-    public void move(Vector2i newPosition, int roll) {
-        Path possibleMovement = new Path(getBoard(), getPosition(), newPosition, roll);
-        if (possibleMovement.isPossible())
-            this.position = newPosition;
-    }
+	public Board getBoard() {
+		return this.board;
+	}
 
 }
