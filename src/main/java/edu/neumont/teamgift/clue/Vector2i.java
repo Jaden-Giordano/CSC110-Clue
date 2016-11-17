@@ -15,7 +15,7 @@ public class Vector2i implements Comparable<Vector2i> {
     /**
      * Default vector with coordinates (0, 0).
      */
-    public static final Vector2i zero() {
+    public static Vector2i zero() {
         return new Vector2i(0, 0);
     }
 
