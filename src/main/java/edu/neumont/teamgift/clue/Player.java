@@ -4,7 +4,8 @@ import edu.neumont.teamgift.clue.board.Board;
 import edu.neumont.teamgift.clue.cards.Deck;
 
 /**
- * A playable character in the game containing information necessary for the player to play.
+ * A playable character in the game containing information necessary
+ * for the player to play.
  */
 public class Player {
 
@@ -14,7 +15,8 @@ public class Player {
     private Board board;
 
     /**
-     * The id of the player, used for primary identification of player, next to name.
+     * The id of the player, used for primary identification of
+     * player, next to name.
      */
     private int id;
     /**
@@ -29,31 +31,54 @@ public class Player {
      * The position of the player on the board.
      */
     private Vector2i position;
+    /**
+     * Whether or not the player is able to make moves or play.
+     */
+    private boolean inGame;
 
     /**
      * Creates a player initializing its board, the id, and its name.
+     *
      * @param parentBoard The board the player is on.
-     * @param playerID The id of the player.
-     * @param playerName The name of the player.
+     * @param playerID    The id of the player.
+     * @param playerName  The name of the player.
      */
-    public Player(final Board parentBoard, final int playerID, final String playerName) {
+    public Player(final Board parentBoard, final int playerID,
+                  final String playerName) {
         this.board = board;
 
         this.id = id;
         this.name = name;
 
+        this.inGame = true;
+
         this.deck = new Deck();
     }
 
-    public String getName() {
+    /**
+     * Get the players name.
+     *
+     * @return The name of the player.
+     */
+    public final String getName() {
         return name;
     }
 
-    public int getID() {
+    /**
+     * Get the id of the player.
+     *
+     * @return The players id.
+     */
+    public final int getID() {
         return id;
     }
 
-    public Deck getDeck() {
+    /**
+     * Get the players hand.
+     *
+     * @return The deck the player holds.
+     */
+    public final Deck getDeck() {
         return deck;
     }
 
@@ -61,26 +86,43 @@ public class Player {
      * public void addCard(Card newCard) { cards.add(newCard); }
 	 */
 
-    public Vector2i getPosition() {
+    /**
+     * Get the position of the player.
+     *
+     * @return The players position.
+     */
+    public final Vector2i getPosition() {
         return position;
     }
 
-    public void setPosition(Vector2i newPosition) {
+    /**
+     * Set the players position.
+     *
+     * @param newPosition The new position of the player.
+     */
+    public final void setPosition(final Vector2i newPosition) {
         position = newPosition;
     }
 
-    public Board getBoard() {
+    /**
+     * Get the board the player is on.
+     *
+     * @return The board the player is on
+     */
+    public final Board getBoard() {
         return this.board;
     }
 
     /**
      * Attempts to make a move on the board.
+     *
      * @param newPosition The new position to move to.
      * @param maxDistance The max number of tiles they can travel.
      * @return Returns the amount of tiles it took for that make the move;
      * Returns -1 if move was not able to be made.
      */
-    public int makeMove(Vector2i newPosition, int maxDistance) {
+    public final int makeMove(final Vector2i newPosition,
+                              final int maxDistance) {
         Path p = new Path(getBoard(), getPosition(), newPosition, maxDistance);
         if (p.isPossible()) {
             return p.getMoves();
@@ -88,8 +130,22 @@ public class Player {
         return -1;
     }
 
-    public boolean isInGame() {
-        return board != null;
+    /**
+     * Get if the player is in game.
+     *
+     * @return If the player is in game.
+     */
+    public final boolean isInGame() {
+        return inGame;
+    }
+
+    /**
+     * Set if the player is in game or not.
+     *
+     * @param newState The new state of being in game or not.
+     */
+    public final void setInGame(final boolean newState) {
+        this.inGame = newState;
     }
 
 }
