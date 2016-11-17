@@ -3,17 +3,34 @@ package edu.neumont.teamgift.clue.board.tiles;
 import edu.neumont.teamgift.clue.Vector2i;
 import edu.neumont.teamgift.clue.board.Board;
 
+/**
+ * A tile of the board, used as movement for players, as well as storage for different objects.
+ */
 public abstract class Tile implements Comparable<Tile> {
 
+    /**
+     * The board the tile is apart of.
+     */
     private Board board;
 
-    private int ID;
+    /**
+     * The id of the tile, used for identifying what type it is.
+     */
+    private int id;
+    /**
+     * The position of the tile on the board.
+     */
     private Vector2i position;
 
-    Tile(Board board, int ID) {
-        this.board = board;
+    /**
+     * Creates a new tile, with the connected board and the id of the tile.
+     * @param parentBoard The board the tile is apart of.
+     * @param tileID The id used for identification of tile type.
+     */
+    Tile(final Board parentBoard, final int tileID) {
+        this.board = parentBoard;
 
-        this.ID = ID;
+        this.id = tileID;
         this.position = Vector2i.zero();
     }
 
@@ -24,7 +41,7 @@ public abstract class Tile implements Comparable<Tile> {
 
     @SuppressWarnings("WeakerAccess")
     public int getID() {
-        return ID;
+        return id;
     }
 
     @SuppressWarnings("WeakerAccess")
@@ -33,12 +50,12 @@ public abstract class Tile implements Comparable<Tile> {
     }
 
     @SuppressWarnings("WeakerAccess")
-    public void setPosition(Vector2i position) {
-        this.position = position;
+    public void setPosition(final Vector2i newPosition) {
+        this.position = newPosition;
     }
 
     @Override
-    public int compareTo(Tile o) {
+    public final int compareTo(final Tile o) {
         return position.compareTo(o.position);
     }
 
