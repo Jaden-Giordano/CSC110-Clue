@@ -10,17 +10,34 @@ import static org.lwjgl.glfw.GLFW.*;
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
+/**
+ * LWJGL window.
+ */
 class Display {
 
+    /**
+     * The handle for the window in GLFW.
+     */
     private long window;
 
+    /**
+     * The width and height of the window.
+     */
     private Vector2i size;
 
-    Display(Vector2i size) {
-        this.size = size;
+    /**
+     * Create a new window with specific size.
+     *
+     * @param windowSize The size of the window.
+     */
+    Display(final Vector2i windowSize) {
+        this.size = windowSize;
         init();
     }
 
+    /**
+     * Initialize window, OpenGL, and GLFW.
+     */
     private void init() {
         // Setup an error callback. The default implementation
         // will print the error message in System.err.
@@ -41,9 +58,9 @@ class Display {
             throw new RuntimeException("Failed to create the GLFW window");
 
         // Setup a key callback. It will be called every time a key is pressed, repeated or released.
-        glfwSetKeyCallback(window, (window, key, scancode, action, mods) -> {
+        glfwSetKeyCallback(window, (dWindow, key, scancode, action, mods) -> {
             if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE)
-                glfwSetWindowShouldClose(window, true); // We will detect this in our rendering loop
+                glfwSetWindowShouldClose(dWindow, true); // We will detect this in our rendering loop
         });
 
         // Get the resolution of the primary monitor
@@ -74,19 +91,32 @@ class Display {
         glClearColor(1.0f, 0.0f, 0.0f, 0.0f);
     }
 
+    /**
+     * Clear the frame buffer.
+     */
     void clear() {
         glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
     }
 
+    /**
+     * Swap the frame buffers, to display what needs to be drawn.
+     */
     void swapBuffers() {
         glfwSwapBuffers(window); // swap the color buffers
     }
 
+    /**
+     * Destroy the window and callbacks.
+     */
     void destroy() {
         glfwFreeCallbacks(getWindow());
         glfwDestroyWindow(getWindow());
     }
 
+    /**
+     * Get the window handle.
+     * @return The handle for the window.
+     */
     long getWindow() {
         return window;
     }
