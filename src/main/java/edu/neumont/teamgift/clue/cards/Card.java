@@ -1,23 +1,53 @@
 package edu.neumont.teamgift.clue.cards;
 
+/**
+ * Basic card containing name and type.
+ */
 @SuppressWarnings("WeakerAccess")
 public class Card {
+
+    /**
+     * The name of the card.
+     */
     private String name;
+    /**
+     * The type of the card.
+     */
     private Type type;
 
-    public String getName() {
+    /**
+     * Get the name of the card.
+     *
+     * @return The name of the card.
+     */
+    public final String getName() {
         return name;
     }
 
-    public void setName(String Name) {
-        name = Name;
+    /**
+     * Set the name of the card.
+     *
+     * @param newName The new name of the card.
+     */
+    public final void setName(final String newName) {
+        name = newName;
     }
 
-    public Type getType() {
+    /**
+     * Gets the type of the card.
+     *
+     * @return The type of the card.
+     */
+    public final Type getType() {
         return type;
     }
 
-    public void setType(Type newType) {
+    /**
+     * Set the type of the card.
+     *
+     * @param newType The new type of the card.
+     */
+    public final void setType(final Type newType) {
         type = newType;
     }
 }
