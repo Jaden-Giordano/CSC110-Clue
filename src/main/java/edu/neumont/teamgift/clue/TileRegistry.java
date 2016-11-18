@@ -12,7 +12,7 @@ import edu.neumont.teamgift.clue.board.tiles.Tile;
 public final class TileRegistry {
 
     /**
-     * Tile registry
+     * Tile registry.
      */
     private TileRegistry() {
     }

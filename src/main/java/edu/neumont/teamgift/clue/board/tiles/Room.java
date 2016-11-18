@@ -61,7 +61,8 @@ public class Room {
     @SuppressWarnings("unused")
     public final <T> T[] getTiles(final Class<? extends Tile> tile) {
         //noinspection unchecked
-        return (T[]) tiles.stream().filter(i -> i.getClass() == tile).collect(Collectors.toList()).toArray();
+        return (T[]) tiles.stream().filter(i -> i.getClass() == tile)
+                .collect(Collectors.toList()).toArray();
     }
 
 }

@@ -4,16 +4,21 @@ package edu.neumont.teamgift.clue;
  * Vector containing two points relating to coordinates in a tile array.
  * Contains basic math functions as well.
  */
-@SuppressWarnings("WeakerAccess")
+@SuppressWarnings({"WeakerAccess", "CheckStyle"})
 public class Vector2i implements Comparable<Vector2i> {
 
     /**
      * 'X' coordinate and 'Y' coordinate of vector.
      */
-    public int x = 0, y = 0;
+    @SuppressWarnings("CanBeFinal")
+    public int x;
+
+    @SuppressWarnings("CanBeFinal")
+    public int y;
 
     /**
      * Default vector with coordinates (0, 0).
+     * @return New vector with coordinates (0, 0).
      */
     public static Vector2i zero() {
         return new Vector2i(0, 0);
@@ -67,8 +72,9 @@ public class Vector2i implements Comparable<Vector2i> {
      */
     @SuppressWarnings("unused")
     public static Vector2i divide(final Vector2i a, final Vector2i b) {
-        if (b.x == 0 || b.y == 0)
+        if (b.x == 0 || b.y == 0) {
             throw new ArithmeticException("Cannot divide by 0.");
+        }
 
         return new Vector2i(a.x / b.x, a.y / b.y);
     }
@@ -125,8 +131,9 @@ public class Vector2i implements Comparable<Vector2i> {
 
     @Override
     public final int compareTo(final Vector2i o) {
-        if (x == o.x && y == o.y)
+        if (x == o.x && y == o.y) {
             return 0;
+        }
 
         return 1;
     }

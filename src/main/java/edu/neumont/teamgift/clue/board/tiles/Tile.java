@@ -4,7 +4,8 @@ import edu.neumont.teamgift.clue.Vector2i;
 import edu.neumont.teamgift.clue.board.Board;
 
 /**
- * A tile of the board, used as movement for players, as well as storage for different objects.
+ * A tile of the board, used as movement for players,
+ * as well as storage for different objects.
  */
 public abstract class Tile implements Comparable<Tile> {
 
@@ -34,23 +35,40 @@ public abstract class Tile implements Comparable<Tile> {
         this.position = Vector2i.zero();
     }
 
+    /**
+     * Get board the tile is apart of.
+     *
+     * @return Board the tile is apart of.
+     */
     @SuppressWarnings("WeakerAccess")
-    public Board getBoard() {
+    public final Board getBoard() {
         return this.board;
     }
 
+    /**
+     * Get the tile id.
+     * @return The tile id.
+     */
     @SuppressWarnings({"WeakerAccess", "unused"})
-    public int getID() {
+    public final int getID() {
         return id;
     }
 
+    /**
+     * Get the position on the board.
+     * @return Position of the tile.
+     */
     @SuppressWarnings("WeakerAccess")
-    public Vector2i getPosition() {
+    public final Vector2i getPosition() {
         return position;
     }
 
+    /**
+     * Set the position of the tile.
+     * @param newPosition The new position for the tile.
+     */
     @SuppressWarnings({"WeakerAccess", "unused"})
-    public void setPosition(final Vector2i newPosition) {
+    public final void setPosition(final Vector2i newPosition) {
         this.position = newPosition;
     }
 
