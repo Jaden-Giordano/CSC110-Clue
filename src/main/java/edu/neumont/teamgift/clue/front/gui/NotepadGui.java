@@ -36,7 +36,7 @@ public class NotepadGui extends JFrame{
         Study
     }
 
-    public NotepadGui() {
+    private NotepadGui() {
         setUpNotepad();
     }
 
@@ -45,11 +45,11 @@ public class NotepadGui extends JFrame{
         JPanel panel = new JPanel();
         panel.setPreferredSize(new Dimension(700, 3000));
         add(panel);
-        final int COLUMN = 2;
-        panel.setLayout(new GridLayout(0, COLUMN));
-        JScrollPane notpad = new JScrollPane(panel);
-        notpad.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        add(notpad);
+        final int column = 2;
+        panel.setLayout(new GridLayout(0, column));
+        JScrollPane jNotepad = new JScrollPane(panel);
+        jNotepad.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        add(jNotepad);
         JLabel suspectsLabel = new JLabel("Suspects: ");
         suspectsLabel.setFont(new Font("Serif", Font.PLAIN, 40));
         panel.add(suspectsLabel);
@@ -113,7 +113,7 @@ public class NotepadGui extends JFrame{
     public static void main(String[] args) {
         NotepadGui gui = new NotepadGui();
 
-        gui.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        gui.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         gui.setSize(700, 2000);
         gui.setVisible(true);
         gui.setTitle("Notepad Gui");

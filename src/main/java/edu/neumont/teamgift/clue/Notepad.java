@@ -8,19 +8,23 @@ public class Notepad {
     /**
      * The amount of objects in each category.
      */
-    private static final int AMOUNT_OF_SUSPECTS = 6, AMOUNT_OF_WEAPONS = 6, AMOUNT_OF_ROOMS = 9;
+    private static final int AMOUNT_OF_SUSPECTS = 6,
+            AMOUNT_OF_WEAPONS = 6, AMOUNT_OF_ROOMS = 9;
 
     /**
      * The suspects and their values.
      */
+    @SuppressWarnings("CanBeFinal")
     private String[] suspects;
     /**
      * The weapons and their values.
      */
+    @SuppressWarnings("CanBeFinal")
     private String[] weapons;
     /**
      * The rooms and their values.
      */
+    @SuppressWarnings("CanBeFinal")
     private String[] rooms;
 
     /**

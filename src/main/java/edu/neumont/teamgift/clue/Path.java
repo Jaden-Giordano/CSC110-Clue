@@ -21,26 +21,27 @@ class Path {
         /**
          * Position on the board;
          */
-        private Vector2i position;
+        private final Vector2i position;
 
         /**
-         * Whether the player can or cannot move through this sqaure.
+         * Whether the player can or cannot move through this tile.
          */
-        private boolean blocked;
+        private final boolean blocked;
 
         /**
          * The distance from the destination point.
          */
-        private int heuristic;
+        private final int heuristic;
         /**
          * The cost a move would be.
          */
-        private int cost;
+        private final int cost;
 
         /**
          * The parent tile that this tile was generated from.
          */
-        private TileCheck parent;
+        @SuppressWarnings("unused")
+        private final TileCheck parent;
 
         /**
          * Generate a new temporary tile.
@@ -75,6 +76,15 @@ class Path {
             return position;
         }
 
+        /**
+         * Get whether blocked or not.
+         *
+         * @return Whether blocked or not.
+         */
+        boolean isBlocked() {
+            return blocked;
+        }
+
         @Override
         public int compareTo(final TileCheck o) {
             return position.compareTo(o.position);
@@ -89,17 +99,17 @@ class Path {
     /**
      * The board to find the path on.
      */
-    private Board board;
+    private final Board board;
 
     /**
      * The start and end point of the path to be generated
      */
-    private Vector2i startPoint, endPoint;
+    private final Vector2i startPoint, endPoint;
 
     /**
      * The best possible moves.
      */
-    private List<TileCheck> closedList;
+    private final List<TileCheck> closedList;
 
     /**
      * The possibility of the move on the board.
@@ -160,7 +170,7 @@ class Path {
                     boolean blocked = t instanceof Solid || (t instanceof PlayerContaining && ((PlayerContaining) t).getContainingPlayer() != null);
                     if (!isClosed(t.getPosition())) {
                         TileCheck open = new TileCheck(parent, t.getPosition(), blocked, heuristic, cost);
-                        if (bestMovement == null || open.getCostPlusHeuristic() < bestMovement.getCostPlusHeuristic())
+                        if (bestMovement == null || open.getCostPlusHeuristic() < bestMovement.getCostPlusHeuristic() && !open.isBlocked())
                             bestMovement = open;
                     }
                 } catch (IllegalArgumentException ignored) {}

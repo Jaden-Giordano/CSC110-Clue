@@ -6,8 +6,30 @@ import org.lwjgl.glfw.GLFWVidMode;
 import org.lwjgl.opengl.GL;
 
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
-import static org.lwjgl.glfw.GLFW.*;
-import static org.lwjgl.opengl.GL11.*;
+import static org.lwjgl.glfw.GLFW.GLFW_FALSE;
+import static org.lwjgl.glfw.GLFW.GLFW_KEY_ESCAPE;
+import static org.lwjgl.glfw.GLFW.GLFW_RELEASE;
+import static org.lwjgl.glfw.GLFW.GLFW_RESIZABLE;
+import static org.lwjgl.glfw.GLFW.GLFW_TRUE;
+import static org.lwjgl.glfw.GLFW.GLFW_VISIBLE;
+import static org.lwjgl.glfw.GLFW.glfwCreateWindow;
+import static org.lwjgl.glfw.GLFW.glfwDefaultWindowHints;
+import static org.lwjgl.glfw.GLFW.glfwDestroyWindow;
+import static org.lwjgl.glfw.GLFW.glfwGetPrimaryMonitor;
+import static org.lwjgl.glfw.GLFW.glfwGetVideoMode;
+import static org.lwjgl.glfw.GLFW.glfwInit;
+import static org.lwjgl.glfw.GLFW.glfwMakeContextCurrent;
+import static org.lwjgl.glfw.GLFW.glfwSetKeyCallback;
+import static org.lwjgl.glfw.GLFW.glfwSetWindowPos;
+import static org.lwjgl.glfw.GLFW.glfwSetWindowShouldClose;
+import static org.lwjgl.glfw.GLFW.glfwShowWindow;
+import static org.lwjgl.glfw.GLFW.glfwSwapBuffers;
+import static org.lwjgl.glfw.GLFW.glfwSwapInterval;
+import static org.lwjgl.glfw.GLFW.glfwWindowHint;
+import static org.lwjgl.opengl.GL11.GL_COLOR_BUFFER_BIT;
+import static org.lwjgl.opengl.GL11.GL_DEPTH_BUFFER_BIT;
+import static org.lwjgl.opengl.GL11.glClear;
+import static org.lwjgl.opengl.GL11.glClearColor;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
 /**
@@ -23,13 +45,14 @@ class Display {
     /**
      * The width and height of the window.
      */
-    private Vector2i size;
+    private final Vector2i size;
 
     /**
      * Create a new window with specific size.
      *
      * @param windowSize The size of the window.
      */
+    @SuppressWarnings("unused")
     Display(final Vector2i windowSize) {
         this.size = windowSize;
         init();
@@ -44,23 +67,31 @@ class Display {
         GLFWErrorCallback.createPrint(System.err).set();
 
         // Initialize GLFW. Most GLFW functions will not work before doing this.
-        if (!glfwInit())
+        if (!glfwInit()) {
             throw new IllegalStateException("Unable to initialize GLFW");
+        }
 
         // Configure our window
-        glfwDefaultWindowHints(); // optional, the current window hints are already the default
-        glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE); // the window will stay hidden after creation
-        glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE); // the window will be resizable
+        // optional, the current window hints are already the default
+        glfwDefaultWindowHints();
+        // the window will stay hidden after creation
+        glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
+        // the window will stay hidden after creation
+        glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
 
         // Create the window
         window = glfwCreateWindow(size.x, size.y, "Hello World!", NULL, NULL);
-        if (window == NULL)
+        if (window == NULL) {
             throw new RuntimeException("Failed to create the GLFW window");
+        }
 
-        // Setup a key callback. It will be called every time a key is pressed, repeated or released.
+        // Setup a key callback. It will be called every time
+        // a key is pressed, repeated or released.
         glfwSetKeyCallback(window, (dWindow, key, scancode, action, mods) -> {
-            if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE)
-                glfwSetWindowShouldClose(dWindow, true); // We will detect this in our rendering loop
+            if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE) {
+                // We will detect this in our rendering loop
+                glfwSetWindowShouldClose(dWindow, true);
+            }
         });
 
         // Get the resolution of the primary monitor
@@ -95,7 +126,8 @@ class Display {
      * Clear the frame buffer.
      */
     void clear() {
-        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
+        // clear the framebuffer
+        glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     }
 
     /**

@@ -65,6 +65,7 @@ public class Vector2i implements Comparable<Vector2i> {
      * @param b The second vector.
      * @return Returns the quotient of the vectors.
      */
+    @SuppressWarnings("unused")
     public static Vector2i divide(final Vector2i a, final Vector2i b) {
         if (b.x == 0 || b.y == 0)
             throw new ArithmeticException("Cannot divide by 0.");
@@ -87,6 +88,7 @@ public class Vector2i implements Comparable<Vector2i> {
      * @param b The other vector.
      * @return A new vector of the sum.
      */
+    @SuppressWarnings("unused")
     public final Vector2i add(final Vector2i b) {
         return add(this, b);
     }
@@ -105,6 +107,7 @@ public class Vector2i implements Comparable<Vector2i> {
      * @param b The other vector.
      * @return A new vector for the product of the vectors.
      */
+    @SuppressWarnings("unused")
     public final Vector2i multiply(final Vector2i b) {
         return multiply(this, b);
     }
@@ -115,6 +118,7 @@ public class Vector2i implements Comparable<Vector2i> {
      * @return A new vector for the quotient of the vectors.
      * @throws ArithmeticException Denominator cannot contain a zero.
      */
+    @SuppressWarnings("unused")
     public final Vector2i divide(final Vector2i b) throws ArithmeticException {
         return add(this, b);
     }

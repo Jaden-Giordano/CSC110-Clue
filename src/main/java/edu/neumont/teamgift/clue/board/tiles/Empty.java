@@ -12,6 +12,7 @@ public class Empty extends Tile {
      *
      * @param b The board the empty tile is connected to.
      */
+    @SuppressWarnings("unused")
     public Empty(final Board b) {
         super(b, 0);
     }

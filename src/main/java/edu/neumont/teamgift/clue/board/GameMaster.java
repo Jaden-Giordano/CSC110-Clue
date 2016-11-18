@@ -5,32 +5,39 @@ import edu.neumont.teamgift.clue.Player;
 /**
  * A controller for all aspects of game.
  */
+@SuppressWarnings("unused")
 public class GameMaster {
     /**
      * The amount of players in the game.
      * TODO Prompt for number of players
      */
+    @SuppressWarnings("CanBeFinal")
     private int numPlayers = 0;
     /**
      * The list of players in the game.
+     * TODO Make sure to resize array based on amount of players.
      */
+    @SuppressWarnings({"MismatchedReadAndWriteOfArray", "CanBeFinal"})
     private Player[] playerList = new Player[numPlayers];
 
     /**
      * The people available in the game to choose from.
      * TODO Prompt for player select if we want
      */
-    private String[] people = {"Colonel Mustard", "Miss Scarlet", "Professor Plum", "Mr. Green", "Mrs. White",
+    private final String[] people = {"Colonel Mustard", "Miss Scarlet",
+            "Professor Plum", "Mr. Green", "Mrs. White",
             "Mrs. Peacock"};
 
     /**
      * The game board.
      */
+    @SuppressWarnings("CanBeFinal")
     private Board board;
 
     /**
      * Creates the game board.
      */
+    @SuppressWarnings("EmptyMethod")
     public final void createBoard() {
         // TODO Get the path that will be used.
         // board = new Board();
@@ -64,7 +71,8 @@ public class GameMaster {
                 checkValidMove = false;
             } else if (spaceLeft > 0) {
                 checkValidMove = true;
-                int rollReamining = roll - spaceLeft;
+                @SuppressWarnings("UnusedAssignment")
+                int rollRemaining = roll - spaceLeft;
                 // TODO get new move location
             }
         }

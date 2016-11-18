@@ -12,21 +12,22 @@ public class Player {
     /**
      * The board the player is on.
      */
+    @SuppressWarnings("CanBeFinal")
     private Board board;
 
     /**
      * The id of the player, used for primary identification of
      * player, next to name.
      */
-    private int id;
+    private final int id;
     /**
      * The name of the in game player.
      */
-    private String name;
+    private final String name;
     /**
      * The cards the player holds.
      */
-    private Deck deck;
+    private final Deck deck;
     /**
      * The position of the player on the board.
      */
@@ -45,10 +46,10 @@ public class Player {
      */
     public Player(final Board parentBoard, final int playerID,
                   final String playerName) {
-        this.board = board;
+        this.board = parentBoard;
 
-        this.id = id;
-        this.name = name;
+        this.id = playerID;
+        this.name = playerName;
 
         this.inGame = true;
 
@@ -60,6 +61,7 @@ public class Player {
      *
      * @return The name of the player.
      */
+    @SuppressWarnings("unused")
     public final String getName() {
         return name;
     }
@@ -69,6 +71,7 @@ public class Player {
      *
      * @return The players id.
      */
+    @SuppressWarnings("unused")
     public final int getID() {
         return id;
     }
@@ -78,6 +81,7 @@ public class Player {
      *
      * @return The deck the player holds.
      */
+    @SuppressWarnings("unused")
     public final Deck getDeck() {
         return deck;
     }
@@ -100,6 +104,7 @@ public class Player {
      *
      * @param newPosition The new position of the player.
      */
+    @SuppressWarnings("unused")
     public final void setPosition(final Vector2i newPosition) {
         position = newPosition;
     }
@@ -109,6 +114,7 @@ public class Player {
      *
      * @return The board the player is on
      */
+    @SuppressWarnings("WeakerAccess")
     public final Board getBoard() {
         return this.board;
     }
@@ -116,14 +122,14 @@ public class Player {
     /**
      * Attempts to make a move on the board.
      *
-     * @param newPosition The new position to move to.
+     * @param endPosition The new position to move to.
      * @param maxDistance The max number of tiles they can travel.
      * @return Returns the amount of tiles it took for that make the move;
      * Returns -1 if move was not able to be made.
      */
-    public final int makeMove(final Vector2i newPosition,
+    public final int makeMove(final Vector2i endPosition,
                               final int maxDistance) {
-        Path p = new Path(getBoard(), getPosition(), newPosition, maxDistance);
+        Path p = new Path(getBoard(), getPosition(), endPosition, maxDistance);
         if (p.isPossible()) {
             return p.getMoves();
         }
@@ -135,6 +141,7 @@ public class Player {
      *
      * @return If the player is in game.
      */
+    @SuppressWarnings("unused")
     public final boolean isInGame() {
         return inGame;
     }
@@ -144,6 +151,7 @@ public class Player {
      *
      * @param newState The new state of being in game or not.
      */
+    @SuppressWarnings("unused")
     public final void setInGame(final boolean newState) {
         this.inGame = newState;
     }

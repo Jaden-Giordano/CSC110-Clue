@@ -15,11 +15,12 @@ public class Room {
     /**
      * List of all the tiles that make up a room.
      */
-    private List<Tile> tiles;
+    private final List<Tile> tiles;
 
     /**
      * Create the container for the room.
      */
+    @SuppressWarnings("unused")
     public Room() {
         tiles = new ArrayList<>();
     }
@@ -29,6 +30,7 @@ public class Room {
      *
      * @param t The tile to be added.
      */
+    @SuppressWarnings("unused")
     public final void addTile(final Tile t) {
         tiles.add(t);
     }
@@ -39,6 +41,7 @@ public class Room {
      * @param position The position of the tile.
      * @return The tile correlating with the given coordinates.
      */
+    @SuppressWarnings("unused")
     public final Tile getTile(final Vector2i position) {
         for (Tile i : tiles) {
             if (i.getPosition() == position) {
@@ -55,6 +58,7 @@ public class Room {
      * @param <T>  A tile class, or sub-class.
      * @return All the tiles that match the type.
      */
+    @SuppressWarnings("unused")
     public final <T> T[] getTiles(final Class<? extends Tile> tile) {
         //noinspection unchecked
         return (T[]) tiles.stream().filter(i -> i.getClass() == tile).collect(Collectors.toList()).toArray();

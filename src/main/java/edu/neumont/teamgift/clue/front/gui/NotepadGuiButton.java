@@ -6,17 +6,21 @@ import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-public class NotepadGuiButton implements ActionListener {
+class NotepadGuiButton implements ActionListener {
+    @SuppressWarnings("CanBeFinal")
     private JButton button;
+    @SuppressWarnings("unused")
     private Notepad notepad;
+    @SuppressWarnings("CanBeFinal")
     private int index;
 
     public NotepadGuiButton(JButton button, int index) {
         this.index = index;
         this.button = button;
-        Notepad notepad = new Notepad();
+        @SuppressWarnings("UnusedAssignment") Notepad notepad = new Notepad();
 
     }
+
     @Override
     public void actionPerformed(ActionEvent e) {
         String buttonEnum = findEnum(button.getText());
@@ -36,8 +40,8 @@ public class NotepadGuiButton implements ActionListener {
         }
 
     }
-    
-    private String findEnum(String buttonContents){
+
+    private String findEnum(String buttonContents) {
         if (!buttonContents.equals(Weapons.values()) && !buttonContents.equals(Rooms.values())) {
             return "Suspects";
         } else if (!buttonContents.equals(Suspects.values()) && !buttonContents.equals(Rooms.values())) {
@@ -47,14 +51,19 @@ public class NotepadGuiButton implements ActionListener {
         }
         return null;
     }
-    private static void changeValue(String enumValue, int index, String buttonValue){
+
+    private static void changeValue(String enumValue, int index, String buttonValue) {
         Notepad notepad = new Notepad();
-        if (enumValue.equals("Suspects")) {
-            notepad.setSuspect(index, buttonValue);
-        } else if (enumValue.equals("Weapons")) {
-            notepad.setWeapon(index, buttonValue);
-        } else if (enumValue.equals("Rooms")) {
-            notepad.setRoom(index, buttonValue);
+        switch (enumValue) {
+            case "Suspects":
+                notepad.setSuspect(index, buttonValue);
+                break;
+            case "Weapons":
+                notepad.setWeapon(index, buttonValue);
+                break;
+            case "Rooms":
+                notepad.setRoom(index, buttonValue);
+                break;
         }
     }
 }

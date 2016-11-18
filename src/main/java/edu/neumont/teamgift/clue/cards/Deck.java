@@ -9,14 +9,14 @@ public class Deck {
     /**
      * List of cards in deck.
      */
-    private ArrayList<Card> deck = new ArrayList<>();
+    private final ArrayList<Card> deck = new ArrayList<>();
 
     /**
      * Add a card to the deck.
      *
      * @param c The card to add.
      */
-    public final void add(Card c) {
+    public final void add(final Card c) {
         deck.add(c);
     }
 

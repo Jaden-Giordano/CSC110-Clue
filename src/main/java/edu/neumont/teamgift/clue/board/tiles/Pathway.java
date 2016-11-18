@@ -14,6 +14,7 @@ public class Pathway extends Tile implements PlayerContaining {
      *
      * @param b The board the pathway is connected to.
      */
+    @SuppressWarnings("unused")
     public Pathway(final Board b) {
         super(b, 1);
     }
@@ -21,10 +22,10 @@ public class Pathway extends Tile implements PlayerContaining {
     @Override
     public final Player getContainingPlayer() {
         for (Player p : getBoard().getPlayers()) {
-            if (p.getPosition() == this.getPosition())
+            if (p.getPosition() == this.getPosition()) {
                 return p;
+            }
         }
         return null;
     }
-
 }

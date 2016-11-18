@@ -30,19 +30,20 @@ public class Board {
      * List of rooms, which are used for movements.
      */
     @SuppressWarnings({"MismatchedQueryAndUpdateOfCollection",
-            "FieldCanBeLocal"})
-    private List<Room> rooms;
+            "FieldCanBeLocal", "unused"})
+    private final List<Room> rooms;
 
     /**
      * All the players, currently active on the board.
      */
-    private List<Player> players;
+    private final List<Player> players;
 
     /**
      * Creation of the board: population of tiles, rooms, and players.
      * @param path The filepath to the board file, containing a 2D map of
      *             tile ids.
      */
+    @SuppressWarnings("unused")
     public Board(final String path) {
         rooms = new ArrayList<>();
         players = new ArrayList<>();
@@ -94,6 +95,7 @@ public class Board {
      * Adds a player to the board, generating an id, and setting the name.
      * @param name The name of the new player.
      */
+    @SuppressWarnings("unused")
     public final void addPlayer(final String name) {
         this.players.add(new Player(this, players.size(), name));
     }

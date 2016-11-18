@@ -11,12 +11,12 @@ public abstract class Tile implements Comparable<Tile> {
     /**
      * The board the tile is apart of.
      */
-    private Board board;
+    private final Board board;
 
     /**
      * The id of the tile, used for identifying what type it is.
      */
-    private int id;
+    private final int id;
     /**
      * The position of the tile on the board.
      */
@@ -39,7 +39,7 @@ public abstract class Tile implements Comparable<Tile> {
         return this.board;
     }
 
-    @SuppressWarnings("WeakerAccess")
+    @SuppressWarnings({"WeakerAccess", "unused"})
     public int getID() {
         return id;
     }
@@ -49,7 +49,7 @@ public abstract class Tile implements Comparable<Tile> {
         return position;
     }
 
-    @SuppressWarnings("WeakerAccess")
+    @SuppressWarnings({"WeakerAccess", "unused"})
     public void setPosition(final Vector2i newPosition) {
         this.position = newPosition;
     }

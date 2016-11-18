@@ -5,6 +5,7 @@ import java.util.Random;
 /**
  * A dealer for cards, separate from Game Master.
  */
+@SuppressWarnings({"WeakerAccess", "unused"})
 public class Dealer {
 
     /**
@@ -15,21 +16,24 @@ public class Dealer {
     /**
      * The main deck of cards.
      */
-    private Deck cards = new Deck();
+    private final Deck cards = new Deck();
 
     /**
      * Storage for all the answer to the case.
      */
-    private Deck killerCaseFile = new Deck();
+    private final Deck killerCaseFile = new Deck();
 
     /**
      * Creates all the cards in the deck.
      */
     public final void createCards() {
-        String[] weapons = {"Rope", "Lead Pipe", "Knife", "Wrench", "Candlestick", "Pistol"};
-        String[] people = {"Colonel Mustard", "Miss Scarlet", "Professor Plum", "Mr. Green", "Mrs. White",
+        String[] weapons = {"Rope", "Lead Pipe", "Knife", "Wrench",
+                "Candlestick", "Pistol"};
+        String[] people = {"Colonel Mustard", "Miss Scarlet",
+                "Professor Plum", "Mr. Green", "Mrs. White",
                 "Mrs. Peacock"};
-        String[] rooms = {"Ballroom", "Kitchen", "Dining Room", "Lounge", "Hall", "Study", "Library", "Billiard Room",
+        String[] rooms = {"Ballroom", "Kitchen", "Dining Room",
+                "Lounge", "Hall", "Study", "Library", "Billiard Room",
                 "Conservatory"};
         final int total = weapons.length + people.length + rooms.length;
 
@@ -73,7 +77,8 @@ public class Dealer {
      */
     public final void printCards() {
         for (int i = 0; i < cards.size(); i++) {
-            System.out.println(i + ". " + cards.get(i).getName() + " Type: " + cards.get(i).getType());
+            System.out.println(i + ". " + cards.get(i).getName()
+                    + " Type: " + cards.get(i).getType());
         }
     }
 
@@ -83,7 +88,8 @@ public class Dealer {
     public final void printKillerCaseFile() {
         for (int i = 0; i < killerCaseFile.size(); i++) {
             System.out
-                    .println(i + ". " + killerCaseFile.get(i).getName() + " Type: " + killerCaseFile.get(i).getType());
+                    .println(i + ". " + killerCaseFile.get(i).getName()
+                            + " Type: " + killerCaseFile.get(i).getType());
         }
     }
 
