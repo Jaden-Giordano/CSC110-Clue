@@ -8,54 +8,117 @@ import edu.neumont.teamgift.clue.board.tiles.interfaces.Solid;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Path finding between two points on the board; used to determine if pathway is blocked.
+ */
 class Path {
 
+    /**
+     * A temporary tile created to check for best move.
+     */
     private class TileCheck implements Comparable<TileCheck> {
 
+        /**
+         * Position on the board;
+         */
         private Vector2i position;
 
-        boolean blocked;
+        /**
+         * Whether the player can or cannot move through this sqaure.
+         */
+        private boolean blocked;
 
-        int heuristic;
-        int cost;
+        /**
+         * The distance from the destination point.
+         */
+        private int heuristic;
+        /**
+         * The cost a move would be.
+         */
+        private int cost;
 
-        TileCheck parent;
+        /**
+         * The parent tile that this tile was generated from.
+         */
+        private TileCheck parent;
 
-        TileCheck(TileCheck parent, Vector2i position, boolean blocked, int heuristic, int cost) {
-            this.parent = parent;
-            this.position = position;
-            this.blocked = blocked;
-            this.heuristic = heuristic;
-            this.cost = cost;
+        /**
+         * Generate a new temporary tile.
+         *
+         * @param parentTile     The parent tile.
+         * @param tilePosition   The position on the board.
+         * @param blockedTile    Whether the player can or cannot move through this.
+         * @param heuristicCount The distance from the end point.
+         * @param movementCost   The cost of the movement.
+         */
+        TileCheck(final TileCheck parentTile, final Vector2i tilePosition, final boolean blockedTile, final int heuristicCount, final int movementCost) {
+            this.parent = parentTile;
+            this.position = tilePosition;
+            this.blocked = blockedTile;
+            this.heuristic = heuristicCount;
+            this.cost = movementCost;
         }
 
+        /**
+         * Get the cost heuristic plus the cost.
+         * @return The sum of the heuristic and cost.
+         */
         int getCostPlusHeuristic() {
-            return heuristic+cost;
+            return heuristic + cost;
         }
 
+        /**
+         * Get position of tile on board.
+         * @return The position on the board.
+         */
         Vector2i getPosition() {
             return position;
         }
 
         @Override
-        public int compareTo(TileCheck o) {
+        public int compareTo(final TileCheck o) {
             return position.compareTo(o.position);
         }
     }
 
+    /**
+     * The movement cost for a diagonal and horizontal move.
+     */
+    private static final int HORIZONTAL_COST = 10, DIAGONAL_COST = 20;
+
+    /**
+     * The board to find the path on.
+     */
     private Board board;
 
+    /**
+     * The start and end point of the path to be generated
+     */
     private Vector2i startPoint, endPoint;
 
+    /**
+     * The best possible moves.
+     */
     private List<TileCheck> closedList;
 
+    /**
+     * The possibility of the move on the board.
+     */
     private boolean possible;
 
-    Path(Board board, Vector2i startPoint, Vector2i endPoint, int distance) {
-        this.board = board;
+    /**
+     * Create a new path to be checked and created.
+     *
+     * @param parentBoard The board to check on.
+     * @param start       The starting point.
+     * @param end         The destination.
+     * @param distance    The max distance allowed to travel.
+     */
+    Path(final Board parentBoard, final Vector2i start, final Vector2i end, final int distance) {
+        this.board = parentBoard;
 
-        this.startPoint = startPoint;
-        this.endPoint = endPoint;
+        this.startPoint = start;
+        this.endPoint = end;
 
         closedList = new ArrayList<>();
 
@@ -65,7 +128,12 @@ class Path {
             generatePath(distance);
     }
 
-    private void generatePath(int distance) {
+    /**
+     * Generate the path for certain distance.
+     *
+     * @param distance The maximum distance allowed to travel.
+     */
+    private void generatePath(final int distance) {
         TileCheck start = new TileCheck(null, startPoint, false, Vector2i.distance(startPoint, endPoint), 0);
         closedList.add(start);
         calculateMovementCosts(start);
@@ -74,14 +142,21 @@ class Path {
         }
     }
 
-    private void calculateMovementCosts(TileCheck parent) {
+    /**
+     * Calculates movement cost of all surrounding tiles
+     * and chooses the best and moves it to the closed list and then is called
+     * again for that square until the end or the max number of moves is reached.
+     *
+     * @param parent The tile to check all the tiles around.
+     */
+    private void calculateMovementCosts(final TileCheck parent) {
         TileCheck bestMovement = null;
         for (int i = -1; i <= 1; i++) {
             for (int j = -1; j <= 1; j++) {
                 try {
                     Tile t = board.getTile(parent.position.sub(new Vector2i(i, j)));
                     int heuristic = Vector2i.distance(t.getPosition(), endPoint);
-                    int cost = (i == 0 || j == 0)?10:20;
+                    int cost = (i == 0 || j == 0) ? HORIZONTAL_COST : DIAGONAL_COST;
                     boolean blocked = t instanceof Solid || (t instanceof PlayerContaining && ((PlayerContaining) t).getContainingPlayer() != null);
                     if (!isClosed(t.getPosition())) {
                         TileCheck open = new TileCheck(parent, t.getPosition(), blocked, heuristic, cost);
@@ -94,17 +169,30 @@ class Path {
         if (bestMovement != null)
             closedList.add(bestMovement);
         else
-            possible = closedList.get(closedList.size()-1).getPosition().compareTo(endPoint) != 0;
+            possible = closedList.get(closedList.size() - 1).getPosition().compareTo(endPoint) != 0;
     }
 
-    private boolean isClosed(Vector2i position) {
+    /**
+     * Get whether a tile is apart of the closed list or not.
+     * @param position The position of the tile to be checked.
+     * @return Returns whether the tile is apart of the closed list.
+     */
+    private boolean isClosed(final Vector2i position) {
         return closedList.stream().filter(i -> i.position.compareTo(position) == 0).count() > 0;
     }
 
+    /**
+     * Returns whether the move is possible or not.
+     * @return Whether the move is possible or not.
+     */
     boolean isPossible() {
         return possible;
     }
 
+    /**
+     * Get the amount of moves it took to get to the end point.
+     * @return The amount of tiles moved to get to end point.
+     */
     int getMoves() {
         return closedList.size();
     }
