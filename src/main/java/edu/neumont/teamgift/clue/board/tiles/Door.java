@@ -4,14 +4,22 @@ import edu.neumont.teamgift.clue.Player;
 import edu.neumont.teamgift.clue.board.Board;
 import edu.neumont.teamgift.clue.board.tiles.interfaces.PlayerContaining;
 
+/**
+ * A door tile, that connects a pathway to a room.
+ */
 public class Door extends Tile implements PlayerContaining {
 
-    public Door(Board b) {
+    /**
+     * Creates a new door apart of board.
+     *
+     * @param b The board the door is connected to.
+     */
+    public Door(final Board b) {
         super(b, 2);
     }
 
     @Override
-    public Player getContainingPlayer() {
+    public final Player getContainingPlayer() {
         for (Player p : getBoard().getPlayers()) {
             if (p.getPosition() == this.getPosition())
                 return p;
