@@ -127,7 +127,8 @@ public class Player {
      * @return Returns the amount of tiles it took for that make the move;
      * Returns -1 if move was not able to be made.
      */
-    public final int makeMove(final Vector2i endPosition,
+    public final int makeMove(
+            @SuppressWarnings("SameParameterValue") final Vector2i endPosition,
                               final int maxDistance) {
         Path p = new Path(getBoard(), getPosition(), endPosition, maxDistance);
         if (p.isPossible()) {
