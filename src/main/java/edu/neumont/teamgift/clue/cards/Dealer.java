@@ -2,6 +2,8 @@ package edu.neumont.teamgift.clue.cards;
 
 import java.util.Random;
 
+import edu.neumont.teamgift.clue.board.GameMaster;
+
 /**
  * A dealer for cards, separate from Game Master.
  */
@@ -118,6 +120,15 @@ public class Dealer {
             }
 
         }
+    }
+    public void dealCards(){
+    	GameMaster game = new GameMaster();
+    	while(cards.size() != 0){
+			for(int i = 0; i < game.getPlayerList().length; i++){
+				game.getPlayerList()[i].addToDeck(cards.get(0));
+				cards.remove(0);
+			}
+		}
     }
 
 }

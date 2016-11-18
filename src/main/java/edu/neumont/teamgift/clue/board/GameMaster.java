@@ -1,6 +1,8 @@
 package edu.neumont.teamgift.clue.board;
 
+import edu.neumont.teamgift.clue.Notepad;
 import edu.neumont.teamgift.clue.Player;
+import edu.neumont.teamgift.clue.cards.Deck;
 
 /**
  * A controller for all aspects of game.
@@ -11,7 +13,7 @@ public class GameMaster {
 	 * The amount of players in the game. TODO Prompt for number of players
 	 */
 	@SuppressWarnings("CanBeFinal")
-	private int numPlayers = 0;
+	private int numPlayers = 6;
 	/**
 	 * The list of players in the game. TODO Make sure to resize array based on
 	 * amount of players.
@@ -45,10 +47,17 @@ public class GameMaster {
 	 * Creates all the players in the game, and stores them into player list.
 	 */
 	public final void createPlayers() {
+		// TODO get the numplayers and set it
 		for (int i = 0; i < numPlayers; i++) {
-			Player p = new Player(board, i + 1, people[i]);
+			Notepad notepad = new Notepad();
+			Deck deck = new Deck();
+			Player p = new Player(board, i + 1, people[i], notepad, deck);
 			playerList[i] = p;
 		}
+	}
+
+	public Player[] getPlayerList() {
+		return playerList;
 	}
 
 	/**
@@ -58,9 +67,11 @@ public class GameMaster {
 	 *            The player that is currently running its turn.
 	 */
 	public final void takeTurn(final Player p) {
+		// TODO output p.getName() turn
 		// TODO add options: roll dice or travel through secret passage if
 		// present
 		// TODO Check if doors are blocked
+		// TODO add done button to turn
 		Die d = new Die();
 		int roll = d.rollDie();
 		boolean checkValidMove = false;
