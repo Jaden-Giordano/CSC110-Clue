@@ -90,6 +90,6 @@ public class Notepad {
      */
     public final String getRoom(final int index) {
         return rooms[index];
-	}
+    }
 
 }

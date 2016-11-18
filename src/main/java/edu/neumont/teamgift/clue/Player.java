@@ -82,9 +82,9 @@ public class Player {
         return deck;
     }
 
-	/*
+    /*
      * public void addCard(Card newCard) { cards.add(newCard); }
-	 */
+     */
 
     /**
      * Get the position of the player.

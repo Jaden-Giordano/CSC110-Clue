@@ -57,6 +57,6 @@ public class Deck {
     public final void remove(final int index) {
         deck.remove(index);
 
-	}
+    }
 
 }
