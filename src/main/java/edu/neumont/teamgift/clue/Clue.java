@@ -19,8 +19,8 @@ final class Clue {
 		 */
 		RunGame run = new RunGame();
 		run.runGame();
-		Die d = new Die();
-		System.out.println(d.rollDie());
+//		Die d = new Die();
+//		System.out.println(d.rollDie());
 
 		// new FrontEndManager();
 	}
