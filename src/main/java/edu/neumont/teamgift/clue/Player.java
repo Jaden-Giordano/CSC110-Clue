@@ -55,11 +55,11 @@ public class Player {
 		this.id = playerID;
 		this.name = playerName;
 
-		this.inGame = true;
+		inGame = true;
 
 		deck = new Deck();
 
-		this.notepad = new Notepad();
+		notepad = new Notepad();
 	}
 
 	/**

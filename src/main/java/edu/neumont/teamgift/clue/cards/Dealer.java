@@ -128,8 +128,6 @@ public class Dealer {
 		p.getDeck();
 		while (cards.size() != 0) {
 			for (int i = 0; i < list.length; i++) {
-//				System.out.println(cards.get(0).getName());
-//				p.addToDeck(c);
 				Player play = list[i];
 				Deck de = play.getDeck();
 
