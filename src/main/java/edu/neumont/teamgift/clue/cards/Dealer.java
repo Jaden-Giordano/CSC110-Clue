@@ -137,8 +137,6 @@ public class Dealer {
 				int j = play.getID();
 				System.out.println(j);
 				Deck de = play.getDeck();
-				de.add(c);
-				System.out.println(c.getName());
 
 				cards.remove(0);
 			}

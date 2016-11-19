@@ -55,11 +55,11 @@ public class Player {
 		this.id = playerID;
 		this.name = playerName;
 
-		this.inGame = true;
+		inGame = true;
 
-		this.deck = new Deck();
+		deck = new Deck();
 
-		this.notepad = new Notepad();
+		notepad = new Notepad();
 	}
 
 	/**
@@ -89,6 +89,7 @@ public class Player {
 	 */
 	@SuppressWarnings("unused")
 	public final Deck getDeck() {
+		
 		return deck;
 	}
 
