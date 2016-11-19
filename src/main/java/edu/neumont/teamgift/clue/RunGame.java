@@ -25,8 +25,8 @@ public class RunGame {
 		// Create board
 		game.createBoard();
 		// Create cards
-		dealer.printCards();
-
+		// dealer.printCards();
+		dealer.dealCards();
 		for (int i = 0; i < game.getPlayerList().length; i++) {
 			System.out.println("Player " + game.getPlayerList()[i].getID() + ": " + game.getPlayerList()[i].getName());
 			for (int j = 0; j < game.getPlayerList()[i].getDeck().size(); j++) {
