@@ -127,7 +127,6 @@ public class Dealer {
 				System.out.println(cards.get(0).getName());
 				Card c = cards.get(0);
 				Deck de = game.getPlayerList()[i].getDeck();
-				de.add(c);
 				System.out.println(c.getName());
 				
 				cards.remove(0);

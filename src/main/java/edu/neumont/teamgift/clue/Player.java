@@ -57,7 +57,7 @@ public class Player {
 
 		this.inGame = true;
 
-		this.deck = new Deck();
+		deck = new Deck();
 
 		this.notepad = new Notepad();
 	}
@@ -89,6 +89,7 @@ public class Player {
 	 */
 	@SuppressWarnings("unused")
 	public final Deck getDeck() {
+		
 		return deck;
 	}
 

@@ -1,6 +1,7 @@
 package edu.neumont.teamgift.clue.cards;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * A deck containing cards.
@@ -9,7 +10,7 @@ public class Deck {
     /**
      * List of cards in deck.
      */
-    private ArrayList<Card> deck = new ArrayList<Card>();
+    private List<Card> deck = new ArrayList<Card>();
 
     /**
      * Add a card to the deck.
