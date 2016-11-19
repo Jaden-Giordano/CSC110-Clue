@@ -28,7 +28,7 @@ public class Player {
 	/**
 	 * The cards the player holds.
 	 */
-	private final Deck deck;
+	private Deck deck;
 	/**
 	 * The position of the player on the board.
 	 */
@@ -49,7 +49,7 @@ public class Player {
 	 * @param playerName
 	 *            The name of the player.
 	 */
-	public Player(final Board parentBoard, final int playerID, final String playerName, Notepad playerNotepad, Deck deck) {
+	public Player(final Board parentBoard, final int playerID, final String playerName) {
 		this.board = parentBoard;
 
 		this.id = playerID;

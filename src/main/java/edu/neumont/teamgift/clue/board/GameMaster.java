@@ -49,9 +49,7 @@ public class GameMaster {
 	public final void createPlayers() {
 		// TODO get the numplayers and set it
 		for (int i = 0; i < numPlayers; i++) {
-			Notepad notepad = new Notepad();
-			Deck deck = new Deck();
-			Player p = new Player(board, i + 1, people[i], notepad, deck);
+			Player p = new Player(board, i + 1, people[i]);
 			playerList[i] = p;
 		}
 	}

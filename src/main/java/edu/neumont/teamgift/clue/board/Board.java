@@ -104,9 +104,7 @@ public class Board {
 	@SuppressWarnings("unused")
 	public final void addPlayer(final String name) {
 		// TODO make sure this code will work
-		Notepad notepad = new Notepad();
-		Deck deck = new Deck();
-		this.players.add(new Player(this, players.size(), name, notepad, deck));
+		this.players.add(new Player(this, players.size(), name));
 	}
 
 	/**

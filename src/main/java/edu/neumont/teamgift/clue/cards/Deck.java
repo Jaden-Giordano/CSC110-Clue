@@ -9,7 +9,7 @@ public class Deck {
     /**
      * List of cards in deck.
      */
-    private final ArrayList<Card> deck = new ArrayList<>();
+    private ArrayList<Card> deck = new ArrayList<Card>();
 
     /**
      * Add a card to the deck.
