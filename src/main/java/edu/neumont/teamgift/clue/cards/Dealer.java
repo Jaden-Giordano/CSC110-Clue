@@ -3,6 +3,7 @@ package edu.neumont.teamgift.clue.cards;
 import java.util.Random;
 
 import edu.neumont.teamgift.clue.Player;
+import edu.neumont.teamgift.clue.board.Board;
 import edu.neumont.teamgift.clue.board.GameMaster;
 
 /**
@@ -122,14 +123,19 @@ public class Dealer {
 		GameMaster game = new GameMaster();
 		Player[] list = game.getPlayerList();
 		Deck d = new Deck();
+		Board board = new Board("hello");
+		Player p = new Player(board, 1, "Hello");
+		p.getDeck();
 		while (cards.size() != 0) {
 			for (int i = 0; i < list.length; i++) {
-				System.out.println(cards.get(0).getName());
+//				System.out.println(cards.get(0).getName());
 				Card c = cards.get(0);
-				Deck de = game.getPlayerList()[i].getDeck();
+//				p.addToDeck(c);
+				Player play = list[i];
+				Deck de = play.getDeck();
 				de.add(c);
 				System.out.println(c.getName());
-				
+
 				cards.remove(0);
 			}
 		}
