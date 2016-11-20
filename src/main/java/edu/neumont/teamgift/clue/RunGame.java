@@ -26,17 +26,17 @@ public class RunGame {
 		 * " This is round " + i); }
 		 */
 		// Create board
-		//game.createBoard();
+		// game.createBoard();
 		// Create cards
 		// dealer.printCards();
 		dealer.dealCards(game);
-				
+
 		for (int i = 0; i < game.getPlayerList().length; i++) {
 			System.out.println("Player " + game.getPlayerList()[i].getID() + ": " + game.getPlayerList()[i].getName());
 			for (int j = 0; j < game.getPlayerList()[i].getDeck().size(); j++) {
 				System.out.println(game.getPlayerList()[i].getDeck().get(j).getName());
 			}
-
+			System.out.println("\n");
 		}
 		// TODO Win condition
 		// TODO Take turns through players
