@@ -123,6 +123,9 @@ public class Dealer {
 		Player[] list = game.getPlayerList();
 		while (cards.size() != 0) {
 			for (int i = 0; i < list.length; i++) {
+				if(cards.size() == 0){
+					break;
+				}
 				Card c = cards.get(0);
 				list[i].addToDeck(c);
 				cards.remove(0);
