@@ -119,25 +119,18 @@ public class Dealer {
 		}
 	}
 
-	public void dealCards() {
-		GameMaster game = new GameMaster();
+	public final void dealCards(GameMaster game) {
 		Player[] list = game.getPlayerList();
-		Deck d = new Deck();
-		Board board = new Board("hello");
-		Player p = new Player(board, 1, "Hello");
-		p.getDeck();
 		while (cards.size() != 0) {
 			for (int i = 0; i < list.length; i++) {
-				// System.out.println(cards.get(0).getName());
 				Card c = cards.get(0);
-				// p.addToDeck(c);
-				Player play = list[i];
-				String s = play.getName();
-				System.out.println(s);
-				int j = play.getID();
-				System.out.println(j);
-				Deck de = play.getDeck();
-
+				list[i].addToDeck(c);
+				// Player play = list[i];
+				// String s = play.getName();
+				// System.out.println(s);
+				// int j = play.getID();
+				// System.out.println(j);
+				// Deck de = play.getDeck();
 				cards.remove(0);
 			}
 		}
