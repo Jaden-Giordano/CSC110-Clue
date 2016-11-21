@@ -1,6 +1,7 @@
 package edu.neumont.teamgift.clue;
 
 import edu.neumont.teamgift.clue.board.Board;
+import edu.neumont.teamgift.clue.board.GameMaster;
 import edu.neumont.teamgift.clue.cards.Card;
 import edu.neumont.teamgift.clue.cards.Deck;
 import edu.neumont.teamgift.clue.front.gui.NotepadGui;
@@ -50,7 +51,7 @@ public class Player {
 	 * @param playerName
 	 *            The name of the player.
 	 */
-	public Player(final Board parentBoard, final int playerID, final String playerName) {
+	public Player(final Board parentBoard, final int playerID, final String playerName, GameMaster game) {
 		this.board = parentBoard;
 
 		this.id = playerID;
@@ -61,7 +62,7 @@ public class Player {
 
 		deck = new Deck();
 
-		notepad = new NotepadGui();
+		notepad = new NotepadGui(game, playerID);
 	}
 
 	/**
@@ -151,7 +152,8 @@ public class Player {
 		}
 		return -1;
 	}
-	public Notepad getNotepad(){
+
+	public NotepadGui getNotepad() {
 		return notepad;
 	}
 
@@ -179,7 +181,8 @@ public class Player {
 	public final boolean getWinner() {
 		return winner;
 	}
-	public void setWinner(){
+
+	public void setWinner() {
 		winner = true;
 	}
 

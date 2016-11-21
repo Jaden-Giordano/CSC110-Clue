@@ -96,7 +96,7 @@ public class GameMaster {
 		 */
 
 		for (int i = 0; i < numPlayers; i++) {
-			Player p = new Player(board, i + 1, people[i]);
+			Player p = new Player(board, i + 1, people[i], this);
 			playerList.add(p);
 		}
 	}
