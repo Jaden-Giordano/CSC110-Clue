@@ -3,6 +3,7 @@ package edu.neumont.teamgift.clue;
 import edu.neumont.teamgift.clue.board.Board;
 import edu.neumont.teamgift.clue.cards.Card;
 import edu.neumont.teamgift.clue.cards.Deck;
+import edu.neumont.teamgift.clue.front.gui.NotepadGui;
 
 /**
  * A playable character in the game containing information necessary for the
@@ -37,7 +38,7 @@ public class Player {
 	 */
 	private boolean inGame;
 	private boolean winner;
-	private Notepad notepad;
+	private NotepadGui notepad;
 
 	/**
 	 * Creates a player initializing its board, the id, and its name.
@@ -60,7 +61,7 @@ public class Player {
 
 		deck = new Deck();
 
-		notepad = new Notepad();
+		notepad = new NotepadGui();
 	}
 
 	/**
@@ -149,6 +150,9 @@ public class Player {
 			return p.getMoves();
 		}
 		return -1;
+	}
+	public Notepad getNotepad(){
+		return notepad;
 	}
 
 	/**

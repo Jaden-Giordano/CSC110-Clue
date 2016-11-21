@@ -16,7 +16,7 @@ import java.awt.GridLayout;
 /**
  * Display for each players notepad.
  */
-final class NotepadGui extends JFrame {
+public final class NotepadGui extends JFrame {
 
     /**
      * Notepad window dimensions.
@@ -36,7 +36,7 @@ final class NotepadGui extends JFrame {
     /**
      * Creation of notepad.
      */
-    private NotepadGui() {
+    public NotepadGui() {
         setUpNotepad();
     }
 
