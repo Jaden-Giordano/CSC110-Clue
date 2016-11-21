@@ -120,11 +120,11 @@ public class Dealer {
 
 	public final void dealCards(GameMaster game) {
 		while (cards.size() != 0) {
-			for (int i = 0; i < game.getNumPlayers; i++) {
+			for (int i = 0; i < game.getNumPlayers(); i++) {
 				if (cards.size() == 0) {
 					break;
 				}
-				Player p = game.getPlayerList(i % game.getNumPlayers);
+				Player p = game.getPlayerList(i % game.getNumPlayers());
 				Card c = cards.get(0);
 				p.addToDeck(c);
 				cards.remove(0);
