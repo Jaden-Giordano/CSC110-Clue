@@ -15,106 +15,21 @@ import java.util.List;
 class Path {
 
     /**
-     * A temporary tile created to check for best move.
-     */
-    private class TileCheck implements Comparable<TileCheck> {
-
-        /**
-         * Position on the board.
-         */
-        private final Vector2i position;
-
-        /**
-         * Whether the player can or cannot move through this tile.
-         */
-        private final boolean blocked;
-
-        /**
-         * The distance from the destination point.
-         */
-        private final int heuristic;
-        /**
-         * The cost a move would be.
-         */
-        private final int cost;
-
-        /**
-         * The parent tile that this tile was generated from.
-         */
-        @SuppressWarnings("unused")
-        private final TileCheck parent;
-
-        /**
-         * Generate a new temporary tile.
-         *
-         * @param parentTile     The parent tile.
-         * @param tilePosition   The position on the board.
-         * @param blockedTile    Whether the player can or cannot
-         *                       move through this.
-         * @param heuristicCount The distance from the end point.
-         * @param movementCost   The cost of the movement.
-         */
-        TileCheck(final TileCheck parentTile, final Vector2i tilePosition,
-                  final boolean blockedTile, final int heuristicCount,
-                  final int movementCost) {
-            this.parent = parentTile;
-            this.position = tilePosition;
-            this.blocked = blockedTile;
-            this.heuristic = heuristicCount;
-            this.cost = movementCost;
-        }
-
-        /**
-         * Get the cost heuristic plus the cost.
-         * @return The sum of the heuristic and cost.
-         */
-        int getCostPlusHeuristic() {
-            return heuristic + cost;
-        }
-
-        /**
-         * Get position of tile on board.
-         * @return The position on the board.
-         */
-        Vector2i getPosition() {
-            return position;
-        }
-
-        /**
-         * Get whether blocked or not.
-         *
-         * @return Whether blocked or not.
-         */
-        boolean isBlocked() {
-            return blocked;
-        }
-
-        @Override
-        public int compareTo(final TileCheck o) {
-            return position.compareTo(o.position);
-        }
-    }
-
-    /**
      * The movement cost for a diagonal and horizontal move.
      */
     private static final int HORIZONTAL_COST = 10, DIAGONAL_COST = 20;
-
     /**
      * The board to find the path on.
      */
     private final Board board;
-
     /**
      * The start and end point of the path to be generated.
      */
     private final Vector2i startPoint, endPoint;
-
     /**
      * The best possible moves.
      */
     private final List<TileCheck> closedList;
-
     /**
      * The possibility of the move on the board.
      */
@@ -207,6 +122,7 @@ class Path {
 
     /**
      * Get whether a tile is apart of the closed list or not.
+     *
      * @param position The position of the tile to be checked.
      * @return Returns whether the tile is apart of the closed list.
      */
@@ -217,6 +133,7 @@ class Path {
 
     /**
      * Returns whether the move is possible or not.
+     *
      * @return Whether the move is possible or not.
      */
     boolean isPossible() {
@@ -225,10 +142,94 @@ class Path {
 
     /**
      * Get the amount of moves it took to get to the end point.
+     *
      * @return The amount of tiles moved to get to end point.
      */
     int getMoves() {
         return closedList.size();
+    }
+
+    /**
+     * A temporary tile created to check for best move.
+     */
+    private class TileCheck implements Comparable<TileCheck> {
+
+        /**
+         * Position on the board.
+         */
+        private final Vector2i position;
+
+        /**
+         * Whether the player can or cannot move through this tile.
+         */
+        private final boolean blocked;
+
+        /**
+         * The distance from the destination point.
+         */
+        private final int heuristic;
+        /**
+         * The cost a move would be.
+         */
+        private final int cost;
+
+        /**
+         * The parent tile that this tile was generated from.
+         */
+        @SuppressWarnings("unused")
+        private final TileCheck parent;
+
+        /**
+         * Generate a new temporary tile.
+         *
+         * @param parentTile     The parent tile.
+         * @param tilePosition   The position on the board.
+         * @param blockedTile    Whether the player can or cannot
+         *                       move through this.
+         * @param heuristicCount The distance from the end point.
+         * @param movementCost   The cost of the movement.
+         */
+        TileCheck(final TileCheck parentTile, final Vector2i tilePosition,
+                  final boolean blockedTile, final int heuristicCount,
+                  final int movementCost) {
+            this.parent = parentTile;
+            this.position = tilePosition;
+            this.blocked = blockedTile;
+            this.heuristic = heuristicCount;
+            this.cost = movementCost;
+        }
+
+        /**
+         * Get the cost heuristic plus the cost.
+         *
+         * @return The sum of the heuristic and cost.
+         */
+        int getCostPlusHeuristic() {
+            return heuristic + cost;
+        }
+
+        /**
+         * Get position of tile on board.
+         *
+         * @return The position on the board.
+         */
+        Vector2i getPosition() {
+            return position;
+        }
+
+        /**
+         * Get whether blocked or not.
+         *
+         * @return Whether blocked or not.
+         */
+        boolean isBlocked() {
+            return blocked;
+        }
+
+        @Override
+        public int compareTo(final TileCheck o) {
+            return position.compareTo(o.position);
+        }
     }
 
 }

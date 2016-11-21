@@ -42,6 +42,31 @@ class NotepadGuiButton implements ActionListener {
 
     }
 
+    /**
+     * Change the value of a categories index.
+     *
+     * @param enumValue   The category to change.
+     * @param index       The index of the category.
+     * @param buttonValue The value to change it to.
+     */
+    private static void changeValue(final String enumValue,
+                                    final int index, final String buttonValue) {
+        Notepad notepad = new Notepad();
+        switch (enumValue) {
+            case "Suspects":
+                notepad.setSuspect(index, buttonValue);
+                break;
+            case "Weapons":
+                notepad.setWeapon(index, buttonValue);
+                break;
+            case "Rooms":
+                notepad.setRoom(index, buttonValue);
+                break;
+            default:
+                break;
+        }
+    }
+
     @Override
     public void actionPerformed(final ActionEvent e) {
         String buttonEnum = findEnum(button.getText());
@@ -85,30 +110,5 @@ class NotepadGuiButton implements ActionListener {
             }
         }
         return null;
-    }
-
-    /**
-     * Change the value of a categories index.
-     *
-     * @param enumValue   The category to change.
-     * @param index       The index of the category.
-     * @param buttonValue The value to change it to.
-     */
-    private static void changeValue(final String enumValue,
-                                    final int index, final String buttonValue) {
-        Notepad notepad = new Notepad();
-        switch (enumValue) {
-            case "Suspects":
-                notepad.setSuspect(index, buttonValue);
-                break;
-            case "Weapons":
-                notepad.setWeapon(index, buttonValue);
-                break;
-            case "Rooms":
-                notepad.setRoom(index, buttonValue);
-                break;
-            default:
-                break;
-        }
     }
 }

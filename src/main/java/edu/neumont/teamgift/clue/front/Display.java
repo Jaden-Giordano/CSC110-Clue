@@ -38,22 +38,20 @@ import static org.lwjgl.system.MemoryUtil.NULL;
 class Display {
 
     /**
-     * The handle for the window in GLFW.
-     */
-    private long window;
-
-    /**
      * The width and height of the window.
      */
     private final Vector2i size;
+    /**
+     * The handle for the window in GLFW.
+     */
+    private long window;
 
     /**
      * Create a new window with specific size.
      *
      * @param windowSize The size of the window.
      */
-    @SuppressWarnings("unused")
-    Display(final Vector2i windowSize) {
+    @SuppressWarnings("unused") Display(final Vector2i windowSize) {
         this.size = windowSize;
         init();
     }
@@ -147,6 +145,7 @@ class Display {
 
     /**
      * Get the window handle.
+     *
      * @return The handle for the window.
      */
     long getWindow() {

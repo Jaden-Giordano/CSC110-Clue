@@ -25,8 +25,9 @@ public abstract class Tile implements Comparable<Tile> {
 
     /**
      * Creates a new tile, with the connected board and the id of the tile.
+     *
      * @param parentBoard The board the tile is apart of.
-     * @param tileID The id used for identification of tile type.
+     * @param tileID      The id used for identification of tile type.
      */
     Tile(final Board parentBoard, final int tileID) {
         this.board = parentBoard;
@@ -47,6 +48,7 @@ public abstract class Tile implements Comparable<Tile> {
 
     /**
      * Get the tile id.
+     *
      * @return The tile id.
      */
     @SuppressWarnings({"WeakerAccess", "unused"})
@@ -56,6 +58,7 @@ public abstract class Tile implements Comparable<Tile> {
 
     /**
      * Get the position on the board.
+     *
      * @return Position of the tile.
      */
     @SuppressWarnings("WeakerAccess")
@@ -65,6 +68,7 @@ public abstract class Tile implements Comparable<Tile> {
 
     /**
      * Set the position of the tile.
+     *
      * @param newPosition The new position for the tile.
      */
     @SuppressWarnings({"WeakerAccess", "unused"})
