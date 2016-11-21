@@ -1,7 +1,10 @@
 package edu.neumont.teamgift.clue.front.gui;
 
 import edu.neumont.teamgift.clue.Notepad;
+import edu.neumont.teamgift.clue.Player;
 import edu.neumont.teamgift.clue.Vector2i;
+import edu.neumont.teamgift.clue.board.GameMaster;
+import edu.neumont.teamgift.clue.cards.Deck;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -37,7 +40,7 @@ final class NotepadGui extends JFrame {
      * Creation of notepad.
      */
     private NotepadGui() {
-        setUpNotepad();
+        setUpNotepad(null, 0);
     }
 
     /**
@@ -59,7 +62,7 @@ final class NotepadGui extends JFrame {
     /**
      * Fill notepad with generated content.
      */
-    private void setUpNotepad() {
+    private void setUpNotepad(GameMaster game, int playerNumber) {
         Notepad notepad = new Notepad();
         JPanel panel = new JPanel();
         panel.setPreferredSize(new Dimension(NOTEPAD_DIMENSIONS.x,
@@ -71,6 +74,12 @@ final class NotepadGui extends JFrame {
         jNotepad.setVerticalScrollBarPolicy(
                 JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         add(jNotepad);
+        JLabel cardLabel = new JLabel("Your cards are: ");
+        cardLabel.setFont(new Font("Serif", Font.PLAIN, LARGE_FONT));
+        panel.add(cardLabel);
+        JLabel cardDisplay = new JLabel(game.getPlayerList(playerNumber).getDeck().toString());
+        cardDisplay.setFont(new Font("Serif", Font.PLAIN, SMALL_FONT));
+        panel.add(cardDisplay);
         JLabel suspectsLabel = new JLabel("Suspects: ");
         suspectsLabel.setFont(new Font("Serif", Font.PLAIN, LARGE_FONT));
         panel.add(suspectsLabel);
