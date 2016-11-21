@@ -18,6 +18,7 @@ public class RunGame {
 		dealer.shuffle();
 		// Set killer case file
 		dealer.setKiller();
+		dealer.printKillerCaseFile();
 		// TODO Deal rest of cards
 		game.createPlayers();
 		/*
