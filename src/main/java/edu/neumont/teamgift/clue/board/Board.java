@@ -5,12 +5,16 @@ import edu.neumont.teamgift.clue.Vector2i;
 import edu.neumont.teamgift.clue.board.tiles.Room;
 import edu.neumont.teamgift.clue.board.tiles.Tile;
 import edu.neumont.teamgift.clue.board.tiles.TileRegistry;
+import edu.neumont.teamgift.clue.front.gui.Rooms;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
+import java.util.stream.Collectors;
 
 /**
  * The main board of the game containing the players, tiles, and rooms.
@@ -22,7 +26,7 @@ public class Board {
      */
     @SuppressWarnings({"MismatchedQueryAndUpdateOfCollection", "FieldCanBeLocal",
             "unused"})
-    private final List<Room> rooms;
+    private final Map<Integer, Room> rooms;
     /**
      * All the players, currently active on the board.
      */
@@ -44,10 +48,32 @@ public class Board {
      */
     @SuppressWarnings("unused")
     public Board(final String path) {
-        rooms = new ArrayList<>();
+        rooms = new HashMap<Integer, Room>();
+        populateRooms();
+
         players = new ArrayList<>();
 
         loadFromFile(path);
+    }
+
+    /**
+     * Create each empty room and store into list.
+     */
+    private void populateRooms() {
+        final int idOffset = 2;
+        for (Rooms i : Rooms.values()) {
+            Rooms connection = null;
+            if (i == Rooms.Lounge) {
+                connection = Rooms.Conservatory;
+            } else if (i == Rooms.Conservatory) {
+                connection = Rooms.Lounge;
+            } else if (i == Rooms.Study) {
+                connection = Rooms.Kitchen;
+            } else if (i == Rooms.Kitchen) {
+                connection = Rooms.Study;
+            }
+            rooms.put(i.ordinal() + idOffset, new Room(i, connection));
+        }
     }
 
     /**
@@ -76,6 +102,9 @@ public class Board {
                 String[] sRow = currentLine.split(" ");
                 for (int j = 0; j < tiles[i].length; j++) {
                     tiles[i][j] = TileRegistry.getTile(this, Integer.parseInt(sRow[j]));
+                    if (rooms.containsKey(tiles[i][j].getID())) {
+                        rooms.get(tiles[i][j].getID()).addTile(tiles[i][j]);
+                    }
                 }
             }
         } catch (IOException e) {
@@ -134,6 +163,17 @@ public class Board {
      */
     public final int getHeight() {
         return height;
+    }
+
+    /**
+     * Get a room by type.
+     *
+     * @param room The type of the room.
+     * @return The room specific by type.
+     */
+    public Room getRoom(final Rooms room) {
+        return (Room) rooms.values().stream().filter(i -> i.getType() == room).collect(
+                Collectors.toList()).toArray()[0];
     }
 
 }
