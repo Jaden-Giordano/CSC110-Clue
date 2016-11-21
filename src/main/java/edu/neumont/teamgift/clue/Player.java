@@ -1,8 +1,10 @@
 package edu.neumont.teamgift.clue;
 
 import edu.neumont.teamgift.clue.board.Board;
+import edu.neumont.teamgift.clue.board.GameMaster;
 import edu.neumont.teamgift.clue.cards.Card;
 import edu.neumont.teamgift.clue.cards.Deck;
+import edu.neumont.teamgift.clue.front.gui.NotepadGui;
 
 /**
  * A playable character in the game containing information necessary for the
@@ -37,7 +39,7 @@ public class Player {
 	 */
 	private boolean inGame;
 	private boolean winner;
-	private Notepad notepad;
+	private NotepadGui notepad;
 
 	/**
 	 * Creates a player initializing its board, the id, and its name.
@@ -49,7 +51,7 @@ public class Player {
 	 * @param playerName
 	 *            The name of the player.
 	 */
-	public Player(final Board parentBoard, final int playerID, final String playerName) {
+	public Player(final Board parentBoard, final int playerID, final String playerName, GameMaster game) {
 		this.board = parentBoard;
 
 		this.id = playerID;
@@ -60,7 +62,7 @@ public class Player {
 
 		deck = new Deck();
 
-		notepad = new Notepad();
+		notepad = new NotepadGui(game, playerID);
 	}
 
 	/**
@@ -151,6 +153,10 @@ public class Player {
 		return -1;
 	}
 
+	public NotepadGui getNotepad() {
+		return notepad;
+	}
+
 	/**
 	 * Get if the player is in game.
 	 *
@@ -175,7 +181,8 @@ public class Player {
 	public final boolean getWinner() {
 		return winner;
 	}
-	public void setWinner(){
+
+	public void setWinner() {
 		winner = true;
 	}
 

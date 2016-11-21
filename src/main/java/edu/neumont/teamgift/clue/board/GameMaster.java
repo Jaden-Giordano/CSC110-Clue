@@ -64,7 +64,7 @@ public class GameMaster {
 		// game.createBoard();
 		// Create cards
 		// dealer.printCards();
-
+		dealer.dealCards(this);
 		for (int i = 0; i < numPlayers; i++) {
 			System.out.println("Player " + getPlayerList(i).getID() + ": " + getPlayerList(i).getName());
 			for (int j = 0; j < getPlayerList(i).getDeck().size(); j++) {
@@ -79,7 +79,8 @@ public class GameMaster {
 				if (this.areThereWinners()) {
 					break;
 				}
-				this.takeTurn(this.getPlayerList(i));
+				this.getPlayerList(i).getNotepad();
+				// this.takeTurn(this.getPlayerList(i));
 			}
 		}
 		// TODO print this.whoWon();
@@ -95,7 +96,7 @@ public class GameMaster {
 		 */
 
 		for (int i = 0; i < numPlayers; i++) {
-			Player p = new Player(board, i + 1, people[i]);
+			Player p = new Player(board, i + 1, people[i], this);
 			playerList.add(p);
 		}
 	}
@@ -112,7 +113,8 @@ public class GameMaster {
 	public int getNumPlayers() {
 		return numPlayers;
 	}
-	public void setNumPlayers(int i){
+
+	public void setNumPlayers(int i) {
 		numPlayers = i;
 	}
 
