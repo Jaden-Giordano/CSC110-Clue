@@ -49,6 +49,16 @@ public class FrontEndManager {
     }
 
     /**
+     * Get singleton instance.
+     *
+     * @return The instance of the class.
+     */
+    @SuppressWarnings("unused")
+    public static FrontEndManager getInstance() {
+        return myInstance;
+    }
+
+    /**
      * Setup and main game loop.
      */
     private void loop() {
@@ -84,16 +94,6 @@ public class FrontEndManager {
     @SuppressWarnings("EmptyMethod")
     private void draw() {
 
-    }
-
-    /**
-     * Get singleton instance.
-     *
-     * @return The instance of the class.
-     */
-    @SuppressWarnings("unused")
-    public static FrontEndManager getInstance() {
-        return myInstance;
     }
 
 }

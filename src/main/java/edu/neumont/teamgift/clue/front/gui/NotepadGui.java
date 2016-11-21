@@ -41,6 +41,22 @@ final class NotepadGui extends JFrame {
     }
 
     /**
+     * Start point for GUIs.
+     * TODO Switch over to Clue start point.
+     *
+     * @param args Command line args.
+     */
+    public static void main(final String[] args) {
+        NotepadGui gui = new NotepadGui();
+
+        gui.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        gui.setSize(NOTEPAD_DIMENSIONS.x, NOTEPAD_DIMENSIONS.y);
+        gui.setVisible(true);
+        gui.setTitle("Notepad Gui");
+
+    }
+
+    /**
      * Fill notepad with generated content.
      */
     private void setUpNotepad() {
@@ -117,22 +133,6 @@ final class NotepadGui extends JFrame {
             roomsIndex++;
         }
 
-
-    }
-
-    /**
-     * Start point for GUIs.
-     * TODO Switch over to Clue start point.
-     *
-     * @param args Command line args.
-     */
-    public static void main(final String[] args) {
-        NotepadGui gui = new NotepadGui();
-
-        gui.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        gui.setSize(NOTEPAD_DIMENSIONS.x, NOTEPAD_DIMENSIONS.y);
-        gui.setVisible(true);
-        gui.setTitle("Notepad Gui");
 
     }
 }
