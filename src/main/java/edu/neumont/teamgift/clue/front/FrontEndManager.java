@@ -10,7 +10,7 @@ import static org.lwjgl.glfw.GLFW.glfwWindowShouldClose;
 /**
  * Manager for the GUIs and main game loop.
  */
-public class FrontEndManager {
+public abstract class FrontEndManager {
 
     /**
      * Window width and height.
@@ -63,6 +63,7 @@ public class FrontEndManager {
      */
     private void loop() {
 
+        start();
 
         // Run the rendering loop until the user has attempted to close
         // the window or has pressed the ESCAPE key.
@@ -81,10 +82,18 @@ public class FrontEndManager {
     }
 
     /**
+     * The start of the program; used for initializations.
+     */
+    @SuppressWarnings("EmptyMethod")
+    protected void start() {
+
+    }
+
+    /**
      * The update/tick function called before drawing/rendering.
      */
     @SuppressWarnings("EmptyMethod")
-    private void update() {
+    protected void update() {
 
     }
 
@@ -92,7 +101,7 @@ public class FrontEndManager {
      * Draw to the screen.
      */
     @SuppressWarnings("EmptyMethod")
-    private void draw() {
+    protected void draw() {
 
     }
 

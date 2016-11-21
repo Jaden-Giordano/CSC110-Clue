@@ -1,6 +1,7 @@
 package edu.neumont.teamgift.clue.board;
 
 import edu.neumont.teamgift.clue.Player;
+import edu.neumont.teamgift.clue.cards.Dealer;
 
 /**
  * A controller for all aspects of game.
@@ -36,6 +37,32 @@ public class GameMaster {
     public GameMaster() {
         // TODO change to files path.
         board = new Board("hi");
+        Dealer dealer = new Dealer();
+        // TODO Number of players
+        // TODO Name selection if we want
+        // Create cards
+        dealer.createCards();
+        // Shuffle cards
+        dealer.shuffle();
+        // Set killer case file
+        dealer.setKiller();
+        // Create players
+        createPlayers();
+        /*
+         * for (int i = 0; i < game.getPlayerList().length; i++) {
+         * System.out.println(game.getPlayerList()[i].getName() +
+         * " This is round " + i); }
+         */
+        // dealer.printCards();
+        // Deal rest of cards
+        dealer.dealCards(this);
+        // TODO Win condition
+        // TODO Take turns through players
+        while (true) {
+            for (int i = 0; i < getPlayerList().length; i++) {
+                takeTurn(getPlayerList()[i]);
+            }
+        }
     }
 
     /**
