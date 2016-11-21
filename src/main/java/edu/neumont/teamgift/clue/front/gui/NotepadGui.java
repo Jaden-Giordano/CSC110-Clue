@@ -19,7 +19,7 @@ import java.awt.GridLayout;
 /**
  * Display for each players notepad.
  */
-final class NotepadGui extends JFrame {
+public final class NotepadGui extends JFrame {
 
     /**
      * Notepad window dimensions.
@@ -39,8 +39,8 @@ final class NotepadGui extends JFrame {
     /**
      * Creation of notepad.
      */
-    private NotepadGui() {
-        setUpNotepad(null, 0);
+    private NotepadGui(GameMaster game, int playerID) {
+        setUpNotepad(game, playerID);
     }
 
     /**
@@ -49,8 +49,8 @@ final class NotepadGui extends JFrame {
      *
      * @param args Command line args.
      */
-    public static void main(final String[] args) {
-        NotepadGui gui = new NotepadGui();
+    public void setEverythingTheFuckUp(GameMaster game, int playerID) {
+        NotepadGui gui = new NotepadGui(game, playerID);
 
         gui.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         gui.setSize(NOTEPAD_DIMENSIONS.x, NOTEPAD_DIMENSIONS.y);
