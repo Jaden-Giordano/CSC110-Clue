@@ -17,7 +17,7 @@ final class Clue {
          * System.out.println("\n"); d.printKillerCaseFile();
          * System.out.println("\n"); d.printCards();
          */
-    	GameMaster game = new GameMaster();
+        GameMaster game = new GameMaster();
         game.runGame();
         // Die d = new Die();
         // System.out.println(d.rollDie());

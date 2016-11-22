@@ -1,10 +1,10 @@
 package edu.neumont.teamgift.clue.board;
 
 import edu.neumont.teamgift.clue.Player;
-import edu.neumont.teamgift.clue.TileRegistry;
 import edu.neumont.teamgift.clue.Vector2i;
 import edu.neumont.teamgift.clue.board.tiles.Room;
 import edu.neumont.teamgift.clue.board.tiles.Tile;
+import edu.neumont.teamgift.clue.board.tiles.TileRegistry;
 
 import java.io.BufferedReader;
 import java.io.FileReader;
@@ -116,6 +116,24 @@ public class Board {
         }
 
         return tiles[position.y][position.x];
+    }
+
+    /**
+     * Get the width of the board in tiles.
+     *
+     * @return The width.
+     */
+    public final int getWidth() {
+        return width;
+    }
+
+    /**
+     * Get the height of the board in tiles.
+     *
+     * @return The height.
+     */
+    public final int getHeight() {
+        return height;
     }
 
 }

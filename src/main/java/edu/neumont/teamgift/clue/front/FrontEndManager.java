@@ -105,4 +105,13 @@ public abstract class FrontEndManager {
 
     }
 
+    /**
+     * Get the display.
+     *
+     * @return The display.
+     */
+    protected final Display getDisplay() {
+        return display;
+    }
+
 }

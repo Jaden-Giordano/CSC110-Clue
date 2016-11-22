@@ -28,8 +28,14 @@ import static org.lwjgl.glfw.GLFW.glfwSwapInterval;
 import static org.lwjgl.glfw.GLFW.glfwWindowHint;
 import static org.lwjgl.opengl.GL11.GL_COLOR_BUFFER_BIT;
 import static org.lwjgl.opengl.GL11.GL_DEPTH_BUFFER_BIT;
+import static org.lwjgl.opengl.GL11.GL_QUADS;
+import static org.lwjgl.opengl.GL11.glBegin;
 import static org.lwjgl.opengl.GL11.glClear;
 import static org.lwjgl.opengl.GL11.glClearColor;
+import static org.lwjgl.opengl.GL11.glColor3i;
+import static org.lwjgl.opengl.GL11.glEnd;
+import static org.lwjgl.opengl.GL11.glTranslatef;
+import static org.lwjgl.opengl.GL11.glVertex2i;
 import static org.lwjgl.system.MemoryUtil.NULL;
 
 /**
@@ -150,6 +156,33 @@ class Display {
      */
     long getWindow() {
         return window;
+    }
+
+    /**
+     * Draws a sprite to the screen at a specific location.
+     *
+     * @param position The position to draw it on the screen.
+     * @param sprite   The sprite to draw to the screen.
+     */
+    void drawSprite(final Vector2i position, final Sprite sprite) {
+        if (sprite != null) {
+            if (sprite.isColored()) {
+                glColor3i(sprite.getColor().x, sprite.getColor().y, sprite.getColor().z);
+            }
+        } else {
+            glColor3i(0, 0, 0);
+        }
+
+        glTranslatef(position.x, position.y, 0);
+
+        glBegin(GL_QUADS);
+        {
+            glVertex2i(0, 0);
+            glVertex2i(1, 0);
+            glVertex2i(1, 1);
+            glVertex2i(0, 1);
+        }
+        glEnd();
     }
 
 }

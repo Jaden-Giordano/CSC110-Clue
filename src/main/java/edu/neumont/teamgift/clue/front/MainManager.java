@@ -1,6 +1,8 @@
 package edu.neumont.teamgift.clue.front;
 
+import edu.neumont.teamgift.clue.Vector2i;
 import edu.neumont.teamgift.clue.board.GameMaster;
+import edu.neumont.teamgift.clue.board.tiles.TileRegistry;
 
 /**
  * The main manager for the game.
@@ -33,6 +35,19 @@ public class MainManager extends FrontEndManager {
     @Override
     protected void update() {
 
+    }
+
+    /**
+     * Renders each tile to the screen.
+     */
+    private void renderAllTiles() {
+        for (int i = 0; i < gameMaster.getBoard().getWidth(); i++) {
+            for (int j = 0; j < gameMaster.getBoard().getHeight(); j++) {
+                Sprite s = TileRegistry.getSprite(gameMaster.getBoard().getTile(new
+                        Vector2i(i, j)).getID());
+                this.getDisplay().drawSprite(new Vector2i(i, j), s);
+            }
+        }
     }
 
     /**
