@@ -1,11 +1,11 @@
 package edu.neumont.teamgift.clue.board;
 
-import edu.neumont.teamgift.clue.Player;
-import edu.neumont.teamgift.clue.cards.Dealer;
-
-import java.text.spi.NumberFormatProvider;
 import java.util.ArrayList;
 import java.util.List;
+
+import edu.neumont.teamgift.clue.Player;
+import edu.neumont.teamgift.clue.cards.Dealer;
+import edu.neumont.teamgift.clue.front.gui.NotepadGui;
 
 /**
  * A controller for all aspects of game.
@@ -53,7 +53,7 @@ public class GameMaster {
 		dealer.shuffle();
 		// Set killer case file
 		dealer.setKiller();
-		dealer.printKillerCaseFile();
+		//dealer.printKillerCaseFile();
 		// TODO Deal rest of cards
 		/*
 		 * for (int i = 0; i < game.getPlayerList().length; i++) {

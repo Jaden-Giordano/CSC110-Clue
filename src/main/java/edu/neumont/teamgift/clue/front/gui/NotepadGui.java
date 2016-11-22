@@ -19,7 +19,7 @@ import java.awt.GridLayout;
 /**
  * Display for each players notepad.
  */
-final class NotepadGui extends JFrame {
+public final class NotepadGui extends JFrame {
 
     /**
      * Notepad window dimensions.
@@ -62,7 +62,7 @@ final class NotepadGui extends JFrame {
     /**
      * Fill notepad with generated content.
      */
-    private void setUpNotepad(GameMaster game, int playerNumber) {
+    public void setUpNotepad(GameMaster game, int playerNumber) {
         Notepad notepad = new Notepad();
         JPanel panel = new JPanel();
         panel.setPreferredSize(new Dimension(NOTEPAD_DIMENSIONS.x,
