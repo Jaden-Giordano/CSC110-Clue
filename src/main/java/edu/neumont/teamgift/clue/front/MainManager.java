@@ -15,11 +15,9 @@ public class MainManager extends FrontEndManager {
     private GameMaster gameMaster;
 
     /**
-     * Initialize the game.
+     * Test position, TODO remove.
      */
-    public MainManager() {
-        super();
-    }
+    private Vector2i test;
 
     /**
      * {@inheritDoc}
@@ -27,6 +25,8 @@ public class MainManager extends FrontEndManager {
     @Override
     protected void start() {
         gameMaster = new GameMaster();
+
+        test = new Vector2i(0, 0);
     }
 
     /**
@@ -34,7 +34,7 @@ public class MainManager extends FrontEndManager {
      */
     @Override
     protected void update() {
-
+        //test.x += 1;
     }
 
     /**
@@ -45,7 +45,9 @@ public class MainManager extends FrontEndManager {
             for (int j = 0; j < gameMaster.getBoard().getHeight(); j++) {
                 Sprite s = TileRegistry.getSprite(gameMaster.getBoard().getTile(new
                         Vector2i(i, j)).getID());
-                this.getDisplay().drawSprite(new Vector2i(i, j), s);
+                if (!s.isColored()) {
+                    this.getDisplay().drawSprite(new Vector2i(i * 16, j * 16), s);
+                }
             }
         }
     }
@@ -55,7 +57,8 @@ public class MainManager extends FrontEndManager {
      */
     @Override
     protected void draw() {
-
+        renderAllTiles();
+        //getDisplay().drawSprite(test, TileRegistry.getSprite(1));
     }
 
 }

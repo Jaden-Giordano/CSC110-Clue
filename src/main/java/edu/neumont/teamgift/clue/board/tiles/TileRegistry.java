@@ -12,6 +12,11 @@ import java.util.Map;
 public final class TileRegistry {
 
     /**
+     * The path of the sprite folder in the project directory.
+     */
+    private static String spritePath;
+
+    /**
      * The storage for all the tiles sprites, to be referenced when needed, so loading
      * only has to occur once.
      */
@@ -20,7 +25,7 @@ public final class TileRegistry {
     /**
      * Tile registry.
      */
-    private TileRegistry() {
+    public static void init() {
         spriteRegistry = new HashMap<Integer, Sprite>();
     }
 
@@ -51,12 +56,26 @@ public final class TileRegistry {
         if (id == 1) {
             if (!spriteRegistry.containsKey(id)) {
                 // TODO actually load sprites
-                Sprite nSprite = new Sprite("pathToImage");
+                spriteRegistry.put(id, new Sprite(spritePath + "/PathwayTile.png"));
+                //return new Sprite(spritePath + "/PathwayTile.png");
             }
-            return spriteRegistry.get(id);
         } else {
-            return null;
+            if (!spriteRegistry.containsKey(id)) {
+                spriteRegistry.put(id, new Sprite(spritePath + "/WallTile"
+                        + ".png"));
+            }
         }
+
+        return spriteRegistry.get(id);
+    }
+
+    /**
+     * Set the path of the sprites in the project directory.
+     *
+     * @param path The path to the sprites.
+     */
+    public static void setSpritePath(final String path) {
+        spritePath = path;
     }
 
 }

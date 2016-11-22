@@ -1,6 +1,6 @@
 package edu.neumont.teamgift.clue;
 
-import edu.neumont.teamgift.clue.board.GameMaster;
+import edu.neumont.teamgift.clue.front.MainManager;
 
 /**
  * Starting level for clue game.
@@ -17,12 +17,10 @@ final class Clue {
          * System.out.println("\n"); d.printKillerCaseFile();
          * System.out.println("\n"); d.printCards();
          */
-        GameMaster game = new GameMaster();
-        game.runGame();
         // Die d = new Die();
         // System.out.println(d.rollDie());
 
-        // new FrontEndManager();
+        new MainManager();
     }
 
     /**
