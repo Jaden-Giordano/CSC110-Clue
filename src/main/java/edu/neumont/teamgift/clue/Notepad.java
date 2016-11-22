@@ -1,5 +1,7 @@
 package edu.neumont.teamgift.clue;
 
+import edu.neumont.teamgift.clue.board.GameMaster;
+
 /**
  * The notepad for each player.
  */
@@ -11,31 +13,32 @@ public class Notepad {
     private static final int AMOUNT_OF_SUSPECTS = 6,
             AMOUNT_OF_WEAPONS = 6, AMOUNT_OF_ROOMS = 9;
 
+    /**private int numberOfPlayers = GameMaster.getNumPlayers();
+     * grab the number of players and set an int for that number
+     */
+    
     /**
      * The suspects and their values.
      */
     @SuppressWarnings("CanBeFinal")
-    private String[] suspects;
-    /**
-     * The weapons and their values.
-     */
-    @SuppressWarnings("CanBeFinal")
-    private String[] weapons;
-    /**
-     * The rooms and their values.
-     */
-    @SuppressWarnings("CanBeFinal")
-    private String[] rooms;
+    private String[][] playerStorage;
+    
+    
 
     /**
      * Create a new generic notepad.
      */
     public Notepad() {
-        suspects = new String[AMOUNT_OF_SUSPECTS];
-        weapons = new String[AMOUNT_OF_WEAPONS];
-        rooms = new String[AMOUNT_OF_ROOMS];
+        playerStorage = new String[numberOfPlayers][21];
+    }
+    
+    public final void setPlayerStorage(final int playerID, final int index, final String value){
+    	playerStorage[playerID][index] = value;
     }
 
+    public final String getPlayerStorage(final int playerID, final int index){
+    	return playerStorage[playerID][index];
+    }    
     /**
      * Set a weapon's value.
      *
@@ -48,7 +51,6 @@ public class Notepad {
 
     /**
      * Get a weapon.
-     *
      * @param index The specific weapon.
      * @return The weapon's value.
      */
@@ -95,5 +97,6 @@ public class Notepad {
     public final String getRoom(final int index) {
         return rooms[index];
     }
+
 
 }

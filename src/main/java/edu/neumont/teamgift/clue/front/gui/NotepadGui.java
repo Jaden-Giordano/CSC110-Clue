@@ -96,18 +96,18 @@ public final class NotepadGui extends JFrame {
         panel.add(organizationalSpace);
         // JButton difWindow = new JButton("open new");
         // difWindow.addActionListener(new NewWindowButton(difWindow));
-        int suspectIndex = 0;
+        int index = 0;
         for (Suspects i : Suspects.values()) {
             JLabel suspectLabel = new JLabel("" + i);
             suspectLabel.setFont(new Font("Serif", Font.PLAIN, SMALL_FONT));
             panel.add(suspectLabel);
-            notepad.setSuspect(suspectIndex, i.name());
-            JButton suspectButton = new JButton(notepad.getSuspect(suspectIndex));
+            notepad.setPlayerStorage(playerNumber,index, i.name());
+            JButton suspectButton = new JButton(notepad.getPlayerStorage(playerNumber, index));
             suspectButton.setFont(new Font("Serif", Font.PLAIN, SMALL_FONT));
             suspectButton
-                    .addActionListener(new NotepadGuiButton(suspectButton, suspectIndex));
+                    .addActionListener(new NotepadGuiButton(suspectButton, index));
             panel.add(suspectButton);
-            suspectIndex++;
+            index++;
         }
         JLabel weaponsLabel = new JLabel("Weapons: ");
         weaponsLabel.setFont(new Font("Serif", Font.PLAIN, LARGE_FONT));
@@ -115,18 +115,17 @@ public final class NotepadGui extends JFrame {
         organizationalSpace = new JLabel(" ");
         organizationalSpace.setFont(new Font("Serif", Font.PLAIN, LARGE_FONT));
         panel.add(organizationalSpace);
-        int weaponIndex = 0;
         for (Weapons i : Weapons.values()) {
             JLabel weaponLabel = new JLabel("" + i);
             weaponLabel.setFont(new Font("Serif", Font.PLAIN, SMALL_FONT));
             panel.add(weaponLabel);
-            notepad.setWeapon(weaponIndex, i.name());
-            JButton weaponButton = new JButton(notepad.getWeapon(weaponIndex));
+            notepad.setPlayerStorage(playerNumber, index, i.name());
+            JButton weaponButton = new JButton(notepad.getPlayerStorage(playerNumber, index));
             weaponButton.setFont(new Font("Serif", Font.PLAIN, SMALL_FONT));
             weaponButton
-                    .addActionListener(new NotepadGuiButton(weaponButton, weaponIndex));
+                    .addActionListener(new NotepadGuiButton(weaponButton, index));
             panel.add(weaponButton);
-            weaponIndex++;
+            index++;
         }
         JLabel roomsLabel = new JLabel("Rooms: ");
         roomsLabel.setFont(new Font("Serif", Font.PLAIN, LARGE_FONT));
@@ -134,18 +133,17 @@ public final class NotepadGui extends JFrame {
         organizationalSpace = new JLabel(" ");
         organizationalSpace.setFont(new Font("Serif", Font.PLAIN, LARGE_FONT));
         panel.add(organizationalSpace);
-        int roomsIndex = 0;
         for (Rooms i : Rooms.values()) {
             JLabel roomLabel = new JLabel("" + i);
             roomLabel.setFont(new Font("Serif", Font.PLAIN, SMALL_FONT));
             panel.add(roomLabel);
-            notepad.setRoom(roomsIndex, i.name());
+            notepad.setPlayerStorage(playerNumber, index, i.name());
             JButton roomsButton = new JButton(
-                    (roomsIndex + 1) + ". " + notepad.getRoom(roomsIndex));
+                    ". " + notepad.getPlayerStorage(playerNumber, index));
             roomsButton.setFont(new Font("Serif", Font.PLAIN, SMALL_FONT));
-            roomsButton.addActionListener(new NotepadGuiButton(roomsButton, roomsIndex));
+            roomsButton.addActionListener(new NotepadGuiButton(roomsButton, index));
             panel.add(roomsButton);
-            roomsIndex++;
+            index++;
         }
 
     }
