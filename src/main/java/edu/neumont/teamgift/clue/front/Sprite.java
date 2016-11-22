@@ -57,8 +57,6 @@ public class Sprite {
             System.out.println("Error loading image: " + e.getMessage());
         }
 
-        System.out.println(this.textureID);
-
         colored = this.textureID == -1;
 
         this.color = Vector3i.zero();

@@ -98,7 +98,7 @@ class Display {
         glfwWindowHint(GLFW_RESIZABLE, GLFW_TRUE);
 
         // Create the window
-        window = glfwCreateWindow(size.x, size.y, "Hello World!", NULL, NULL);
+        window = glfwCreateWindow(size.x, size.y, "Clue", NULL, NULL);
         if (window == NULL) {
             throw new RuntimeException("Failed to create the GLFW window");
         }
@@ -141,7 +141,7 @@ class Display {
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
         // noinspection CheckStyle
-        glOrtho(0, 24 * 16, 24 * 16, 0, 1, -1);
+        glOrtho(0, 24 * 16, 25 * 16, 0, 1, -1);
         glMatrixMode(GL_MODELVIEW);
         // glClearDepth(1.0f);
         // glDepthFunc(GL_LEQUAL);
