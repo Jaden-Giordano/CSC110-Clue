@@ -26,7 +26,7 @@ public class Sprite {
         // TODO use actual images.
         colored = true;
         //noinspection CheckStyle
-        color = new Vector3i(255, 0, 0);
+        color = new Vector3i(0, 0, 255);
     }
 
     /**

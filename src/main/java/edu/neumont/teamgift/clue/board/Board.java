@@ -32,6 +32,10 @@ public class Board {
      */
     private final List<Player> players;
     /**
+     * Reference to the game master.
+     */
+    private final GameMaster gameMaster;
+    /**
      * The width and height of the board in tiles.
      */
     private int width, height;
@@ -43,11 +47,14 @@ public class Board {
     /**
      * Creation of the board: population of tiles, rooms, and players.
      *
+     * @param gm The game master.
      * @param path The filepath to the board file, containing a 2D map of tile
      *             ids.
      */
     @SuppressWarnings("unused")
-    public Board(final String path) {
+    public Board(final GameMaster gm, final String path) {
+        this.gameMaster = gm;
+
         rooms = new HashMap<Integer, Room>();
         populateRooms();
 
@@ -127,7 +134,7 @@ public class Board {
     @SuppressWarnings("unused")
     public final void addPlayer(final String name) {
         // TODO make sure this code will work
-        this.players.add(new Player(this, players.size(), name));
+        this.players.add(new Player(this, players.size(), name, gameMaster));
     }
 
     /**

@@ -15,7 +15,7 @@ public abstract class FrontEndManager {
     /**
      * Window width and height.
      */
-    private static final int WINDOW_WIDTH = 800, WINDOW_HEIGHT = 600;
+    private static final int WINDOW_WIDTH = 2 * (24 * 16), WINDOW_HEIGHT = 2 * (24 * 16);
 
     /**
      * Singleton instance.
@@ -68,9 +68,10 @@ public abstract class FrontEndManager {
         // Run the rendering loop until the user has attempted to close
         // the window or has pressed the ESCAPE key.
         while (!glfwWindowShouldClose(display.getWindow())) {
+            update();
+
             display.clear();
 
-            update();
             draw();
 
             display.swapBuffers();
