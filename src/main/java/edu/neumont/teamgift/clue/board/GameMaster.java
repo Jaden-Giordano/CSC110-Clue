@@ -1,11 +1,13 @@
 package edu.neumont.teamgift.clue.board;
 
 import edu.neumont.teamgift.clue.Player;
+import edu.neumont.teamgift.clue.board.tiles.TileRegistry;
 import edu.neumont.teamgift.clue.cards.Dealer;
 import edu.neumont.teamgift.clue.front.gui.NotepadGui;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * A controller for all aspects of game.
@@ -37,7 +39,14 @@ public class GameMaster {
      * Initializes the board.
      */
     public GameMaster() {
-        board = new Board(this, "hi"); // TODO Get path to board.
+        Scanner in = new Scanner(System.in);
+        System.out.print("Enter the path of the project directory: ");
+        // TODO make final variable that gets file from project dir.
+        String path = in.nextLine();
+        board = new Board(this, path);
+
+        TileRegistry.init();
+        TileRegistry.setSpritePath(path + "/sprites");
 
         playerList = new ArrayList<>();
         createPlayers();

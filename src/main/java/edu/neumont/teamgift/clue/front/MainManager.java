@@ -34,7 +34,7 @@ public class MainManager extends FrontEndManager {
      */
     @Override
     protected void update() {
-        test.x += 1;
+        //test.x += 1;
     }
 
     /**
@@ -45,7 +45,9 @@ public class MainManager extends FrontEndManager {
             for (int j = 0; j < gameMaster.getBoard().getHeight(); j++) {
                 Sprite s = TileRegistry.getSprite(gameMaster.getBoard().getTile(new
                         Vector2i(i, j)).getID());
-                this.getDisplay().drawSprite(new Vector2i(i, j), s);
+                if (!s.isColored()) {
+                    this.getDisplay().drawSprite(new Vector2i(i * 16, j * 16), s);
+                }
             }
         }
     }
@@ -55,7 +57,8 @@ public class MainManager extends FrontEndManager {
      */
     @Override
     protected void draw() {
-        getDisplay().drawSprite(test, new Sprite("hi"));
+        renderAllTiles();
+        //getDisplay().drawSprite(test, TileRegistry.getSprite(1));
     }
 
 }

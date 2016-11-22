@@ -60,7 +60,7 @@ public class Board {
 
         players = new ArrayList<>();
 
-        loadFromFile(path);
+        loadFromFile(path + "/defaultboard.clueboard");
     }
 
     /**
@@ -115,7 +115,7 @@ public class Board {
                 }
             }
         } catch (IOException e) {
-            System.out.println("Error loading board file.");
+            System.out.println("Error loading board file: " + e.getMessage());
         }
     }
 

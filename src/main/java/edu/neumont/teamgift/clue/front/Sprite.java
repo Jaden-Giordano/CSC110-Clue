@@ -49,13 +49,15 @@ public class Sprite {
      * @param pathToFile The path to the image.
      */
     public Sprite(final String pathToFile) {
-        textureID = -1;
+        this.textureID = -1;
         try {
             BufferedImage image = ImageIO.read(new File(pathToFile));
             this.textureID = loadTexture(image);
         } catch (IOException e) {
-            System.out.println("Error loading image.");
+            System.out.println("Error loading image: " + e.getMessage());
         }
+
+        System.out.println(this.textureID);
 
         colored = this.textureID == -1;
 

@@ -28,20 +28,26 @@ import static org.lwjgl.glfw.GLFW.glfwSwapInterval;
 import static org.lwjgl.glfw.GLFW.glfwWindowHint;
 import static org.lwjgl.opengl.GL11.GL_COLOR_BUFFER_BIT;
 import static org.lwjgl.opengl.GL11.GL_DEPTH_BUFFER_BIT;
+import static org.lwjgl.opengl.GL11.GL_DEPTH_TEST;
 import static org.lwjgl.opengl.GL11.GL_MODELVIEW;
 import static org.lwjgl.opengl.GL11.GL_PROJECTION;
 import static org.lwjgl.opengl.GL11.GL_QUADS;
+import static org.lwjgl.opengl.GL11.GL_TEXTURE_2D;
 import static org.lwjgl.opengl.GL11.glBegin;
+import static org.lwjgl.opengl.GL11.glBindTexture;
 import static org.lwjgl.opengl.GL11.glClear;
 import static org.lwjgl.opengl.GL11.glClearColor;
 import static org.lwjgl.opengl.GL11.glColor3d;
 import static org.lwjgl.opengl.GL11.glColor3i;
+import static org.lwjgl.opengl.GL11.glDisable;
+import static org.lwjgl.opengl.GL11.glEnable;
 import static org.lwjgl.opengl.GL11.glEnd;
 import static org.lwjgl.opengl.GL11.glLoadIdentity;
 import static org.lwjgl.opengl.GL11.glMatrixMode;
 import static org.lwjgl.opengl.GL11.glOrtho;
 import static org.lwjgl.opengl.GL11.glPopMatrix;
 import static org.lwjgl.opengl.GL11.glPushMatrix;
+import static org.lwjgl.opengl.GL11.glTexCoord2i;
 import static org.lwjgl.opengl.GL11.glTranslatef;
 import static org.lwjgl.opengl.GL11.glVertex2i;
 import static org.lwjgl.system.MemoryUtil.NULL;
@@ -139,7 +145,7 @@ class Display {
         glMatrixMode(GL_MODELVIEW);
         // glClearDepth(1.0f);
         // glDepthFunc(GL_LEQUAL);
-        // glEnable(GL_DEPTH_TEST);
+        glEnable(GL_DEPTH_TEST);
 
         // Set the clear color
         glClearColor(1.0f, 0.0f, 0.0f, 0.0f);
@@ -183,31 +189,57 @@ class Display {
      * @param position The position to draw it on the screen.
      * @param sprite   The sprite to draw to the screen.
      */
+    @SuppressWarnings("CheckStyle")
     void drawSprite(final Vector2i position, final Sprite sprite) {
+        glEnable(GL_TEXTURE_2D);
+
         glPushMatrix();
         {
+            glTranslatef(position.x, position.y, 0);
+
+            // Binding textures or colors.
+            boolean textured = false;
             if (sprite != null) {
                 if (sprite.isColored()) {
                     glColor3d((double) sprite.getColor().x / 255.0,
                             (double) sprite.getColor().y / 255.0,
                             (double) sprite.getColor().z / 255.0);
+                } else if (sprite.getTextureID() != -1) {
+                    textured = true;
+                    glBindTexture(GL_TEXTURE_2D, sprite.getTextureID());
                 }
             } else {
                 glColor3i(0, 0, 0);
             }
 
-            glTranslatef(position.x, position.y, 0);
-
+            // Drawing quad.
             glBegin(GL_QUADS);
             {
+                if (textured) {
+                    glTexCoord2i(0, 0);
+                }
                 glVertex2i(0, 0);
-                glVertex2i(16, 0);
-                glVertex2i(16, 16);
+
+                if (textured) {
+                    glTexCoord2i(0, 1);
+                }
                 glVertex2i(0, 16);
+
+                if (textured) {
+                    glTexCoord2i(1, 1);
+                }
+                glVertex2i(16, 16);
+
+                if (textured) {
+                    glTexCoord2i(1, 0);
+                }
+                glVertex2i(16, 0);
             }
             glEnd();
         }
         glPopMatrix();
+
+        glDisable(GL_TEXTURE_2D);
     }
 
 }

@@ -15,7 +15,7 @@ public abstract class FrontEndManager {
     /**
      * Window width and height.
      */
-    private static final int WINDOW_WIDTH = 2 * (24 * 16), WINDOW_HEIGHT = 2 * (24 * 16);
+    private static final int WINDOW_WIDTH = 3 * (24 * 16), WINDOW_HEIGHT = 3 * (24 * 16);
 
     /**
      * Singleton instance.
