@@ -14,8 +14,7 @@ public class Door extends Tile implements PlayerContaining {
      *
      * @param b The board the door is connected to.
      */
-    @SuppressWarnings("unused")
-    public Door(final Board b) {
+    @SuppressWarnings("unused") Door(final Board b) {
         super(b, 2);
     }
 

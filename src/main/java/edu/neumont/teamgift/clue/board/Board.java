@@ -145,9 +145,10 @@ public class Board {
      */
     public final Tile getTile(final Vector2i position) {
         if ((position.x < 0 || position.x >= height) || (position.y < 0
-                || position.y >= width)) {
+                || position.y >= height)) {
             throw new IllegalArgumentException(
-                    "The tile you are looking for "
+                    "The tile (" + position.x + "," + position.y + ") you are looking "
+                            + "for "
                             + "doesn't exist; it is out of the bounds of the board.");
         }
 
