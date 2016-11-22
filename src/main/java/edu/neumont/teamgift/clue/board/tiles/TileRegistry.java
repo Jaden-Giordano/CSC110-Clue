@@ -23,6 +23,13 @@ public final class TileRegistry {
     private static Map<Integer, Sprite> spriteRegistry;
 
     /**
+     * Blocking constructor for utility class.
+     */
+    private TileRegistry() {
+
+    }
+
+    /**
      * Tile registry.
      */
     public static void init() {
@@ -41,6 +48,26 @@ public final class TileRegistry {
             return new Pathway(b);
         } else if (id == 2) {
             return new Door(b);
+        } else if (id == 3) {
+            return new Hall(b);
+        } else if (id == 4) {
+            return new Lounge(b);
+        } else if (id == 5) {
+            return new DiningRoom(b);
+        } else if (id == 6) {
+            return new Kitchen(b);
+        } else if (id == 7) {
+            return new Ballroom(b);
+        } else if (id == 8) {
+            return new Conservatory(b);
+        } else if (id == 9) {
+            return new BilliardRoom(b);
+        } else if (id == 10) {
+            return new Library(b);
+        } else if (id == 11) {
+            return new Study(b);
+        } else if (id == 12) {
+            return new Start(b);
         } else {
             return new Empty(b);
         }
@@ -53,16 +80,36 @@ public final class TileRegistry {
      * @return The sprite for the tile.
      */
     public static Sprite getSprite(final int id) {
-        if (id == 1) {
-            if (!spriteRegistry.containsKey(id)) {
-                // TODO actually load sprites
+        if (!spriteRegistry.containsKey(id)) {
+            if (id == 1) {
                 spriteRegistry.put(id, new Sprite(spritePath + "/PathwayTile.png"));
-                //return new Sprite(spritePath + "/PathwayTile.png");
-            }
-        } else {
-            if (!spriteRegistry.containsKey(id)) {
-                spriteRegistry.put(id, new Sprite(spritePath + "/WallTile"
-                        + ".png"));
+            } else if (id == 2) {
+                spriteRegistry.put(id, new Sprite(spritePath + "/DoorTile.png"));
+            } else if (id == 3) {
+                spriteRegistry.put(id, new Sprite(spritePath + "/HallTile.png"));
+            } else if (id == 4) {
+                spriteRegistry.put(id, new Sprite(spritePath + "/LoungeTile.png"));
+            } else if (id == 5) {
+                spriteRegistry.put(id, new Sprite(spritePath + "/DiningRoomTile.png"));
+            } else if (id == 6) {
+                spriteRegistry.put(id, new Sprite(spritePath + "/KitchenTile.png"));
+            } else if (id == 7) {
+                spriteRegistry.put(id, new Sprite(spritePath + "/BallroomTile.png"));
+            } else if (id == 8) {
+                spriteRegistry.put(id, new Sprite(spritePath + "/ConservatoryTile.png"));
+            } else if (id == 9) {
+                spriteRegistry.put(id, new Sprite(spritePath + "/BilliardRoomTile.png"));
+            } else if (id == 10) {
+                spriteRegistry.put(id, new Sprite(spritePath + "/LibraryTile.png"));
+            } else if (id == 11) {
+                spriteRegistry.put(id, new Sprite(spritePath + "/PathwayTile.png"));
+            } else if (id == 12) {
+                spriteRegistry.put(id, new Sprite(spritePath + "/StartTile.png"));
+            } else {
+                if (!spriteRegistry.containsKey(id)) {
+                    spriteRegistry.put(id, new Sprite(spritePath + "/WallTile"
+                            + ".png"));
+                }
             }
         }
 
