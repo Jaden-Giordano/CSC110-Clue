@@ -43,20 +43,18 @@ public final class NotepadGui extends JFrame {
      */
     public NotepadGui(final GameMaster game, final int playerID) {
         setUpNotepad(game, playerID);
+        setEverythingTheFuckUp(game, playerID);
     }
 
     /**
      * Start point for GUIs.
      * TODO Switch over to Clue start point.
-     *
-     * @param args Command line args.
      */
-    public void setEverythingTheFuckUp(GameMaster game, int playerID) {
-        NotepadGui gui = new NotepadGui(game, playerID);
-        gui.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-        gui.setSize(NOTEPAD_DIMENSIONS.x, NOTEPAD_DIMENSIONS.y);
-        gui.setVisible(true);
-        gui.setTitle("Notepad Gui");
+    public void setEverythingTheFuckUp(final GameMaster game, final int playerID) {
+        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        this.setSize(NOTEPAD_DIMENSIONS.x, NOTEPAD_DIMENSIONS.y);
+        this.setVisible(true);
+        this.setTitle("Notepad Gui id: " + playerID);
     }
 
 
@@ -71,8 +69,7 @@ public final class NotepadGui extends JFrame {
     /**
      * Fill notepad with generated content.
      */
-    public void setUpNotepad(GameMaster game, int playerNumber) {
-        Notepad notepad = new Notepad();
+    public void setUpNotepad(final GameMaster game, final int playerNumber) {
         JPanel panel = new JPanel();
         panel.setPreferredSize(new Dimension(NOTEPAD_DIMENSIONS.x, PANEL_HEIGHT));
         add(panel);
@@ -101,11 +98,13 @@ public final class NotepadGui extends JFrame {
             JLabel suspectLabel = new JLabel("" + i);
             suspectLabel.setFont(new Font("Serif", Font.PLAIN, SMALL_FONT));
             panel.add(suspectLabel);
-            notepad.setPlayerStorage(playerNumber,index, i.name());
-            JButton suspectButton = new JButton(notepad.getPlayerStorage(playerNumber, index));
+            Notepad.setPlayerStorage(playerNumber, index, i.name());
+            JButton suspectButton = new JButton(Notepad.getPlayerStorage(playerNumber,
+                    index));
             suspectButton.setFont(new Font("Serif", Font.PLAIN, SMALL_FONT));
             suspectButton
-                    .addActionListener(new NotepadGuiButton(suspectButton, index));
+                    .addActionListener(new NotepadGuiButton(suspectButton,
+                            playerNumber, index));
             panel.add(suspectButton);
             index++;
         }
@@ -119,11 +118,13 @@ public final class NotepadGui extends JFrame {
             JLabel weaponLabel = new JLabel("" + i);
             weaponLabel.setFont(new Font("Serif", Font.PLAIN, SMALL_FONT));
             panel.add(weaponLabel);
-            notepad.setPlayerStorage(playerNumber, index, i.name());
-            JButton weaponButton = new JButton(notepad.getPlayerStorage(playerNumber, index));
+            Notepad.setPlayerStorage(playerNumber, index, i.name());
+            JButton weaponButton = new JButton(
+                    Notepad.getPlayerStorage(playerNumber, index));
             weaponButton.setFont(new Font("Serif", Font.PLAIN, SMALL_FONT));
             weaponButton
-                    .addActionListener(new NotepadGuiButton(weaponButton, index));
+                    .addActionListener(new NotepadGuiButton(weaponButton, playerNumber,
+                            index));
             panel.add(weaponButton);
             index++;
         }
@@ -137,11 +138,12 @@ public final class NotepadGui extends JFrame {
             JLabel roomLabel = new JLabel("" + i);
             roomLabel.setFont(new Font("Serif", Font.PLAIN, SMALL_FONT));
             panel.add(roomLabel);
-            notepad.setPlayerStorage(playerNumber, index, i.name());
+            Notepad.setPlayerStorage(playerNumber, index, i.name());
             JButton roomsButton = new JButton(
-                    ". " + notepad.getPlayerStorage(playerNumber, index));
+                    ". " + Notepad.getPlayerStorage(playerNumber, index));
             roomsButton.setFont(new Font("Serif", Font.PLAIN, SMALL_FONT));
-            roomsButton.addActionListener(new NotepadGuiButton(roomsButton, index));
+            roomsButton.addActionListener(new NotepadGuiButton(roomsButton,
+                    playerNumber, index));
             panel.add(roomsButton);
             index++;
         }

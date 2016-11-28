@@ -12,22 +12,19 @@ import java.awt.event.ActionListener;
 class NotepadGuiButton implements ActionListener {
 
     /**
-     * Reference to button on gui.
+     * The player id correlating to.
      */
-    @SuppressWarnings("CanBeFinal")
-    private JButton button;
-
-    /**
-     * Reference to notepad object for storage.
-     */
-    @SuppressWarnings("unused")
-    private Notepad notepad;
-
+    private final int playerID;
     /**
      * Index of category.
      */
     @SuppressWarnings("CanBeFinal")
-    private int index;
+    private final int index;
+    /**
+     * Reference to button on gui.
+     */
+    @SuppressWarnings("CanBeFinal")
+    private JButton button;
 
     /**
      * Button listener creation.
@@ -35,36 +32,23 @@ class NotepadGuiButton implements ActionListener {
      * @param refButton Reference to button on gui.
      * @param catIndex  Index of category for looping.
      */
-    NotepadGuiButton(final JButton refButton, final int catIndex) {
+    NotepadGuiButton(final JButton refButton, final int player, final int catIndex) {
         this.index = catIndex;
         this.button = refButton;
-        @SuppressWarnings("UnusedAssignment") Notepad nNotepad = new Notepad();
+        this.playerID = player;
 
     }
 
     /**
      * Change the value of a categories index.
      *
-     * @param enumValue   The category to change.
+     * @param playerID   The player to change.
      * @param index       The index of the category.
      * @param buttonValue The value to change it to.
      */
-    private static void changeValue(final String enumValue,
+    private static void changeValue(final int playerID,
                                     final int index, final String buttonValue) {
-        Notepad notepad = new Notepad();
-        switch (enumValue) {
-            case "Suspects":
-                notepad.setSuspect(index, buttonValue);
-                break;
-            case "Weapons":
-                notepad.setWeapon(index, buttonValue);
-                break;
-            case "Rooms":
-                notepad.setRoom(index, buttonValue);
-                break;
-            default:
-                break;
-        }
+        Notepad.setPlayerStorage(playerID, index, buttonValue);
     }
 
     @Override
@@ -74,15 +58,15 @@ class NotepadGuiButton implements ActionListener {
         if (button.getText().equals("X")) {
             buttonValue = " ";
             button.setText(buttonValue);
-            changeValue(buttonEnum, this.index, buttonValue);
+            changeValue(playerID, this.index, buttonValue);
         } else if (button.getText().equals(" ")) {
             buttonValue = "X";
             button.setText(buttonValue);
-            changeValue(buttonEnum, this.index, buttonValue);
+            changeValue(playerID, this.index, buttonValue);
         } else {
             buttonValue = "X";
             button.setText(buttonValue);
-            changeValue(buttonEnum, this.index, buttonValue);
+            changeValue(playerID, this.index, buttonValue);
         }
 
     }

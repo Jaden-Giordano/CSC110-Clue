@@ -29,11 +29,11 @@ import static org.lwjgl.opengl.GL11.glTexParameteri;
  */
 public class Sprite {
 
+    @SuppressWarnings("CheckStyle") private static final int BYTES_PER_PIXEL = 4;
     /**
      * Color.
      */
     private final Vector3i color;
-    @SuppressWarnings("CheckStyle") private final int BYTES_PER_PIXEL = 4;
     /**
      * If it is colored or if its an image.
      */
