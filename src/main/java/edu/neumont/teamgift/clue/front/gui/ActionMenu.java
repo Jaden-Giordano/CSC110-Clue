@@ -53,7 +53,7 @@ public class ActionMenu {
      *
      * @param aState The new state.
      */
-    void setActionState(final ActionState aState) {
+    final void setActionState(final ActionState aState) {
         this.state = aState;
     }
 
@@ -61,7 +61,7 @@ public class ActionMenu {
      * State that an action is in progress, so the action cannot be changed until
      * action is finished or cancelled.
      */
-    public void pushActionInProgress() {
+    public final void pushActionInProgress() {
         if (state != ActionState.NotSelected) {
             actionInProgress = true;
         }
@@ -70,7 +70,7 @@ public class ActionMenu {
     /**
      * Complete the action and return the state to not selected.
      */
-    public void completeAction() {
+    public final void completeAction() {
         this.actionInProgress = false;
         this.setActionState(ActionState.NotSelected);
     }
@@ -80,7 +80,7 @@ public class ActionMenu {
      *
      * @return If the action is in progress.
      */
-    public boolean getActionInProgress() {
+    public final boolean getActionInProgress() {
         return actionInProgress;
     }
 
