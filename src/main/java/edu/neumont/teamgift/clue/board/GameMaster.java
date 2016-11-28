@@ -1,22 +1,24 @@
 package edu.neumont.teamgift.clue.board;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
+
 import edu.neumont.teamgift.clue.Notepad;
 import edu.neumont.teamgift.clue.Player;
 import edu.neumont.teamgift.clue.board.tiles.TileRegistry;
 import edu.neumont.teamgift.clue.cards.Dealer;
 import edu.neumont.teamgift.clue.front.MainManager;
 import edu.neumont.teamgift.clue.front.gui.AccusationSuggestionMenu;
+import edu.neumont.teamgift.clue.front.gui.ActionMenu;
 import edu.neumont.teamgift.clue.front.gui.NotepadGui;
 import edu.neumont.teamgift.clue.interfaces.Updatable;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Scanner;
 
 /**
  * A controller for all aspects of game.
  */
 public class GameMaster implements Updatable {
+
 	/**
 	 * The people available in the game to choose from. TODO Prompt for player
 	 * select if we want
@@ -39,6 +41,21 @@ public class GameMaster implements Updatable {
 	private int numPlayers = 6;
 
 	/**
+	 * The turn of the game.
+	 */
+	private int turn = 0;
+
+	/**
+	 * The current player.
+	 */
+	private Player currentPlayer;
+
+	/**
+	 * The current action menu.
+	 */
+	private ActionMenu currentActionMenu;
+
+	/**
 	 * Initializes the board.
 	 */
 	public GameMaster() {
@@ -57,7 +74,7 @@ public class GameMaster implements Updatable {
 
 		playerList = new ArrayList<>();
 		createPlayers();
-		
+
 		new AccusationSuggestionMenu(this, 0, "Suggestion");
 	}
 
@@ -251,5 +268,26 @@ public class GameMaster implements Updatable {
 			return true;
 		}
 		return false;
+	}
+
+	/**
+	 * Handle moving to the next turn.
+	 */
+	private void nextTurn() {
+		turn++;
+		currentPlayer.getNotepad().close();
+		currentPlayer = playerList.get(turn % getNumPlayers());
+		currentPlayer.getNotepad().open();
+
+	}
+
+	/**
+	 * {@inheritDoc}
+	 */
+	@Override
+	public void start() {
+		currentPlayer = playerList.get(turn % getNumPlayers());
+		currentPlayer.getNotepad().open();
+		currentActionMenu = new ActionMenu(this);
 	}
 }

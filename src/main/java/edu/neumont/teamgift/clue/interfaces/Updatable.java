@@ -5,6 +5,11 @@ package edu.neumont.teamgift.clue.interfaces;
  */
 public interface Updatable {
     /**
+     * Called first.
+     */
+    void start();
+
+    /**
      * Called every tick.
      */
     void update();

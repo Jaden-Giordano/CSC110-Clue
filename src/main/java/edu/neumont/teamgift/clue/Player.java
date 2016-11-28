@@ -2,6 +2,9 @@ package edu.neumont.teamgift.clue;
 
 import edu.neumont.teamgift.clue.board.Board;
 import edu.neumont.teamgift.clue.board.GameMaster;
+import edu.neumont.teamgift.clue.board.tiles.Room;
+import edu.neumont.teamgift.clue.board.tiles.RoomTile;
+import edu.neumont.teamgift.clue.board.tiles.Tile;
 import edu.neumont.teamgift.clue.cards.Card;
 import edu.neumont.teamgift.clue.cards.Deck;
 import edu.neumont.teamgift.clue.front.gui.NotepadGui;
@@ -190,6 +193,44 @@ public class Player {
      */
     public void setNotepadGUI(final NotepadGui notepadGUI) {
         this.notepad = notepadGUI;
+    }
+
+    /**
+     * Get the tile the player is on.
+     *
+     * @return The tile.
+     */
+    public Tile getContainingTile() {
+        return getBoard().getTile(getPosition());
+    }
+
+    /**
+     * Get the room the player is in.
+     *
+     * @return The room the player is in; 'null' if in pathway.
+     */
+    public Room getRoom() {
+        Tile t = getContainingTile();
+        if (t instanceof RoomTile) {
+            return ((RoomTile) t).getRoom();
+        }
+        return null;
+    }
+
+    /**
+     * Teleport the player to a room.
+     *
+     * @param room The room to teleport to.
+     */
+    public boolean teleport(final Room room) {
+        Tile t = room.getFirstOpenTile();
+        if (t == null) {
+            return false;
+        }
+
+        setPosition(room.getFirstOpenTile().getPosition());
+
+        return true;
     }
 
 }

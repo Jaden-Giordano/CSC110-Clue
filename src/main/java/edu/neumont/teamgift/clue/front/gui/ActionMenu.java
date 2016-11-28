@@ -2,6 +2,9 @@ package edu.neumont.teamgift.clue.front.gui;
 
 import edu.neumont.teamgift.clue.board.GameMaster;
 
+/**
+ * Container for action menu state.
+ */
 public class ActionMenu {
 
     /**
@@ -32,11 +35,12 @@ public class ActionMenu {
     public ActionMenu(final GameMaster gameMaster) {
         this.gm = gameMaster;
 
-        this.gui = new ActionMenuGUI(this);
+        this.gui = new ActionMenuGUI();
 
         state = ActionState.NotSelected;
         actionInProgress = false;
     }
+
 
     /**
      * Get the current state of the action menu.

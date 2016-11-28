@@ -8,9 +8,13 @@ import java.nio.DoubleBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.lwjgl.glfw.GLFW.GLFW_KEY_ESCAPE;
+import static org.lwjgl.glfw.GLFW.GLFW_RELEASE;
 import static org.lwjgl.glfw.GLFW.glfwGetCursorPos;
 import static org.lwjgl.glfw.GLFW.glfwPollEvents;
 import static org.lwjgl.glfw.GLFW.glfwSetErrorCallback;
+import static org.lwjgl.glfw.GLFW.glfwSetKeyCallback;
+import static org.lwjgl.glfw.GLFW.glfwSetWindowShouldClose;
 import static org.lwjgl.glfw.GLFW.glfwTerminate;
 import static org.lwjgl.glfw.GLFW.glfwWindowShouldClose;
 
@@ -50,6 +54,18 @@ public abstract class FrontEndManager {
 
         try {
             display = new Display(new Vector2i(WINDOW_WIDTH, WINDOW_HEIGHT));
+
+            // Setup a key callback. It will be called every time
+            // a key is pressed, repeated or released.
+            glfwSetKeyCallback(display.getWindow(),
+                    (dWindow, key, scancode, action, mods) -> {
+                        if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE) {
+                            // We will detect this in our rendering loop
+                            glfwSetWindowShouldClose(dWindow, true);
+                        }
+                    });
+
+            new MouseHandler();
 
             loop();
 
@@ -101,7 +117,9 @@ public abstract class FrontEndManager {
      */
     @SuppressWarnings("EmptyMethod")
     protected void start() {
-
+        for (Updatable i : updatables) {
+            i.start();
+        }
     }
 
     /**

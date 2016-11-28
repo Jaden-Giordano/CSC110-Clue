@@ -19,8 +19,8 @@ public class MainManager extends FrontEndManager {
      */
     @Override
     protected void start() {
-        super.start();
         gameMaster = new GameMaster();
+        super.start();
     }
 
     /**
