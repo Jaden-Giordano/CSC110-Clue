@@ -3,6 +3,7 @@ package edu.neumont.teamgift.clue.board;
 import edu.neumont.teamgift.clue.Player;
 import edu.neumont.teamgift.clue.Vector2i;
 import edu.neumont.teamgift.clue.board.tiles.Room;
+import edu.neumont.teamgift.clue.board.tiles.RoomTile;
 import edu.neumont.teamgift.clue.board.tiles.Tile;
 import edu.neumont.teamgift.clue.board.tiles.TileRegistry;
 
@@ -109,7 +110,11 @@ public class Board {
                 for (int j = 0; j < tiles[i].length; j++) {
                     tiles[i][j] = TileRegistry.getTile(this, Integer.parseInt(sRow[j]));
                     if (rooms.containsKey(tiles[i][j].getID())) {
-                        rooms.get(tiles[i][j].getID()).addTile(tiles[i][j]);
+                        Room r = rooms.get(tiles[i][j].getID());
+                        r.addTile(tiles[i][j]);
+                        if (tiles[i][j] instanceof RoomTile) {
+                            ((RoomTile) tiles[i][j]).setRoom(r);
+                        }
                     }
                 }
             }

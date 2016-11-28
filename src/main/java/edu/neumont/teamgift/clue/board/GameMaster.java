@@ -5,6 +5,7 @@ import edu.neumont.teamgift.clue.Player;
 import edu.neumont.teamgift.clue.board.tiles.TileRegistry;
 import edu.neumont.teamgift.clue.cards.Dealer;
 import edu.neumont.teamgift.clue.front.MainManager;
+import edu.neumont.teamgift.clue.front.gui.ActionMenu;
 import edu.neumont.teamgift.clue.front.gui.NotepadGui;
 import edu.neumont.teamgift.clue.interfaces.Updatable;
 
@@ -37,6 +38,21 @@ public class GameMaster implements Updatable {
      */
     // noinspection CheckStyle
     private int numPlayers = 6;
+
+    /**
+     * The turn of the game.
+     */
+    private int turn = 0;
+
+    /**
+     * The current player.
+     */
+    private Player currentPlayer;
+
+    /**
+     * The current action menu.
+     */
+    private ActionMenu currentActionMenu;
 
     /**
      * Initializes the board.
@@ -227,6 +243,27 @@ public class GameMaster implements Updatable {
             }
         }
         return whoSuggested;
+    }
+
+    /**
+     * Handle moving to the next turn.
+     */
+    private void nextTurn() {
+        turn++;
+        currentPlayer.getNotepad().close();
+        currentPlayer = playerList.get(turn % getNumPlayers());
+        currentPlayer.getNotepad().open();
+
+    }
+
+    /**
+     * {@inheritDoc}
+     */
+    @Override
+    public void start() {
+        currentPlayer = playerList.get(turn % getNumPlayers());
+        currentPlayer.getNotepad().open();
+        currentActionMenu = new ActionMenu(this);
     }
 
     /**

@@ -5,7 +5,7 @@ import edu.neumont.teamgift.clue.board.Board;
 /**
  * Dining room.
  */
-public class DiningRoom extends Tile {
+public class DiningRoom extends RoomTile {
     /**
      * Creates a new tile, with the connected board and the id of the tile.
      *

@@ -7,8 +7,6 @@ import org.lwjgl.opengl.GL;
 
 import static org.lwjgl.glfw.Callbacks.glfwFreeCallbacks;
 import static org.lwjgl.glfw.GLFW.GLFW_FALSE;
-import static org.lwjgl.glfw.GLFW.GLFW_KEY_ESCAPE;
-import static org.lwjgl.glfw.GLFW.GLFW_RELEASE;
 import static org.lwjgl.glfw.GLFW.GLFW_RESIZABLE;
 import static org.lwjgl.glfw.GLFW.GLFW_TRUE;
 import static org.lwjgl.glfw.GLFW.GLFW_VISIBLE;
@@ -19,9 +17,7 @@ import static org.lwjgl.glfw.GLFW.glfwGetPrimaryMonitor;
 import static org.lwjgl.glfw.GLFW.glfwGetVideoMode;
 import static org.lwjgl.glfw.GLFW.glfwInit;
 import static org.lwjgl.glfw.GLFW.glfwMakeContextCurrent;
-import static org.lwjgl.glfw.GLFW.glfwSetKeyCallback;
 import static org.lwjgl.glfw.GLFW.glfwSetWindowPos;
-import static org.lwjgl.glfw.GLFW.glfwSetWindowShouldClose;
 import static org.lwjgl.glfw.GLFW.glfwShowWindow;
 import static org.lwjgl.glfw.GLFW.glfwSwapBuffers;
 import static org.lwjgl.glfw.GLFW.glfwSwapInterval;
@@ -80,8 +76,6 @@ class Display {
      * Initialize window, OpenGL, and GLFW.
      */
     private void init() {
-        // Setup an error callback. The default implementation
-        // will print the error message in System.err.
         GLFWErrorCallback.createPrint(System.err).set();
 
         // Initialize GLFW. Most GLFW functions will not work before doing this.
@@ -89,8 +83,6 @@ class Display {
             throw new IllegalStateException("Unable to initialize GLFW");
         }
 
-        // Configure our window
-        // optional, the current window hints are already the default
         glfwDefaultWindowHints();
         // the window will stay hidden after creation
         glfwWindowHint(GLFW_VISIBLE, GLFW_FALSE);
@@ -102,15 +94,6 @@ class Display {
         if (window == NULL) {
             throw new RuntimeException("Failed to create the GLFW window");
         }
-
-        // Setup a key callback. It will be called every time
-        // a key is pressed, repeated or released.
-        glfwSetKeyCallback(window, (dWindow, key, scancode, action, mods) -> {
-            if (key == GLFW_KEY_ESCAPE && action == GLFW_RELEASE) {
-                // We will detect this in our rendering loop
-                glfwSetWindowShouldClose(dWindow, true);
-            }
-        });
 
         // Get the resolution of the primary monitor
         GLFWVidMode vidmode = glfwGetVideoMode(glfwGetPrimaryMonitor());
@@ -129,22 +112,13 @@ class Display {
         // Make the window visible
         glfwShowWindow(window);
 
-        // This line is critical for LWJGL's inter-operation with GLFW's
-        // OpenGL context, or any context that is managed externally.
-        // LWJGL detects the context that is current in the current thread,
-        // creates the GLCapabilities instance and makes the OpenGL
-        // bindings available for use.
         GL.createCapabilities();
 
-        // Initialize viewport for openGL.
-        //glViewport(0, 0, size.x, size.y);
         glMatrixMode(GL_PROJECTION);
         glLoadIdentity();
         // noinspection CheckStyle
         glOrtho(0, 24 * 16, 25 * 16, 0, 1, -1);
         glMatrixMode(GL_MODELVIEW);
-        // glClearDepth(1.0f);
-        // glDepthFunc(GL_LEQUAL);
         glEnable(GL_DEPTH_TEST);
 
         // Set the clear color

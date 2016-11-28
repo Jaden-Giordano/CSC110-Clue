@@ -56,7 +56,7 @@ public final class NotepadGui extends JFrame {
     public void createNotepadGui(final GameMaster game, final int playerID) {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setSize(NOTEPAD_DIMENSIONS.x, NOTEPAD_DIMENSIONS.y);
-        this.setVisible(true);
+        this.setVisible(false);
         this.setTitle("Notepad Gui id: " + playerID);
     }
 
@@ -152,4 +152,19 @@ public final class NotepadGui extends JFrame {
         }
 
     }
+
+    /**
+     * Open the notepad gui.
+     */
+    public void open() {
+        this.setVisible(true);
+    }
+
+    /**
+     * Close the notepad gui.
+     */
+    public void close() {
+        this.setVisible(false);
+    }
+
 }
