@@ -5,7 +5,6 @@ import edu.neumont.teamgift.clue.Vector2i;
 import edu.neumont.teamgift.clue.board.tiles.Room;
 import edu.neumont.teamgift.clue.board.tiles.Tile;
 import edu.neumont.teamgift.clue.board.tiles.TileRegistry;
-import edu.neumont.teamgift.clue.front.gui.Rooms;
 
 import java.io.BufferedReader;
 import java.io.FileReader;

@@ -1,7 +1,7 @@
 package edu.neumont.teamgift.clue.board.tiles;
 
 import edu.neumont.teamgift.clue.Vector2i;
-import edu.neumont.teamgift.clue.front.gui.Rooms;
+import edu.neumont.teamgift.clue.board.Rooms;
 
 import java.util.ArrayList;
 import java.util.List;

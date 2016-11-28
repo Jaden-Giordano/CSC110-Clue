@@ -148,4 +148,10 @@ public class Vector2i implements Comparable<Vector2i> {
 
         return 1;
     }
+
+    @Override
+    public String toString() {
+        return "(" + x + ", " + y + ")";
+    }
+
 }

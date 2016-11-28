@@ -19,6 +19,7 @@ public class MainManager extends FrontEndManager {
      */
     @Override
     protected void start() {
+        super.start();
         gameMaster = new GameMaster();
     }
 
@@ -27,6 +28,7 @@ public class MainManager extends FrontEndManager {
      */
     @Override
     protected void update() {
+        super.update();
     }
 
     /**
@@ -49,6 +51,7 @@ public class MainManager extends FrontEndManager {
      */
     @Override
     protected void draw() {
+        super.draw();
         renderAllTiles();
         //getDisplay().drawSprite(test, TileRegistry.getSprite(1));
     }

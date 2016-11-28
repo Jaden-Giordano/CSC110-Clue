@@ -2,10 +2,13 @@ package edu.neumont.teamgift.clue.front;
 
 import edu.neumont.teamgift.clue.Vector2i;
 import edu.neumont.teamgift.clue.interfaces.Updatable;
+import org.lwjgl.BufferUtils;
 
+import java.nio.DoubleBuffer;
 import java.util.ArrayList;
 import java.util.List;
 
+import static org.lwjgl.glfw.GLFW.glfwGetCursorPos;
 import static org.lwjgl.glfw.GLFW.glfwPollEvents;
 import static org.lwjgl.glfw.GLFW.glfwSetErrorCallback;
 import static org.lwjgl.glfw.GLFW.glfwTerminate;
@@ -135,6 +138,18 @@ public abstract class FrontEndManager {
      */
     public void registerUpdatable(final Updatable updatable) {
         updatables.add(updatable);
+    }
+
+    /**
+     * Get the position of the mouse on the screen.
+     *
+     * @return The position of the mouse.
+     */
+    public Vector2i getMousePosition() {
+        DoubleBuffer x = BufferUtils.createDoubleBuffer(1), y = BufferUtils
+                .createDoubleBuffer(1);
+        glfwGetCursorPos(display.getWindow(), x, y);
+        return new Vector2i((int) x.get(), (int) y.get());
     }
 
 }

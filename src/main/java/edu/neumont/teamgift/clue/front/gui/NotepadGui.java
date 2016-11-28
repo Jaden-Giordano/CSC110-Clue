@@ -3,6 +3,9 @@ package edu.neumont.teamgift.clue.front.gui;
 import edu.neumont.teamgift.clue.Notepad;
 import edu.neumont.teamgift.clue.Vector2i;
 import edu.neumont.teamgift.clue.board.GameMaster;
+import edu.neumont.teamgift.clue.board.Rooms;
+import edu.neumont.teamgift.clue.board.Suspects;
+import edu.neumont.teamgift.clue.board.Weapons;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
