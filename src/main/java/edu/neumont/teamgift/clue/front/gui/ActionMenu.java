@@ -38,7 +38,8 @@ public class ActionMenu {
         actionInProgress = false;
     }
 
-    /**
+
+	/**
      * Get the current state of the action menu.
      *
      * @return The state.
