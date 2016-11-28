@@ -1,6 +1,10 @@
 package edu.neumont.teamgift.clue.front;
 
 import edu.neumont.teamgift.clue.Vector2i;
+import edu.neumont.teamgift.clue.interfaces.Updatable;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.lwjgl.glfw.GLFW.glfwPollEvents;
 import static org.lwjgl.glfw.GLFW.glfwSetErrorCallback;
@@ -28,11 +32,18 @@ public abstract class FrontEndManager {
     private Display display;
 
     /**
+     * List of updatable components.
+     */
+    private List<Updatable> updatables;
+
+    /**
      * Create singleton and display.
      */
     @SuppressWarnings("unused")
     public FrontEndManager() {
         myInstance = this;
+
+        updatables = new ArrayList<>();
 
         try {
             display = new Display(new Vector2i(WINDOW_WIDTH, WINDOW_HEIGHT));
@@ -95,7 +106,9 @@ public abstract class FrontEndManager {
      */
     @SuppressWarnings("EmptyMethod")
     protected void update() {
-
+        for (Updatable i : updatables) {
+            i.update();
+        }
     }
 
     /**
@@ -113,6 +126,15 @@ public abstract class FrontEndManager {
      */
     protected final Display getDisplay() {
         return display;
+    }
+
+    /**
+     * Register a new updatable object to call updates on.
+     *
+     * @param updatable The class, must be updatable.
+     */
+    public void registerUpdatable(final Updatable updatable) {
+        updatables.add(updatable);
     }
 
 }

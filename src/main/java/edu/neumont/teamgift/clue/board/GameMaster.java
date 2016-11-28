@@ -4,7 +4,9 @@ import edu.neumont.teamgift.clue.Notepad;
 import edu.neumont.teamgift.clue.Player;
 import edu.neumont.teamgift.clue.board.tiles.TileRegistry;
 import edu.neumont.teamgift.clue.cards.Dealer;
+import edu.neumont.teamgift.clue.front.MainManager;
 import edu.neumont.teamgift.clue.front.gui.NotepadGui;
+import edu.neumont.teamgift.clue.interfaces.Updatable;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +15,7 @@ import java.util.Scanner;
 /**
  * A controller for all aspects of game.
  */
-public class GameMaster {
+public class GameMaster implements Updatable {
     /**
      * The people available in the game to choose from. TODO Prompt for player
      * select if we want
@@ -40,6 +42,8 @@ public class GameMaster {
      * Initializes the board.
      */
     public GameMaster() {
+        MainManager.getInstance().registerUpdatable(this);
+
         Scanner in = new Scanner(System.in);
         System.out.print("Enter the path of the project directory: ");
         // TODO make final variable that gets file from project dir.
@@ -225,4 +229,11 @@ public class GameMaster {
         return whoSuggested;
     }
 
+    /**
+     * This will be called over and over again, so use it for whatever needs to be done.
+     */
+    @Override
+    public void update() {
+        // TODO Manage game.
+    }
 }

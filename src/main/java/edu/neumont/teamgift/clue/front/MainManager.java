@@ -15,18 +15,11 @@ public class MainManager extends FrontEndManager {
     private GameMaster gameMaster;
 
     /**
-     * Test position, TODO remove.
-     */
-    private Vector2i test;
-
-    /**
      * {@inheritDoc}
      */
     @Override
     protected void start() {
         gameMaster = new GameMaster();
-
-        test = new Vector2i(0, 0);
     }
 
     /**
@@ -34,7 +27,6 @@ public class MainManager extends FrontEndManager {
      */
     @Override
     protected void update() {
-        //test.x += 1;
     }
 
     /**
