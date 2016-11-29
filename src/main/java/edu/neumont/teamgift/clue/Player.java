@@ -7,6 +7,7 @@ import edu.neumont.teamgift.clue.board.tiles.RoomTile;
 import edu.neumont.teamgift.clue.board.tiles.Tile;
 import edu.neumont.teamgift.clue.cards.Card;
 import edu.neumont.teamgift.clue.cards.Deck;
+import edu.neumont.teamgift.clue.front.Sprite;
 import edu.neumont.teamgift.clue.front.gui.NotepadGui;
 
 /**
@@ -45,6 +46,11 @@ public class Player {
     private NotepadGui notepad;
 
     /**
+     * Sprite for the character.
+     */
+    private Sprite sprite;
+
+    /**
      * Creates a player initializing its board, the id, and its name.
      *
      * @param parentBoard The board the player is on.
@@ -64,6 +70,8 @@ public class Player {
         winner = false;
 
         deck = new Deck();
+
+        sprite = new Sprite(new Vector3i(255, 255, 255));
     }
 
     /**
@@ -233,6 +241,14 @@ public class Player {
         setPosition(room.getFirstOpenTile().getPosition());
 
         return true;
+    }
+
+    public Sprite getSprite() {
+        return sprite;
+    }
+
+    public void setSprite(final Sprite s) {
+        this.sprite = s;
     }
 
 }
