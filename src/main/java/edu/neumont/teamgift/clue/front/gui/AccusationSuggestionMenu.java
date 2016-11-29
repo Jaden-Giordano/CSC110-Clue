@@ -88,9 +88,9 @@ public class AccusationSuggestionMenu extends JFrame {
 		panel.add(organizationalSpace);
 		int index = 0;
 		for (Suspects i : Suspects.values()) {
-			JRadioButton suspectButton = new JRadioButton(Notepad.getPlayerStorage(playerNumber, index));
+			JRadioButton suspectButton = new JRadioButton("" + i);
 			suspectButton.setFont(regularFont);
-			suspectButton.setActionCommand(Notepad.getPlayerStorage(playerNumber, index));
+			suspectButton.setActionCommand("" + i); 
 			panel.add(suspectButton);
 			suspects.add(suspectButton);
 			index++;
@@ -105,7 +105,7 @@ public class AccusationSuggestionMenu extends JFrame {
 		organizationalSpace.setFont(new Font("Serif", Font.PLAIN, LARGE_FONT));
 		panel.add(organizationalSpace);
 		for (Weapons i : Weapons.values()) {
-			JRadioButton weaponButton = new JRadioButton(Notepad.getPlayerStorage(playerNumber, index));
+			JRadioButton weaponButton = new JRadioButton("" + i);
 			weaponButton.setFont(regularFont);
 			panel.add(weaponButton);
 			weapons.add(weaponButton);
@@ -121,7 +121,7 @@ public class AccusationSuggestionMenu extends JFrame {
 		organizationalSpace.setFont(new Font("Serif", Font.PLAIN, LARGE_FONT));
 		panel.add(organizationalSpace);
 		for (Rooms i : Rooms.values()) {
-			JRadioButton roomsButton = new JRadioButton(". " + Notepad.getPlayerStorage(playerNumber, index));
+			JRadioButton roomsButton = new JRadioButton("" + i);
 			roomsButton.setFont(regularFont);
 			panel.add(roomsButton);
 			rooms.add(roomsButton);
