@@ -133,7 +133,7 @@ public class Dealer {
                 if (cards.size() == 0) {
                     break;
                 }
-                Player p = game.getPlayerList(i % game.getNumPlayers());
+                Player p = game.getPlayer(i % game.getNumPlayers());
                 Card c = cards.get(0);
                 p.addToDeck(c);
                 cards.remove(0);

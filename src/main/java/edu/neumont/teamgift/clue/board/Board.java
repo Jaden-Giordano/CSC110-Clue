@@ -127,7 +127,9 @@ public class Board {
      * @return Returns all the players active on the board.
      */
     public final Player[] getPlayers() {
-        return (Player[]) players.toArray();
+        Player[] arr = new Player[players.size()];
+        arr = players.toArray(arr);
+        return arr;
     }
 
     /**
@@ -157,6 +159,21 @@ public class Board {
         }
 
         return tiles[position.y][position.x];
+    }
+
+    public final Tile[] getTiles(final Class<? extends Tile> type) {
+        List<Tile> matchingTiles = new ArrayList<>();
+        for (int i = 0; i < tiles.length; i++) {
+            for (int j = 0; j < tiles[i].length; j++) {
+                if (tiles[i][j].getClass().isAssignableFrom(type)) {
+                    matchingTiles.add(tiles[i][j]);
+                }
+            }
+        }
+
+        Tile[] arr = new Tile[matchingTiles.size()];
+        arr = matchingTiles.toArray(arr);
+        return arr;
     }
 
     /**
