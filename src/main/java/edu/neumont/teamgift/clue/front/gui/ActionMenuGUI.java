@@ -24,6 +24,7 @@ public class ActionMenuGUI extends JFrame {
 
     private ActionMenu actionMenu;
     private GameMaster gameMaster;
+    private LargeGUI large;
 
     public ActionMenuGUI(GameMaster gm, ActionMenu am) {
         this.actionMenu = am;
@@ -97,27 +98,13 @@ public class ActionMenuGUI extends JFrame {
         passTurn.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-            	//nextTurn();
-            	createAwkwardlyLargeGUI(gameMaster.getCurrentPlayer().getID());
+            	gameMaster.nextTurn();
+            	large.createAwkwardlyLargeGUI(gameMaster.getCurrentPlayer().getID());
             }
         });
         add(passTurn);
         
         
     }
-    private void createAwkwardlyLargeGUI(final int playerID){
-    	this.setSize(3000, 2000);
-    	this.setVisible(true);
-    	this.setLayout(new GridLayout(2, 1));
-    	JLabel playersTurn = new JLabel("It is now player " + playerID + "s turn");
-    	add(playersTurn);
-    	JButton turnSwap = new JButton("Continue");
-    	turnSwap.addActionListener(new ActionListener(){
-    		
-    		public void actionPerformed(ActionEvent e){
-    			dispose();
-    		}
-    	});
-    	add(turnSwap);
-    }
+    
 }
