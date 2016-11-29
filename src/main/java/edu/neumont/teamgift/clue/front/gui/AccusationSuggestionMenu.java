@@ -67,7 +67,7 @@ public class AccusationSuggestionMenu extends JFrame {
 	 * Start point for GUIs. TODO Switch over to Clue start point.
 	 */
 	public void setUpSuggestionAccusationMenu(final GameMaster game, final int playerID, String whatAmI) {
-		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+//		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		this.setSize(NOTEPAD_DIMENSIONS.x, NOTEPAD_DIMENSIONS.y);
 		this.setVisible(true);
 		this.setTitle(whatAmI);

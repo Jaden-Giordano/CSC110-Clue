@@ -54,7 +54,7 @@ public final class NotepadGui extends JFrame {
      * TODO Switch over to Clue start point.
      */
     public void createNotepadGui(final GameMaster game, final int playerID) {
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+//        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setSize(NOTEPAD_DIMENSIONS.x, NOTEPAD_DIMENSIONS.y);
         this.setVisible(false);
         this.setTitle("Notepad Gui id: " + playerID);
