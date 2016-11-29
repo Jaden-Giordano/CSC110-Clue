@@ -22,7 +22,7 @@ public class ActionMenuGUI extends JFrame {
 
 	private void buildActionMenu() {
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		this.setSize(1440, 2200);
+		this.setSize(440, 200);
 		this.setVisible(true);
 	}
 
