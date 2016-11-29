@@ -156,7 +156,7 @@ public final class NotepadGui extends JFrame {
     }
 
     /**
-     * Open the notepad gui.
+     * Open the notepad gui. 
      */
     public void open() {
         this.setVisible(true);

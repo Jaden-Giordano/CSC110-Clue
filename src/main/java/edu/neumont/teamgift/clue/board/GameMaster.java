@@ -218,7 +218,7 @@ public class GameMaster implements Updatable {
 		// present
 		// TODO Check if doors are blocked
 		// TODO add done button to turn
-		boolean checkValidMove = false;
+		boolean checkValidMove = false; 
 		while (!checkValidMove) {
 			checkValidMove = true;
 			// TODO output to user how many moves

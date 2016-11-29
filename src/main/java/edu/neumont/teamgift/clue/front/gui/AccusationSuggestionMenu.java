@@ -90,7 +90,7 @@ public class AccusationSuggestionMenu extends JFrame {
 		for (Suspects i : Suspects.values()) {
 			JRadioButton suspectButton = new JRadioButton("" + i);
 			suspectButton.setFont(regularFont);
-			suspectButton.setActionCommand("" + i);
+			suspectButton.setActionCommand("" + i); 
 			panel.add(suspectButton);
 			suspects.add(suspectButton);
 			index++;
