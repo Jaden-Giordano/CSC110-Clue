@@ -10,12 +10,12 @@ import javax.swing.JLabel;
 
 public class LargeGUI extends JFrame{
 	
-	void createAwkwardlyLargeGUI(final int playerID){
+	void createAwkwardlyLargeGUI(){
     	LargeGUI gui = new LargeGUI();
     	gui.setSize(3000, 2000);
     	gui.setVisible(true);
     	gui.setLayout(new GridLayout(2, 1));
-    	JLabel playersTurn = new JLabel("It is now player " + playerID + "s turn");
+    	JLabel playersTurn = new JLabel("It is the next player's turn");
     	add(playersTurn);
     	JButton turnSwap = new JButton("Continue");
     	turnSwap.addActionListener(new ActionListener(){
