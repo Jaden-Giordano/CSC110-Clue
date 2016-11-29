@@ -213,14 +213,12 @@ public class GameMaster implements Updatable {
 	 * @param p
 	 *            The player that is currently running its turn.
 	 */
-	public final void takeTurn(final Player p) {
+	public final void takeTurn(final Player p, int roll) {
 		// TODO output p.getName() turn
 		// TODO add options: roll dice or travel through secret passage if
 		// present
 		// TODO Check if doors are blocked
 		// TODO add done button to turn
-		Die d = new Die();
-		int roll = d.rollDie();
 		boolean checkValidMove = false;
 		while (!checkValidMove) {
 			checkValidMove = true;

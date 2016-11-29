@@ -147,7 +147,7 @@ public final class NotepadGui extends JFrame {
             panel.add(roomLabel);
             Notepad.setPlayerStorage(playerNumber, index, i.name());
             JButton roomsButton = new JButton(
-                    ". " + Notepad.getPlayerStorage(playerNumber, index));
+                    "" + Notepad.getPlayerStorage(playerNumber, index));
             roomsButton.setFont(new Font("Serif", Font.PLAIN, SMALL_FONT));
             roomsButton.addActionListener(new NotepadGuiButton(roomsButton,
                     playerNumber, index));
