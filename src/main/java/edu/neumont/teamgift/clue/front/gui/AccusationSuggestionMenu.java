@@ -1,5 +1,6 @@
 package edu.neumont.teamgift.clue.front.gui;
 
+import java.awt.Button;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
@@ -8,7 +9,6 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
-import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -138,16 +138,18 @@ public class AccusationSuggestionMenu extends JFrame {
 		organizationalSpace = new JLabel(" ");
 		organizationalSpace.setFont(new Font("Serif", Font.PLAIN, LARGE_FONT));
 		panel.add(organizationalSpace);
-		JButton save = new JButton("Save");
+		Button save = new Button("Save");
 		save.setFont(titleFont);
 		panel.add(save);
-		save.addActionListener(null);
-	}
+		save.setVisible(true);
+		save.addActionListener(new ActionListener() {
 
-	public void actionPerformed(ActionEvent e) {
-		answers.add(suspects.getSelection().toString());
-		answers.add(weapons.getSelection().toString());
-		answers.add(rooms.getSelection().toString());
+			public void actionPerformed(ActionEvent e) {
+				answers.add(suspects.getSelection().toString());
+				answers.add(weapons.getSelection().toString());
+				answers.add(rooms.getSelection().toString());
+			}
+		});
 	}
 
 	public ArrayList<String> getAnswers() {
