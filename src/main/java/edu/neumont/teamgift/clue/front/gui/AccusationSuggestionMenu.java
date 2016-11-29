@@ -140,7 +140,6 @@ public class AccusationSuggestionMenu extends JFrame {
 		panel.add(organizationalSpace);
 		Button save = new Button("Save");
 		save.setFont(titleFont);
-		panel.add(save);
 		save.setVisible(true);
 		save.addActionListener(new ActionListener() {
 
@@ -150,6 +149,7 @@ public class AccusationSuggestionMenu extends JFrame {
 				answers.add(rooms.getSelection().toString());
 			}
 		});
+		panel.add(save);
 	}
 
 	public ArrayList<String> getAnswers() {
