@@ -3,6 +3,9 @@ package edu.neumont.teamgift.clue.front.gui;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -22,9 +25,10 @@ import edu.neumont.teamgift.clue.board.Weapons;
 
 public class AccusationSuggestionMenu extends JFrame {
 
-	public AccusationSuggestionMenu(GameMaster game, int playerID, String whatAmI) {
+	public ArrayList<String> AccusationSuggestionMenu(GameMaster game, int playerID, String whatAmI) {
 		setUpMenu(game, playerID);
 		setUpSuggestionAccusationMenu(game, playerID, whatAmI);
+		return answers;
 	}
 
 	/**
@@ -41,6 +45,10 @@ public class AccusationSuggestionMenu extends JFrame {
 	 * Font sizes for text.
 	 */
 	private static final int LARGE_FONT = 40, SMALL_FONT = 30;
+
+	private ButtonGroup suspects = new ButtonGroup(), weapons = new ButtonGroup(), rooms = new ButtonGroup();
+
+	private ArrayList<String> answers = new ArrayList<String>();
 
 	/**
 	 * Creation of notepad.
@@ -67,6 +75,7 @@ public class AccusationSuggestionMenu extends JFrame {
 	}
 
 	public void setUpMenu(final GameMaster game, final int playerNumber) {
+
 		Font titleFont = new Font("Serif", Font.BOLD, LARGE_FONT);
 		Font regularFont = new Font("Serif", Font.PLAIN, LARGE_FONT);
 		JPanel panel = new JPanel();
@@ -84,10 +93,10 @@ public class AccusationSuggestionMenu extends JFrame {
 		organizationalSpace.setFont(new Font("Serif", Font.PLAIN, LARGE_FONT));
 		panel.add(organizationalSpace);
 		int index = 0;
-		ButtonGroup suspects = new ButtonGroup();
 		for (Suspects i : Suspects.values()) {
 			JRadioButton suspectButton = new JRadioButton(Notepad.getPlayerStorage(playerNumber, index));
 			suspectButton.setFont(regularFont);
+			suspectButton.setActionCommand(Notepad.getPlayerStorage(playerNumber, index));
 			panel.add(suspectButton);
 			suspects.add(suspectButton);
 			index++;
@@ -98,7 +107,6 @@ public class AccusationSuggestionMenu extends JFrame {
 		JLabel weaponsLabel = new JLabel("Weapons: ");
 		weaponsLabel.setFont(titleFont);
 		panel.add(weaponsLabel);
-		ButtonGroup weapons = new ButtonGroup();
 		organizationalSpace = new JLabel(" ");
 		organizationalSpace.setFont(new Font("Serif", Font.PLAIN, LARGE_FONT));
 		panel.add(organizationalSpace);
@@ -115,7 +123,6 @@ public class AccusationSuggestionMenu extends JFrame {
 		JLabel roomsLabel = new JLabel("Rooms: ");
 		roomsLabel.setFont(titleFont);
 		panel.add(roomsLabel);
-		ButtonGroup rooms = new ButtonGroup();
 		organizationalSpace = new JLabel(" ");
 		organizationalSpace.setFont(new Font("Serif", Font.PLAIN, LARGE_FONT));
 		panel.add(organizationalSpace);
@@ -129,5 +136,21 @@ public class AccusationSuggestionMenu extends JFrame {
 			organizationalSpace.setFont(new Font("Serif", Font.PLAIN, LARGE_FONT));
 			panel.add(organizationalSpace);
 		}
+		organizationalSpace = new JLabel(" ");
+		organizationalSpace.setFont(new Font("Serif", Font.PLAIN, LARGE_FONT));
+		panel.add(organizationalSpace);
+		JButton save = new JButton("Save");
+		save.setFont(titleFont);
+		panel.add(save);
+		save.addActionListener((ActionListener) this);
+	}
+
+	public void actionPerformed(ActionEvent e) {
+		answers.add(suspects.getSelection().toString());
+		answers.add(weapons.getSelection().toString());
+		answers.add(rooms.getSelection().toString());
+	}
+	public ArrayList<String> getAnswers(){
+		return answers;
 	}
 }
