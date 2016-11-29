@@ -20,21 +20,23 @@ import edu.neumont.teamgift.clue.board.GameMaster;
 
 public class ActionMenuGUI extends JFrame {
 
-	private ActionMenu actionMenu;
-	private GameMaster gameMaster;
-	private LargeGUI large;
 
-	public ActionMenuGUI(GameMaster gm, ActionMenu am) {
-		this.actionMenu = am;
-		this.gameMaster = gm;
-		buildActionMenu();
-		createActionButtons();
-	}
+    private ActionMenu actionMenu;
+    private GameMaster gameMaster;
+    private LargeGUI large;
+
+    public ActionMenuGUI(GameMaster gm, ActionMenu am) {
+        this.actionMenu = am;
+        this.gameMaster = gm;
+        buildActionMenu();
+        createActionButtons();
+    }
+
 
 	private void buildActionMenu() {
 		// this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(600, 800);
-		this.setVisible(true);
+		this.setVisible(true); 
 	}
 
 	private void createActionButtons() {
@@ -72,7 +74,7 @@ public class ActionMenuGUI extends JFrame {
 			}
 		});
 		add(beSuspicious);
-
+    
 		JButton objection = new JButton("Make Accusation");
 		objection.setFont(titleFont);
 		objection.addActionListener(new ActionListener() {
@@ -92,11 +94,11 @@ public class ActionMenuGUI extends JFrame {
 		passTurn.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				large = new LargeGUI();
-				gameMaster.nextTurn();
-				large.createAwkwardlyLargeGUI();
-			}
-		});
-		add(passTurn);
+	            	gameMaster.nextTurn();
+	            	large.callMeMaybe();
+	            }
+	    });
+	    add(passTurn);
 	}
 }
+
