@@ -4,6 +4,8 @@ import edu.neumont.teamgift.clue.board.Die;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
@@ -52,6 +54,8 @@ public class ActionMenuGUI extends JFrame {
             }
         });
         add(moveForTurn);
+        
+        
         JButton beSuspicious = new JButton("Suspicion");
         beSuspicious.setFont(titleFont);
         beSuspicious.addActionListener(new ActionListener() {
@@ -61,24 +65,45 @@ public class ActionMenuGUI extends JFrame {
             }
         });
         add(beSuspicious);
+        
+        
         JButton objection = new JButton("Make Accusation");
         objection.setFont(titleFont);
         objection.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-
+            	
             }
         });
         add(objection);
+        
+        
         JButton passTurn = new JButton("End Turn");
         passTurn.setFont(titleFont);
         passTurn.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
             	//nextTurn();
-            	
+            	createAwkwardlyLargeGUI(gameMaster.getCurrentPlayer().getId());
             }
         });
         add(passTurn);
+        
+        
+    }
+    private void createAwkwardlyLargeGUI(final int playerID){
+    	this.setSize(3000, 2000);
+    	this.setVisible(true);
+    	this.setLayout(new GridLayout(2, 1));
+    	JLabel playersTurn = new JLabel("It is now player " + playerID + "s turn");
+    	add(playersTurn);
+    	JButton turnSwap = new JButton("Continue");
+    	turnSwap.addActionListener(new ActionListener(){
+    		
+    		public void actionPerformed(ActionEvent e){
+    			dispose();
+    		}
+    	});
+    	add(turnSwap);
     }
 }
