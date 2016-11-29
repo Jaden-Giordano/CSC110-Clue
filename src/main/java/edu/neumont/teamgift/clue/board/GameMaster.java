@@ -3,9 +3,11 @@ package edu.neumont.teamgift.clue.board;
 import edu.neumont.teamgift.clue.Notepad;
 import edu.neumont.teamgift.clue.Player;
 import edu.neumont.teamgift.clue.SpriteLoader;
+import edu.neumont.teamgift.clue.Vector3i;
 import edu.neumont.teamgift.clue.board.tiles.TileRegistry;
 import edu.neumont.teamgift.clue.cards.Dealer;
 import edu.neumont.teamgift.clue.front.MainManager;
+import edu.neumont.teamgift.clue.front.Sprite;
 import edu.neumont.teamgift.clue.front.gui.ActionMenu;
 import edu.neumont.teamgift.clue.front.gui.NotepadGui;
 import edu.neumont.teamgift.clue.interfaces.Updatable;
@@ -138,6 +140,7 @@ public class GameMaster implements Updatable {
 		}
 	}
 
+
 	/**
 	 * Get a specific player in the game.
 	 *
@@ -148,6 +151,15 @@ public class GameMaster implements Updatable {
 	public final Player getPlayerList(final int index) {
 		return playerList.get(index);
 	}
+//
+//        for (int i = 0; i < numPlayers; i++) {
+//            Player p = new Player(board, i, people[i], this);
+//            p.setSprite(new Sprite(new Vector3i(0, 0, 0)));
+//            playerList.add(p);
+//            p.setNotepadGUI(new NotepadGui(this, p.getID()));
+//        }
+//    }
+
 
 	/**
 	 * Get the number of players.

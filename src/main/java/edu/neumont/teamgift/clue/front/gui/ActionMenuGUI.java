@@ -81,7 +81,8 @@ public class ActionMenuGUI extends JFrame {
         passTurn.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-
+            	//nextTurn();
+            	
             }
         });
         add(passTurn);
