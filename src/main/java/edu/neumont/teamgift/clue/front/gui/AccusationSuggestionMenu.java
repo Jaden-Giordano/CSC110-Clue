@@ -25,10 +25,9 @@ import edu.neumont.teamgift.clue.board.Weapons;
 
 public class AccusationSuggestionMenu extends JFrame {
 
-	public ArrayList<String> AccusationSuggestionMenu(GameMaster game, int playerID, String whatAmI) {
+	public AccusationSuggestionMenu(GameMaster game, int playerID, String whatAmI) {
 		setUpMenu(game, playerID);
 		setUpSuggestionAccusationMenu(game, playerID, whatAmI);
-		return answers;
 	}
 
 	/**
@@ -150,7 +149,8 @@ public class AccusationSuggestionMenu extends JFrame {
 		answers.add(weapons.getSelection().toString());
 		answers.add(rooms.getSelection().toString());
 	}
-	public ArrayList<String> getAnswers(){
+
+	public ArrayList<String> getAnswers() {
 		return answers;
 	}
 }
