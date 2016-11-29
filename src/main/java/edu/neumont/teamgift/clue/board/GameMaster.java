@@ -75,7 +75,10 @@ public class GameMaster implements Updatable {
 		playerList = new ArrayList<>();
 		createPlayers();
 
-		new AccusationSuggestionMenu(this, 0, "Suggestion");
+		AccusationSuggestionMenu suggestion = new AccusationSuggestionMenu(this, 0, "Suggestion");
+		for(int i = 0; i < suggestion.getAnswers().size(); i++){
+			System.out.println(suggestion.getAnswers().get(i));
+		}
 	}
 
 	/**

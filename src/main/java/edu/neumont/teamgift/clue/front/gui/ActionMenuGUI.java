@@ -19,19 +19,19 @@ public class ActionMenuGUI extends JFrame {
     private void createActionButtons() {
         setLayout(new GridLayout(0, 1));
         JButton rollForTurn = new JButton("Roll Dice");
-        rollForTurn.addActionListener();
+//        rollForTurn.addActionListener();
         add(rollForTurn);
         JButton moveForTurn = new JButton("Move");
-        moveForTurn.addActionListener();
+//        moveForTurn.addActionListener();
         add(moveForTurn);
         JButton beSuspicious = new JButton("Suspicion");
-        beSuspicious.addActionListener();
+//        beSuspicious.addActionListener();
         add(beSuspicious);
         JButton objection = new JButton("Make Accusation");
-        objection.addActionListener();
+//        objection.addActionListener();
         add(objection);
         JButton passTurn = new JButton("End Turn");
-        passTurn.addActionListener();
+//        passTurn.addActionListener();
         add(passTurn);
     }
 }
