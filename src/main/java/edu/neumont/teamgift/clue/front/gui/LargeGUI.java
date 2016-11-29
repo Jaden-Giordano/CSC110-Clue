@@ -10,12 +10,15 @@ import javax.swing.JLabel;
 
 public class LargeGUI extends JFrame{
 	
-	void createAwkwardlyLargeGUI(){
+	public void createAwkwardlyLargeGUI(){
     	LargeGUI gui = new LargeGUI();
     	gui.setSize(3000, 2000);
     	gui.setVisible(true);
     	gui.setLayout(new GridLayout(2, 1));
-    	JLabel playersTurn = new JLabel("It is the next player's turn");
+    	
+    }
+	public void setupAwkwardlyLargueGUI(){
+		JLabel playersTurn = new JLabel("It is the next player's turn");
     	add(playersTurn);
     	JButton turnSwap = new JButton("Continue");
     	turnSwap.addActionListener(new ActionListener(){
@@ -25,5 +28,9 @@ public class LargeGUI extends JFrame{
     		}
     	});
     	add(turnSwap);
-    }
+	}
+	public void callMeMaybe(){
+		createAwkwardlyLargeGUI();
+		setupAwkwardlyLargueGUI();
+	}
 }
