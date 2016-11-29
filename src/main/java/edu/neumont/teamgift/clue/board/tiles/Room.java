@@ -2,6 +2,7 @@ package edu.neumont.teamgift.clue.board.tiles;
 
 import edu.neumont.teamgift.clue.Vector2i;
 import edu.neumont.teamgift.clue.board.Rooms;
+import edu.neumont.teamgift.clue.board.tiles.interfaces.PlayerContaining;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -105,6 +106,17 @@ public class Room {
      */
     public Rooms getConnectedRoom() {
         return connection;
+    }
+
+    /**
+     * Get the first open tile in the room.
+     *
+     * @return The first
+     */
+    public Tile getFirstOpenTile() {
+        return tiles.stream()
+                .filter(i -> ((PlayerContaining) i).getContainingPlayer() == null)
+                .findFirst().orElse(null);
     }
 
 }

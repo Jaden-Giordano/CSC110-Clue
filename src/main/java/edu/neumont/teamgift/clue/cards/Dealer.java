@@ -96,6 +96,9 @@ public class Dealer {
                             + killerCaseFile.get(i).getType());
         }
     }
+    public Deck getKillerCaseFile(){
+    	return killerCaseFile;
+    }
 
     /**
      * Sets the killer and stores his case file.

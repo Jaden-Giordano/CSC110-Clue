@@ -56,7 +56,7 @@ public final class NotepadGui extends JFrame {
     public void createNotepadGui(final GameMaster game, final int playerID) {
         this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setSize(NOTEPAD_DIMENSIONS.x, NOTEPAD_DIMENSIONS.y);
-        this.setVisible(true);
+        this.setVisible(false);
         this.setTitle("Notepad Gui id: " + playerID);
     }
 
@@ -98,7 +98,7 @@ public final class NotepadGui extends JFrame {
         // difWindow.addActionListener(new NewWindowButton(difWindow));
         int index = 0;
         for (Suspects i : Suspects.values()) {
-            JLabel suspectLabel = new JLabel("" + i);
+        	JLabel suspectLabel = new JLabel("" + i);
             suspectLabel.setFont(new Font("Serif", Font.PLAIN, SMALL_FONT));
             panel.add(suspectLabel);
             Notepad.setPlayerStorage(playerNumber, index, i.name());
@@ -152,4 +152,19 @@ public final class NotepadGui extends JFrame {
         }
 
     }
+
+    /**
+     * Open the notepad gui.
+     */
+    public void open() {
+        this.setVisible(true);
+    }
+
+    /**
+     * Close the notepad gui.
+     */
+    public void close() {
+        this.setVisible(false);
+    }
+
 }
