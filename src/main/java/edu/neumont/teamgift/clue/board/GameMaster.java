@@ -294,8 +294,8 @@ public class GameMaster implements Updatable {
 	/**
 	 * Handle moving to the next turn.
 	 */
-    private void nextTurn() {
-        turn++;
+	public void nextTurn() {
+		turn++;
 		currentPlayer.getNotepad().close();
 		currentPlayer = playerList.get(turn % getNumPlayers());
 		currentPlayer.getNotepad().open();
