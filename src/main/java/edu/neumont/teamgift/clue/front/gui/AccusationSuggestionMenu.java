@@ -14,7 +14,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
-import javax.swing.WindowConstants;
 
 import edu.neumont.teamgift.clue.Notepad;
 import edu.neumont.teamgift.clue.Vector2i;
@@ -25,29 +24,25 @@ import edu.neumont.teamgift.clue.board.Weapons;
 
 public class AccusationSuggestionMenu extends JFrame {
 
-	public AccusationSuggestionMenu(GameMaster game, int playerID, String whatAmI) {
-		setUpMenu(game, playerID);
-		setUpSuggestionAccusationMenu(game, playerID, whatAmI);
-	}
-
 	/**
 	 * Notepad window dimensions.
 	 */
 	private static final Vector2i NOTEPAD_DIMENSIONS = new Vector2i(700, 2000);
-
 	/**
 	 * Height of panel inside notepad.
 	 */
 	private static final int PANEL_HEIGHT = 3000;
-
 	/**
 	 * Font sizes for text.
 	 */
 	private static final int LARGE_FONT = 40, SMALL_FONT = 30;
-
 	private ButtonGroup suspects = new ButtonGroup(), weapons = new ButtonGroup(), rooms = new ButtonGroup();
-
 	private ArrayList<String> answers = new ArrayList<String>();
+
+	public AccusationSuggestionMenu(GameMaster game, int playerID, String whatAmI) {
+		setUpMenu(game, playerID);
+		setUpSuggestionAccusationMenu(game, playerID, whatAmI);
+	}
 
 	/**
 	 * Creation of notepad.
@@ -66,8 +61,9 @@ public class AccusationSuggestionMenu extends JFrame {
 	/**
 	 * Start point for GUIs. TODO Switch over to Clue start point.
 	 */
+
 	public void setUpSuggestionAccusationMenu(final GameMaster game, final int playerID, String whatAmI) {
-//		this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+		// this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
 		this.setSize(NOTEPAD_DIMENSIONS.x, NOTEPAD_DIMENSIONS.y);
 		this.setVisible(true);
 		this.setTitle(whatAmI);

@@ -11,8 +11,12 @@ import javax.swing.JFrame;
 import edu.neumont.teamgift.clue.board.Die;
 
 public class ActionMenuGUI extends JFrame {
+	
+	private ActionMenu actionMenu;
 
-	public ActionMenuGUI() {
+	public ActionMenuGUI(ActionMenu am) {
+		this.actionMenu = am;
+		
 		buildActionMenu();
 		createActionButtons();
 	}
@@ -33,6 +37,8 @@ public class ActionMenuGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				Die d = new Die();
 				int roll = d.rollDie();
+				String number = "" + roll;
+				rollForTurn.setText(number);
 			}
 		});
 		add(rollForTurn);
