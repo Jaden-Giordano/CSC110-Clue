@@ -1,5 +1,6 @@
 package edu.neumont.teamgift.clue.front;
 
+import edu.neumont.teamgift.clue.SpriteLoader;
 import edu.neumont.teamgift.clue.Vector2i;
 import edu.neumont.teamgift.clue.board.GameMaster;
 import edu.neumont.teamgift.clue.board.tiles.TileRegistry;
@@ -47,12 +48,25 @@ public class MainManager extends FrontEndManager {
     }
 
     /**
+     * Renders all players to the screen.
+     */
+    private void renderAllPlayers() {
+        for (int i = 0; i < gameMaster.getNumPlayers(); i++) {
+            this.getDisplay().drawSprite(gameMaster.getPlayerList(i).getPosition(),
+                    SpriteLoader.getSprite(
+                            SpriteLoader.pathToSprites + "players/" + gameMaster
+                                    .getPlayerList(i).getName() + ".png"));
+        }
+    }
+
+    /**
      * {@inheritDoc}
      */
     @Override
     protected void draw() {
         super.draw();
         renderAllTiles();
+        //renderAllPlayers();
         //getDisplay().drawSprite(test, TileRegistry.getSprite(1));
     }
 

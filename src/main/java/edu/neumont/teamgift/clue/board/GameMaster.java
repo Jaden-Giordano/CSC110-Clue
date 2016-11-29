@@ -2,10 +2,10 @@ package edu.neumont.teamgift.clue.board;
 
 import edu.neumont.teamgift.clue.Notepad;
 import edu.neumont.teamgift.clue.Player;
+import edu.neumont.teamgift.clue.SpriteLoader;
 import edu.neumont.teamgift.clue.board.tiles.TileRegistry;
 import edu.neumont.teamgift.clue.cards.Dealer;
 import edu.neumont.teamgift.clue.front.MainManager;
-import edu.neumont.teamgift.clue.front.gui.AccusationSuggestionMenu;
 import edu.neumont.teamgift.clue.front.gui.ActionMenu;
 import edu.neumont.teamgift.clue.front.gui.NotepadGui;
 import edu.neumont.teamgift.clue.interfaces.Updatable;
@@ -68,18 +68,14 @@ public class GameMaster implements Updatable {
         String path = in.nextLine();
         board = new Board(this, path);
 
+        SpriteLoader.pathToSprites = path + "/sprites";
+        SpriteLoader.init();
         TileRegistry.init();
-        TileRegistry.setSpritePath(path + "/sprites");
 
         Notepad.init(this);
 
         playerList = new ArrayList<>();
         createPlayers();
-
-        AccusationSuggestionMenu suggestion = new AccusationSuggestionMenu(this, 0,
-                "Suggestion");
-        //for(int i = 0; i < suggestion.getAnswers().size(); i++){
-        System.out.println(suggestion.getAnswers() + "1");
     }
 //    }
 
@@ -284,7 +280,9 @@ public class GameMaster implements Updatable {
         currentPlayer.getNotepad().close();
         currentPlayer = playerList.get(turn % getNumPlayers());
         currentPlayer.getNotepad().open();
-
+        //AccusationSuggestionMenu suggestion = new AccusationSuggestionMenu(this, 0,
+        //        "Suggestion");
+        //System.out.println(suggestion.getAnswers() + "1");
     }
 
     /**

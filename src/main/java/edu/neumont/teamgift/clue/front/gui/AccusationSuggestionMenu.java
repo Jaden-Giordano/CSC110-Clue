@@ -13,7 +13,6 @@ import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
 import javax.swing.JScrollPane;
-import javax.swing.WindowConstants;
 import java.awt.Button;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -61,9 +60,10 @@ public class AccusationSuggestionMenu extends JFrame {
     /**
      * Start point for GUIs. TODO Switch over to Clue start point.
      */
+
     public void setUpSuggestionAccusationMenu(final GameMaster game, final int playerID,
                                               String whatAmI) {
-        this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
+        // this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
         this.setSize(NOTEPAD_DIMENSIONS.x, NOTEPAD_DIMENSIONS.y);
         this.setVisible(true);
         this.setTitle(whatAmI);
