@@ -141,7 +141,7 @@ public class AccusationSuggestionMenu extends JFrame {
 		JButton save = new JButton("Save");
 		save.setFont(titleFont);
 		panel.add(save);
-		save.addActionListener((ActionListener) this);
+		save.addActionListener(null);
 	}
 
 	public void actionPerformed(ActionEvent e) {
