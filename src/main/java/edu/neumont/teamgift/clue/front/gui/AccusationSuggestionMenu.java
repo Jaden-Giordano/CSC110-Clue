@@ -9,6 +9,7 @@ import java.awt.event.ActionListener;
 import java.util.ArrayList;
 
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -64,7 +65,7 @@ public class AccusationSuggestionMenu extends JFrame {
 
 	public void setUpSuggestionAccusationMenu(final GameMaster game, final int playerID, String whatAmI) {
 		// this.setDefaultCloseOperation(WindowConstants.EXIT_ON_CLOSE);
-		this.setSize(NOTEPAD_DIMENSIONS.x, NOTEPAD_DIMENSIONS.y);
+		this.setSize(400, 2000);
 		this.setVisible(true);
 		this.setTitle(whatAmI);
 	}
@@ -122,7 +123,7 @@ public class AccusationSuggestionMenu extends JFrame {
 		organizationalSpace.setFont(new Font("Serif", Font.PLAIN, LARGE_FONT));
 		panel.add(organizationalSpace);
 		for (Rooms i : Rooms.values()) {
-			JRadioButton roomsButton = new JRadioButton(". " + Notepad.getPlayerStorage(playerNumber, index));
+			JRadioButton roomsButton = new JRadioButton(Notepad.getPlayerStorage(playerNumber, index));
 			roomsButton.setFont(regularFont);
 			panel.add(roomsButton);
 			rooms.add(roomsButton);
@@ -131,18 +132,19 @@ public class AccusationSuggestionMenu extends JFrame {
 			organizationalSpace.setFont(new Font("Serif", Font.PLAIN, LARGE_FONT));
 			panel.add(organizationalSpace);
 		}
-		organizationalSpace = new JLabel(" ");
-		organizationalSpace.setFont(new Font("Serif", Font.PLAIN, LARGE_FONT));
-		panel.add(organizationalSpace);
-		Button save = new Button("Save");
+		JButton save = new JButton("Save");
 		save.setFont(titleFont);
 		save.setVisible(true);
 		save.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
-				answers.add(suspects.getSelection().toString());
-				answers.add(weapons.getSelection().toString());
-				answers.add(rooms.getSelection().toString());
+				if (suspects.getSelection() != null && weapons.getSelection() != null
+						&& rooms.getSelection() != null) {
+					answers.add(suspects.getSelection().toString());
+					answers.add(weapons.getSelection().toString());
+					answers.add(rooms.getSelection().toString());
+					dispose();
+				}
 			}
 		});
 		panel.add(save);

@@ -8,4 +8,6 @@ public enum ActionState {
      * Default state.
      */
     NotSelected,
+    Suspicion,
+    Accusation
 }

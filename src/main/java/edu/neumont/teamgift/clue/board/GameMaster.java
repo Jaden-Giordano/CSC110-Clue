@@ -61,25 +61,27 @@ public class GameMaster implements Updatable {
      */
     public GameMaster() {
         MainManager.getInstance().registerUpdatable(this);
-
         Scanner in = new Scanner(System.in);
         System.out.print("Enter the path of the project directory: ");
         // TODO make final variable that gets file from project dir.
         String path = in.nextLine();
         board = new Board(this, path);
-
+        
         TileRegistry.init();
         TileRegistry.setSpritePath(path + "/sprites");
 
         Notepad.init(this);
-
+        
         playerList = new ArrayList<>();
         createPlayers();
 
-        AccusationSuggestionMenu suggestion = new AccusationSuggestionMenu(this, 0,
+        runGame();
+      
+
+        /*AccusationSuggestionMenu suggestion = new AccusationSuggestionMenu(this, 0,
                 "Suggestion");
         //for(int i = 0; i < suggestion.getAnswers().size(); i++){
-        System.out.println(suggestion.getAnswers() + "1");
+        System.out.println(suggestion.getAnswers() + "1");*/
     }
 //    }
 
@@ -292,7 +294,8 @@ public class GameMaster implements Updatable {
      */
     @Override
     public void start() {
-        currentPlayer = playerList.get(turn % getNumPlayers());
+//        runGame();
+    	currentPlayer = playerList.get(turn % getNumPlayers());
         currentPlayer.getNotepad().open();
         currentActionMenu = new ActionMenu(this);
     }
