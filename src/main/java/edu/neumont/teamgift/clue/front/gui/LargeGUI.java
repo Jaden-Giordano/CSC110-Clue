@@ -7,6 +7,7 @@ import java.awt.event.ActionListener;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
 
 public class LargeGUI extends JFrame{
 	
@@ -18,8 +19,10 @@ public class LargeGUI extends JFrame{
     	
     }
 	public void setupAwkwardlyLargueGUI(){
+		JPanel willYouPlsWork = new JPanel();
+		add(willYouPlsWork);
 		JLabel playersTurn = new JLabel("It is the next player's turn");
-    	add(playersTurn);
+    	willYouPlsWork.add(playersTurn);
     	JButton turnSwap = new JButton("Continue");
     	turnSwap.addActionListener(new ActionListener(){
     		
@@ -27,7 +30,7 @@ public class LargeGUI extends JFrame{
     			dispose();
     		}
     	});
-    	add(turnSwap);
+    	willYouPlsWork.add(turnSwap);
 	}
 	public void callMeMaybe(){
 		createAwkwardlyLargeGUI();
