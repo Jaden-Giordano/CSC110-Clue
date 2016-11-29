@@ -3,11 +3,9 @@ package edu.neumont.teamgift.clue.board;
 import edu.neumont.teamgift.clue.Notepad;
 import edu.neumont.teamgift.clue.Player;
 import edu.neumont.teamgift.clue.SpriteLoader;
-import edu.neumont.teamgift.clue.Vector3i;
 import edu.neumont.teamgift.clue.board.tiles.TileRegistry;
 import edu.neumont.teamgift.clue.cards.Dealer;
 import edu.neumont.teamgift.clue.front.MainManager;
-import edu.neumont.teamgift.clue.front.Sprite;
 import edu.neumont.teamgift.clue.front.gui.ActionMenu;
 import edu.neumont.teamgift.clue.front.gui.NotepadGui;
 import edu.neumont.teamgift.clue.interfaces.Updatable;
@@ -97,8 +95,8 @@ public class GameMaster implements Updatable {
 		dealer.printKillerCaseFile();
 		// TODO Deal rest of cards
 		/*
-		 * for (int i = 0; i < game.getPlayerList().length; i++) {
-		 * System.out.println(game.getPlayerList()[i].getName() +
+         * for (int i = 0; i < game.getPlayer().length; i++) {
+		 * System.out.println(game.getPlayer()[i].getName() +
 		 * " This is round " + i); }
 		 */
 		// Create board
@@ -107,19 +105,20 @@ public class GameMaster implements Updatable {
 		// dealer.printCards();
 		dealer.dealCards(this);
 		for (int i = 0; i < numPlayers; i++) {
-			System.out.println("Player " + getPlayerList(i).getID() + ": " + getPlayerList(i).getName());
-			for (int j = 0; j < getPlayerList(i).getDeck().size(); j++) {
-				System.out.println(getPlayerList(i).getDeck().get(j).getName());
-			}
+            System.out.println(
+                    "Player " + getPlayer(i).getID() + ": " + getPlayer(i).getName());
+            for (int j = 0; j < getPlayer(i).getDeck().size(); j++) {
+                System.out.println(getPlayer(i).getDeck().get(j).getName());
+            }
 			System.out.print("\n");
 		}
 		// TODO Win condition
 		// TODO Take turns through players
 		/*
-		 * while (!this.areThereWinners()) { for (int i = 0; i < numPlayers;
+         * while (!this.areThereWinners()) { for (int i = 0; i < numPlayers;
 		 * i++) { if (this.areThereWinners()) { break; }
-		 * this.getPlayerList(i).getNotepad(); //
-		 * this.takeTurn(this.getPlayerList(i)); } }
+		 * this.getPlayer(i).getNotepad(); //
+		 * this.takeTurn(this.getPlayer(i)); } }
 		 */
 		// TODO print this.whoWon();
 	}
@@ -148,8 +147,8 @@ public class GameMaster implements Updatable {
 	 *            The index of the player needed.
 	 * @return The array of the players.
 	 */
-	public final Player getPlayerList(final int index) {
-		return playerList.get(index);
+    public final Player getPlayer(final int index) {
+        return playerList.get(index);
 	}
 //
 //        for (int i = 0; i < numPlayers; i++) {
@@ -244,11 +243,12 @@ public class GameMaster implements Updatable {
 			if (whereWeAre > numPlayers) {
 				whereWeAre -= numPlayers;
 			}
-			for (int j = 0; j < getPlayerList(whereWeAre).getDeck().size(); j++) {
-				for (int k = 0; k < whatSuggested.length; k++) {
-					if (getPlayerList(whereWeAre).getDeck().get(j).getName().equals(whatSuggested[k])) {
-						return getPlayerList(whereWeAre);
-					}
+            for (int j = 0; j < getPlayer(whereWeAre).getDeck().size(); j++) {
+                for (int k = 0; k < whatSuggested.length; k++) {
+                    if (getPlayer(whereWeAre).getDeck().get(j).getName()
+                            .equals(whatSuggested[k])) {
+                        return getPlayer(whereWeAre);
+                    }
 				}
 			}
 		}

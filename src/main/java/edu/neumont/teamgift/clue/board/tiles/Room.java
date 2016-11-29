@@ -71,14 +71,16 @@ public class Room {
      * Get all tiles of specific type.
      *
      * @param tile The type of tile to look for.
-     * @param <T>  A tile class, or sub-class.
      * @return All the tiles that match the type.
      */
     @SuppressWarnings("unused")
-    public final <T> T[] getTiles(final Class<? extends Tile> tile) {
+    public final Tile[] getTiles(final Class<? extends Tile> tile) {
         //noinspection unchecked
-        return (T[]) tiles.stream().filter(i -> i.getClass() == tile)
-                .collect(Collectors.toList()).toArray();
+        List<Tile> ts = tiles.stream().filter(i -> i.getClass()
+                .isAssignableFrom(tile)).collect(Collectors.toList());
+        Tile[] arr = new Tile[ts.size()];
+        arr = ts.toArray(arr);
+        return arr;
     }
 
     /**

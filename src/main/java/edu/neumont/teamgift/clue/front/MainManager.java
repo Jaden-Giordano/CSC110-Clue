@@ -51,8 +51,9 @@ public class MainManager extends FrontEndManager {
      */
     private void renderAllPlayers() {
         for (int i = 0; i < gameMaster.getNumPlayers(); i++) {
-            this.getDisplay().drawSprite(gameMaster.getPlayerList(i).getPosition(),
-                    gameMaster.getPlayerList(i).getSprite());
+            System.out.println(gameMaster.getPlayer(i).getPosition().toString());
+            this.getDisplay().drawSprite(gameMaster.getPlayer(i).getPosition(),
+                    gameMaster.getPlayer(i).getSprite());
         }
     }
 
@@ -62,8 +63,8 @@ public class MainManager extends FrontEndManager {
     @Override
     protected void draw() {
         super.draw();
-        renderAllTiles();
-        //renderAllPlayers();
+        //renderAllTiles();
+        renderAllPlayers();
         //getDisplay().drawSprite(test, TileRegistry.getSprite(1));
     }
 

@@ -49,7 +49,8 @@ public class SpriteLoader {
                 BufferedImage image = ImageIO.read(new File(path));
                 tID = loadTexture(image);
             } catch (IOException e) {
-                System.out.println("Error loading image: " + e.getMessage());
+                System.out.println("Error loading image '" + path + "': " + e.getMessage
+                        ());
             }
             sprites.put(path, new Sprite(tID));
         }
