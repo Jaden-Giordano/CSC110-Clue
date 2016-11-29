@@ -97,7 +97,7 @@ public class Dealer {
         }
     }
     public Deck getKillerCaseFile(){
-    	return killerCaseFile;
+        return killerCaseFile;
     }
 
     /**

@@ -98,7 +98,7 @@ public final class NotepadGui extends JFrame {
         // difWindow.addActionListener(new NewWindowButton(difWindow));
         int index = 0;
         for (Suspects i : Suspects.values()) {
-        	JLabel suspectLabel = new JLabel("" + i);
+            JLabel suspectLabel = new JLabel("" + i);
             suspectLabel.setFont(new Font("Serif", Font.PLAIN, SMALL_FONT));
             panel.add(suspectLabel);
             Notepad.setPlayerStorage(playerNumber, index, i.name());

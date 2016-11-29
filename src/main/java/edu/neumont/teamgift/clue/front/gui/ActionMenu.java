@@ -35,7 +35,7 @@ public class ActionMenu {
     public ActionMenu(final GameMaster gameMaster) {
         this.gm = gameMaster;
 
-        this.gui = new ActionMenuGUI();
+        this.gui = new ActionMenuGUI(this);
 
         state = ActionState.NotSelected;
         actionInProgress = false;
