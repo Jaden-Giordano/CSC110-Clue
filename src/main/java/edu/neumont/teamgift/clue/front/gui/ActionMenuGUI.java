@@ -92,8 +92,9 @@ public class ActionMenuGUI extends JFrame {
 		passTurn.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
+				large = new LargeGUI();
 				gameMaster.nextTurn();
-				large.createAwkwardlyLargeGUI(gameMaster.getCurrentPlayer().getID());
+				large.createAwkwardlyLargeGUI();
 			}
 		});
 		add(passTurn);
