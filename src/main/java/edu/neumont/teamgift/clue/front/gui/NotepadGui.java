@@ -6,6 +6,7 @@ import edu.neumont.teamgift.clue.board.GameMaster;
 import edu.neumont.teamgift.clue.board.Rooms;
 import edu.neumont.teamgift.clue.board.Suspects;
 import edu.neumont.teamgift.clue.board.Weapons;
+import edu.neumont.teamgift.clue.cards.Card;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
@@ -84,8 +85,11 @@ public final class NotepadGui extends JFrame {
         JLabel cardLabel = new JLabel("Your cards are: ");
         cardLabel.setFont(new Font("Serif", Font.PLAIN, LARGE_FONT));
         panel.add(cardLabel);
-        JLabel cardDisplay = new JLabel(
-                game.getPlayerList(playerNumber).getDeck().toString());
+        String cards = "";
+        for(int i = 0; i < game.getPlayerList(playerNumber).getDeck().size(); i++){
+    		cards += game.getPlayerList(playerNumber).getDeck().get(i).getName() + "\n";
+    	}
+        JLabel cardDisplay = new JLabel(cards);
         cardDisplay.setFont(new Font("Serif", Font.PLAIN, SMALL_FONT));
         panel.add(cardDisplay);
         JLabel suspectsLabel = new JLabel("Suspects: ");

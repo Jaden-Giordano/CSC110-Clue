@@ -1,25 +1,33 @@
 package edu.neumont.teamgift.clue.front.gui;
 
+
 import edu.neumont.teamgift.clue.board.Die;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 
+
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+
+import edu.neumont.teamgift.clue.board.Die;
+import edu.neumont.teamgift.clue.board.GameMaster;
 
 public class ActionMenuGUI extends JFrame {
 
     private ActionMenu actionMenu;
+    private GameMaster gameMaster;
 
-
-
-    public ActionMenuGUI(ActionMenu am) {
+    public ActionMenuGUI(GameMaster gm, ActionMenu am) {
         this.actionMenu = am;
-
+        this.gameMaster = gm;
         buildActionMenu();
         createActionButtons();
     }
@@ -38,7 +46,8 @@ public class ActionMenuGUI extends JFrame {
         rollForTurn.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-                Die d = new Die();
+               
+            	Die d = new Die();
                 int roll = d.rollDie();
                 String number = "" + roll;
                 rollForTurn.setText(number);
@@ -61,7 +70,8 @@ public class ActionMenuGUI extends JFrame {
         beSuspicious.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-
+            	AccusationSuggestionMenu suggestion = new AccusationSuggestionMenu(gameMaster, gameMaster.getCurrentPlayer().getID(), "Suspicion");
+            	suggestion.getAnswers();
             }
         });
         add(beSuspicious);
@@ -72,7 +82,11 @@ public class ActionMenuGUI extends JFrame {
         objection.addActionListener(new ActionListener() {
 
             public void actionPerformed(ActionEvent e) {
-            	
+
+            	AccusationSuggestionMenu accusation = new AccusationSuggestionMenu(gameMaster, gameMaster.getCurrentPlayer().getID(), "Suspicion");
+            	ArrayList<String> answers = accusation.getAnswers();
+            	gameMaster.makeAccusation(gameMaster.getCurrentPlayer(), answers.get(0), answers.get(1), answers.get(2));
+
             }
         });
         add(objection);
@@ -84,7 +98,7 @@ public class ActionMenuGUI extends JFrame {
 
             public void actionPerformed(ActionEvent e) {
             	//nextTurn();
-            	createAwkwardlyLargeGUI(gameMaster.getCurrentPlayer().getId());
+            	createAwkwardlyLargeGUI(gameMaster.getCurrentPlayer().getID());
             }
         });
         add(passTurn);

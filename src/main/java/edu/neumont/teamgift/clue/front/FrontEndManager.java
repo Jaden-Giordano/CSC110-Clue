@@ -54,7 +54,7 @@ public abstract class FrontEndManager {
 
         try {
             display = new Display(new Vector2i(WINDOW_WIDTH, WINDOW_HEIGHT));
-
+            
             // Setup a key callback. It will be called every time
             // a key is pressed, repeated or released.
             glfwSetKeyCallback(display.getWindow(),
