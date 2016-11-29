@@ -58,6 +58,8 @@ public class Player {
         this.id = playerID;
         this.name = playerName;
 
+        this.position = Vector2i.zero();
+
         inGame = true;
         winner = false;
 
