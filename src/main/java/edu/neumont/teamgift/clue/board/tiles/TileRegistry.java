@@ -1,5 +1,6 @@
 package edu.neumont.teamgift.clue.board.tiles;
 
+import edu.neumont.teamgift.clue.SpriteLoader;
 import edu.neumont.teamgift.clue.board.Board;
 import edu.neumont.teamgift.clue.front.Sprite;
 
@@ -10,11 +11,6 @@ import java.util.Map;
  * Registry containing functions for getting tiles based on ids.
  */
 public final class TileRegistry {
-
-    /**
-     * The path of the sprite folder in the project directory.
-     */
-    private static String spritePath;
 
     /**
      * The storage for all the tiles sprites, to be referenced when needed, so loading
@@ -82,31 +78,28 @@ public final class TileRegistry {
     public static Sprite getSprite(final int id) {
         if (!spriteRegistry.containsKey(id)) {
             if (id == 1) {
-                spriteRegistry.put(id, new Sprite(spritePath + "/PathwayTile.png"));
+                spriteRegistry.put(id, SpriteLoader
+                        .getSprite(SpriteLoader.pathToSprites + "/PathwayTile.png"));
             } else if (id == 2) {
-                spriteRegistry.put(id, new Sprite(spritePath + "/Door.png"));
+                spriteRegistry.put(id,
+                        SpriteLoader.getSprite(SpriteLoader.pathToSprites + "/Door.png"));
             } else if (id >= 3 && id <= 11) {
-                spriteRegistry.put(id, new Sprite(spritePath + "/Room.png"));
+                spriteRegistry.put(id,
+                        SpriteLoader.getSprite(SpriteLoader.pathToSprites + "/Room.png"));
             } else if (id == 12) {
-                spriteRegistry.put(id, new Sprite(spritePath + "/StartTile.png"));
+                spriteRegistry.put(id, SpriteLoader.getSprite(SpriteLoader.pathToSprites +
+                        "/StartTile"
+                        + ".png"));
             } else {
                 if (!spriteRegistry.containsKey(id)) {
-                    spriteRegistry.put(id, new Sprite(spritePath + "/WallTile"
+                    spriteRegistry.put(id, SpriteLoader
+                            .getSprite(SpriteLoader.pathToSprites + "/WallTile"
                             + ".png"));
                 }
             }
         }
 
         return spriteRegistry.get(id);
-    }
-
-    /**
-     * Set the path of the sprites in the project directory.
-     *
-     * @param path The path to the sprites.
-     */
-    public static void setSpritePath(final String path) {
-        spritePath = path;
     }
 
 }
