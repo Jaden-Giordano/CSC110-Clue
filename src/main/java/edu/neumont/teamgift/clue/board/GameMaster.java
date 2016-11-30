@@ -9,7 +9,6 @@ import edu.neumont.teamgift.clue.board.tiles.TileRegistry;
 import edu.neumont.teamgift.clue.cards.Dealer;
 import edu.neumont.teamgift.clue.front.MainManager;
 import edu.neumont.teamgift.clue.front.gui.ActionMenu;
-import edu.neumont.teamgift.clue.front.gui.GetNumPlayersGUI;
 import edu.neumont.teamgift.clue.front.gui.NotepadGui;
 import edu.neumont.teamgift.clue.interfaces.Updatable;
 
@@ -76,7 +75,6 @@ public class GameMaster implements Updatable {
 		SpriteLoader.pathToSprites = path + "/sprites";
 		SpriteLoader.init();
 		TileRegistry.init();
-		new GetNumPlayersGUI().launchNumbPlayers(this);
 
 		Notepad.init(this);
 		playerList = new ArrayList<>();
@@ -84,7 +82,6 @@ public class GameMaster implements Updatable {
 		runGame();
 		setupNotepads();
 	}
-	// }
 
 	/**
 	 * Create new GameMaster.
@@ -101,15 +98,6 @@ public class GameMaster implements Updatable {
 		dealer.setKiller();
 		dealer.printKillerCaseFile();
 		// TODO Deal rest of cards
-		/*
-		 * for (int i = 0; i < game.getPlayer().length; i++) {
-		 * System.out.println(game.getPlayer()[i].getName() + " This is round "
-		 * + i); }
-		 */
-		// Create board
-		// game.createBoard();
-		// Create cards
-		// dealer.printCards();
 		dealer.dealCards(this);
 		for (int i = 0; i < numPlayers; i++) {
 			System.out.println("Player " + getPlayer(i).getID() + ": " + getPlayer(i).getName());
