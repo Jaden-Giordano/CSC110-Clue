@@ -42,7 +42,7 @@ public class GameMaster implements Updatable {
 	 */
 	// noinspection CheckStyle
 	private int numPlayers;
-
+	private GetNumPlayersGUI numbPlayers;
 	/**
 	 * The turn of the game.
 	 */
@@ -71,13 +71,14 @@ public class GameMaster implements Updatable {
 		// TODO make final variable that gets file from project dir.
 		String path = in.nextLine();
 		board = new Board(this, path);
-		new GetNumPlayersGUI(this);
 		SpriteLoader.pathToSprites = path + "/sprites";
 		SpriteLoader.init();
 		TileRegistry.init();
 
 		Notepad.init(this);
 		playerList = new ArrayList<>();
+		numbPlayers = new GetNumPlayersGUI();
+		numbPlayers.launchNumbPlayers(this);
 		createPlayers();
 		runGame();
 	}

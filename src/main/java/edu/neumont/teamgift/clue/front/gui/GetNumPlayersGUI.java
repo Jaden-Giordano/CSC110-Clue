@@ -8,6 +8,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.ButtonGroup;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -19,7 +20,7 @@ public class GetNumPlayersGUI extends JFrame {
 
 	private GameMaster gameMaster;
 
-	public GetNumPlayersGUI(GameMaster gm) {
+	public void launchNumbPlayers(GameMaster gm) {
 		this.gameMaster = gm;
 		buildActionMenu();
 		createActionButtons();
@@ -37,21 +38,24 @@ public class GetNumPlayersGUI extends JFrame {
 		panel.setPreferredSize(new Dimension(600, 800));
 		add(panel);
 		final int column = 2;
-		panel.setLayout(new GridLayout(0, column));		
-		JLabel title = new JLabel();
+		panel.setLayout(new GridLayout(0, 2));		
+		JLabel title = new JLabel("How many people are playing?");
 		title.setFont(titleFont);
 		panel.add(title);
+		JLabel organizationalSpace = new JLabel(" ");
+		panel.add(organizationalSpace);
 		ButtonGroup numPlayer = new ButtonGroup();
 		for (int i = 0; i < 6; i++) {
 			JRadioButton numPlayers = new JRadioButton("" + (i + 1));
 			numPlayers.setFont(titleFont);
 			numPlayer.add(numPlayers);
 			panel.add(numPlayers);
+			//panel.add(organizationalSpace);
 		}
 
-		Button save = new Button("Save");
+		JButton save = new JButton("Save");
 		save.setFont(titleFont);
-		save.setSize(300, 500);
+		//save.setSize(300, 500);
 		save.setVisible(true);
 		save.addActionListener(new ActionListener() {
 
@@ -78,4 +82,5 @@ public class GetNumPlayersGUI extends JFrame {
 		});
 		panel.add(save);
 	}
+
 }
