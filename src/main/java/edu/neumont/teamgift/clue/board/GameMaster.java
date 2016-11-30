@@ -9,6 +9,7 @@ import edu.neumont.teamgift.clue.board.tiles.TileRegistry;
 import edu.neumont.teamgift.clue.cards.Dealer;
 import edu.neumont.teamgift.clue.front.MainManager;
 import edu.neumont.teamgift.clue.front.gui.ActionMenu;
+import edu.neumont.teamgift.clue.front.gui.GetNumPlayersGUI;
 import edu.neumont.teamgift.clue.front.gui.NotepadGui;
 import edu.neumont.teamgift.clue.interfaces.Updatable;
 
@@ -40,7 +41,7 @@ public class GameMaster implements Updatable {
 	 * The amount of players in the game.
 	 */
 	// noinspection CheckStyle
-	private int numPlayers = 6;
+	private int numPlayers;
 
 	/**
 	 * The turn of the game.
@@ -60,7 +61,8 @@ public class GameMaster implements Updatable {
 	/**
 	 * Initializes the board.
 	 */
-	private Dealer dealer; 
+	private Dealer dealer;
+
 	public GameMaster() {
 		MainManager.getInstance().registerUpdatable(this);
 
@@ -69,7 +71,7 @@ public class GameMaster implements Updatable {
 		// TODO make final variable that gets file from project dir.
 		String path = in.nextLine();
 		board = new Board(this, path);
-
+		new GetNumPlayersGUI(this);
 		SpriteLoader.pathToSprites = path + "/sprites";
 		SpriteLoader.init();
 		TileRegistry.init();
@@ -97,9 +99,9 @@ public class GameMaster implements Updatable {
 		dealer.printKillerCaseFile();
 		// TODO Deal rest of cards
 		/*
-         * for (int i = 0; i < game.getPlayer().length; i++) {
-		 * System.out.println(game.getPlayer()[i].getName() +
-		 * " This is round " + i); }
+		 * for (int i = 0; i < game.getPlayer().length; i++) {
+		 * System.out.println(game.getPlayer()[i].getName() + " This is round "
+		 * + i); }
 		 */
 		// Create board
 		// game.createBoard();
@@ -107,20 +109,19 @@ public class GameMaster implements Updatable {
 		// dealer.printCards();
 		dealer.dealCards(this);
 		for (int i = 0; i < numPlayers; i++) {
-            System.out.println(
-                    "Player " + getPlayer(i).getID() + ": " + getPlayer(i).getName());
-            for (int j = 0; j < getPlayer(i).getDeck().size(); j++) {
-                System.out.println(getPlayer(i).getDeck().get(j).getName());
-            }
+			System.out.println("Player " + getPlayer(i).getID() + ": " + getPlayer(i).getName());
+			for (int j = 0; j < getPlayer(i).getDeck().size(); j++) {
+				System.out.println(getPlayer(i).getDeck().get(j).getName());
+			}
 			System.out.print("\n");
 		}
 		// TODO Win condition
 		// TODO Take turns through players
 		/*
-         * while (!this.areThereWinners()) { for (int i = 0; i < numPlayers;
+		 * while (!this.areThereWinners()) { for (int i = 0; i < numPlayers;
 		 * i++) { if (this.areThereWinners()) { break; }
-		 * this.getPlayer(i).getNotepad(); //
-		 * this.takeTurn(this.getPlayer(i)); } }
+		 * this.getPlayer(i).getNotepad(); // this.takeTurn(this.getPlayer(i));
+		 * } }
 		 */
 		// TODO print this.whoWon();
 	}
@@ -134,26 +135,24 @@ public class GameMaster implements Updatable {
 		 * The amount of players in the game. TODO Prompt for number of players
 		 */
 
-        Tile[] startTiles = getBoard().getTiles(Start.class);
-        for (int i = 0; i < numPlayers; i++) {
+		Tile[] startTiles = getBoard().getTiles(Start.class);
+		for (int i = 0; i < numPlayers; i++) {
 			Player p = new Player(board, i, people[i], this);
-            p.setSprite(SpriteLoader.getSprite(SpriteLoader
-                    .pathToSprites + "/players/" + p.getName() + ".png"));
+			p.setSprite(SpriteLoader.getSprite(SpriteLoader.pathToSprites + "/players/" + p.getName() + ".png"));
 
-            for (Tile t : startTiles) {
+			for (Tile t : startTiles) {
 				if (((Start) t).getContainingPlayer() == null) {
 					System.out.println("Woah: " + t.getPosition());
 					p.setPosition(t.getPosition());
 					getBoard().addPlayer(p);
 					break;
 				}
-            }
+			}
 
 			playerList.add(p);
 			p.setNotepadGUI(new NotepadGui(this, p.getID()));
 		}
 	}
-
 
 	/**
 	 * Get a specific player in the game.
@@ -162,18 +161,17 @@ public class GameMaster implements Updatable {
 	 *            The index of the player needed.
 	 * @return The array of the players.
 	 */
-    public final Player getPlayer(final int index) {
-        return playerList.get(index);
+	public final Player getPlayer(final int index) {
+		return playerList.get(index);
 	}
-//
-//        for (int i = 0; i < numPlayers; i++) {
-//            Player p = new Player(board, i, people[i], this);
-//            p.setSprite(new Sprite(new Vector3i(0, 0, 0)));
-//            playerList.add(p);
-//            p.setNotepadGUI(new NotepadGui(this, p.getID()));
-//        }
-//    }
-
+	//
+	// for (int i = 0; i < numPlayers; i++) {
+	// Player p = new Player(board, i, people[i], this);
+	// p.setSprite(new Sprite(new Vector3i(0, 0, 0)));
+	// playerList.add(p);
+	// p.setNotepadGUI(new NotepadGui(this, p.getID()));
+	// }
+	// }
 
 	/**
 	 * Get the number of players.
@@ -227,15 +225,15 @@ public class GameMaster implements Updatable {
 	 * @param p
 	 *            The player that is currently running its turn.
 	 */
-    public final void takeTurn(final Player p, final int r) {
-        // TODO output p.getName() turn
+	public final void takeTurn(final Player p, final int r) {
+		// TODO output p.getName() turn
 		// TODO add options: roll dice or travel through secret passage if
 		// present
 		// TODO Check if doors are blocked
 		// TODO add done button to turn
-        int roll = r;
-        boolean checkValidMove = false;
-        while (!checkValidMove) {
+		int roll = r;
+		boolean checkValidMove = false;
+		while (!checkValidMove) {
 			checkValidMove = true;
 			// TODO output to user how many moves
 			// TODO get Vector2i form somewhere
@@ -259,12 +257,11 @@ public class GameMaster implements Updatable {
 			if (whereWeAre > numPlayers) {
 				whereWeAre -= numPlayers;
 			}
-            for (int j = 0; j < getPlayer(whereWeAre).getDeck().size(); j++) {
-                for (int k = 0; k < whatSuggested.length; k++) {
-                    if (getPlayer(whereWeAre).getDeck().get(j).getName()
-                            .equals(whatSuggested[k])) {
-                        return getPlayer(whereWeAre);
-                    }
+			for (int j = 0; j < getPlayer(whereWeAre).getDeck().size(); j++) {
+				for (int k = 0; k < whatSuggested.length; k++) {
+					if (getPlayer(whereWeAre).getDeck().get(j).getName().equals(whatSuggested[k])) {
+						return getPlayer(whereWeAre);
+					}
 				}
 			}
 		}
