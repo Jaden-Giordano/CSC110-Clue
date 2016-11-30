@@ -140,7 +140,6 @@ public class Board {
      */
     @SuppressWarnings("unused")
     public final void addPlayer(final Player p) {
-        // TODO make sure this code will work
         this.players.add(p);
     }
 
