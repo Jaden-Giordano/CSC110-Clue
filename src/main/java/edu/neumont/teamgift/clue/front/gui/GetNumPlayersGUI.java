@@ -44,7 +44,7 @@ public class GetNumPlayersGUI extends JFrame {
 		panel.add(organizationalSpace);
 		ButtonGroup numPlayer = new ButtonGroup();
         List<JRadioButton> selections = new ArrayList<>();
-        for (int i = 0; i < 6; i++) {
+        for (int i = 1; i < 6; i++) {
 			JRadioButton numPlayers = new JRadioButton("" + (i + 1));
 			numPlayers.setFont(titleFont);
 			numPlayer.add(numPlayers);
