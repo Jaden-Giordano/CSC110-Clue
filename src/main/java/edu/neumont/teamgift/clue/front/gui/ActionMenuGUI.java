@@ -1,19 +1,18 @@
 package edu.neumont.teamgift.clue.front.gui;
 
+import edu.neumont.teamgift.clue.board.Die;
+import edu.neumont.teamgift.clue.board.GameMaster;
+
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.ArrayList;
-
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JPanel;
-
-import edu.neumont.teamgift.clue.board.Die;
-import edu.neumont.teamgift.clue.board.GameMaster;
 
 public class ActionMenuGUI extends JFrame {
 
@@ -55,8 +54,9 @@ public class ActionMenuGUI extends JFrame {
 					int roll = d.rollDie();
 					String display = "Spaces left: " + roll;
 					rollForTurn.setText(display);
-					gameMaster.takeTurn(gameMaster.getCurrentPlayer(), roll);
-				}
+                    //gameMaster.takeTurn(gameMaster.getCurrentPlayer(), roll,
+                    // actionMenu);
+                }
 
 			}
 		});

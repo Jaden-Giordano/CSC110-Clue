@@ -327,6 +327,22 @@ public class GameMaster implements Updatable {
 		return playerList.get(turn % getNumPlayers());
 	}
 
+//	public void handleMovement(Vector2i position) {
+//		// TODO output to user how many moves
+//		// TODO get Vector2i form somewhere
+//		// TODO change null to Vector2i
+//		int spaceLeft = p.makeMove(position, roll);
+//		if (spaceLeft == -1) {
+//			checkValidMove = false;
+//			// TODO output invalid move
+//		} else if (spaceLeft > 0) {
+//			checkValidMove = false;
+//			roll -= spaceLeft;
+//			// @SuppressWarnings("UnusedAssignment")
+//			// TODO get new move location
+//		}
+//	}
+
 	/**
 	 * {@inheritDoc}
 	 */

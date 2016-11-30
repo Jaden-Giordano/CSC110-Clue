@@ -9,5 +9,6 @@ public enum ActionState {
      */
     NotSelected,
     Suspicion,
-    Accusation
+    Accusation,
+    Move
 }
