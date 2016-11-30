@@ -83,12 +83,13 @@ public final class NotepadGui extends JFrame {
         JLabel cardLabel = new JLabel("Your cards are: ");
         cardLabel.setFont(new Font("Serif", Font.PLAIN, LARGE_FONT));
         panel.add(cardLabel);
-        for(int i = 0; i<game.getPlayer(playerNumber).getDeck().size(); i++){
-        	String cards = game.getPlayer(playerNumber).getDeck().get(i).getName();
-        	JLabel cardDisplay = new JLabel(cards);
-        	cardDisplay.setFont(new Font("Serif", Font.PLAIN, SMALL_FONT));
-        	panel.add(cardDisplay);
+        String cards = "1";
+        for (int i = 0; i < game.getPlayer(playerNumber).getDeck().size(); i++) {
+            cards += game.getPlayer(playerNumber).getDeck().get(i).getName() + "\n";
         }
+        JLabel cardDisplay = new JLabel(cards);
+        cardDisplay.setFont(new Font("Serif", Font.PLAIN, SMALL_FONT));
+        panel.add(cardDisplay);
         JLabel suspectsLabel = new JLabel("Suspects: ");
         suspectsLabel.setFont(new Font("Serif", Font.PLAIN, LARGE_FONT));
         panel.add(suspectsLabel);

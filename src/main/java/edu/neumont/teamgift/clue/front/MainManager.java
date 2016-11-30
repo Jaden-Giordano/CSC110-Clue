@@ -4,6 +4,7 @@ import edu.neumont.teamgift.clue.Player;
 import edu.neumont.teamgift.clue.Vector2i;
 import edu.neumont.teamgift.clue.board.GameMaster;
 import edu.neumont.teamgift.clue.board.tiles.TileRegistry;
+import edu.neumont.teamgift.clue.front.gui.GetNumPlayersGUI;
 
 /**
  * The main manager for the game.
@@ -20,7 +21,7 @@ public class MainManager extends FrontEndManager {
      */
     @Override
     protected void start() {
-        gameMaster = new GameMaster();
+        new GetNumPlayersGUI().launchNumbPlayers(this);
         super.start();
     }
 
@@ -67,6 +68,11 @@ public class MainManager extends FrontEndManager {
         renderAllPlayers();
         renderAllTiles();
         //getDisplay().drawSprite(test, TileRegistry.getSprite(1));
+    }
+
+    public void createGameMaster(final int amountOfPlayers) {
+        gameMaster = new GameMaster();
+        gameMaster.setNumPlayers(amountOfPlayers);
     }
 
 }

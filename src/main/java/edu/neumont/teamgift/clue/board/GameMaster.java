@@ -40,8 +40,7 @@ public class GameMaster implements Updatable {
 	 * The amount of players in the game.
 	 */
 	// noinspection CheckStyle
-	private int numPlayers = 6
-			;
+	private int numPlayers = 6;
 
 	/**
 	 * The turn of the game.
@@ -78,14 +77,11 @@ public class GameMaster implements Updatable {
 		TileRegistry.init();
 
 		Notepad.init(this);
-
 		playerList = new ArrayList<>();
 		createPlayers();
-
-//		new GetNumPlayersGUI(this);
 		runGame();
+		setupNotepads();
 	}
-	// }
 
 	/**
 	 * Create new GameMaster.
@@ -102,15 +98,6 @@ public class GameMaster implements Updatable {
 		dealer.setKiller();
 		dealer.printKillerCaseFile();
 		// TODO Deal rest of cards
-		/*
-		 * for (int i = 0; i < game.getPlayer().length; i++) {
-		 * System.out.println(game.getPlayer()[i].getName() + " This is round "
-		 * + i); }
-		 */
-		// Create board
-		// game.createBoard();
-		// Create cards
-		// dealer.printCards();
 		dealer.dealCards(this);
 		for (int i = 0; i < numPlayers; i++) {
 			System.out.println("Player " + getPlayer(i).getID() + ": " + getPlayer(i).getName());
@@ -146,7 +133,6 @@ public class GameMaster implements Updatable {
 
 			for (Tile t : startTiles) {
 				if (((Start) t).getContainingPlayer() == null) {
-					System.out.println("Woah: " + t.getPosition());
 					p.setPosition(t.getPosition());
 					getBoard().addPlayer(p);
 					break;
@@ -154,7 +140,12 @@ public class GameMaster implements Updatable {
 			}
 
 			playerList.add(p);
-			p.setNotepadGUI(new NotepadGui(this, p.getID()));
+		}
+	}
+
+	private void setupNotepads() {
+		for (Player i : playerList) {
+			i.setNotepadGUI(new NotepadGui(this, i.getID()));
 		}
 	}
 
