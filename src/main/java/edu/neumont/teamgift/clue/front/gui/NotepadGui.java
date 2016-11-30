@@ -57,6 +57,7 @@ public final class NotepadGui extends JFrame {
         this.setSize(NOTEPAD_DIMENSIONS.x, NOTEPAD_DIMENSIONS.y);
         this.setVisible(false);
         this.setTitle("Notepad Gui id: " + playerID);
+        this.setLocation(0, 0);
     }
 
 
