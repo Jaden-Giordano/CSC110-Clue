@@ -76,7 +76,7 @@ public class ActionMenuGUI extends JFrame {
 					display.setFont(titleFont);
 					panel.add(display);
 				}else{
-					new RevealCardsGUI(whatMatches);
+					new RevealCardsGUI(gameMaster, whatMatches);
 				}
 			}
 		});

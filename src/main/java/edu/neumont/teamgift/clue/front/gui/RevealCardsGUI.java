@@ -8,14 +8,17 @@ import java.util.ArrayList;
 import javax.swing.JButton;
 import javax.swing.JFrame;
 
+import edu.neumont.teamgift.clue.board.GameMaster;
+import edu.neumont.teamgift.clue.cards.Card;
+
 public class RevealCardsGUI extends JFrame {
 	// call this
-	public RevealCardsGUI(ArrayList<String> cards) {
+	private GameMaster gameMaster;
+	public RevealCardsGUI(GameMaster gm, ArrayList<String> cards) {
+		this.gameMaster = gm;
 		createRevealCards();
 		setupRevealCards(cards);
 	}
-
-	private String revealedCard;
 
 	public void setupRevealCards(ArrayList<String> cards) {
 		for (int i = 0; i < cards.size(); i++) {
@@ -25,8 +28,9 @@ public class RevealCardsGUI extends JFrame {
 			revealableCard.setFont(titleFont);
 			revealableCard.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					revealedCard = cards.get(y).toString();
-
+					Card c = new Card();
+					c.setName(cards.get(y).toString());
+					gameMaster.getCurrentPlayer().addToDeck(c);
 				}
 			});
 			add(revealableCard);
