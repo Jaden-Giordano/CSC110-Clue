@@ -19,12 +19,14 @@ public class RevealCardsGUI extends JFrame {
 
 	public void setupRevealCards(ArrayList<String> cards) {
 		for (int i = 0; i < cards.size(); i++) {
+			int y = i;
 			JButton revealableCard = new JButton(cards.get(i));
 			Font titleFont = new Font("Serif", Font.BOLD, 40);
 			revealableCard.setFont(titleFont);
 			revealableCard.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					revealedCard = this.toString();
+					revealedCard = cards.get(y).toString();
+
 				}
 			});
 			add(revealableCard);
