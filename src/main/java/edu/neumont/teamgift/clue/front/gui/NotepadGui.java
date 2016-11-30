@@ -99,9 +99,9 @@ public final class NotepadGui extends JFrame {
         	JLabel organizationalSpace = new JLabel(" ");
         	organizationalSpace.setFont(new Font("Serif", Font.PLAIN, LARGE_FONT));
         	panel.add(organizationalSpace);
-        	JLabel organizationalsSpace = new JLabel(" ");
-        	organizationalsSpace.setFont(new Font("Serif", Font.PLAIN, LARGE_FONT));
-        	panel.add(organizationalsSpace);
+        	JLabel organizationalSSpace = new JLabel(" ");
+        	organizationalSSpace.setFont(new Font("Serif", Font.PLAIN, LARGE_FONT));
+        	panel.add(organizationalSSpace);
         }
         /*JLabel cardDisplay = new JLabel(cards);
         cardDisplay.setFont(new Font("Serif", Font.PLAIN, SMALL_FONT));
