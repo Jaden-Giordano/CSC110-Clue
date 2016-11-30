@@ -37,11 +37,11 @@ public class ActionMenuGUI extends JFrame {
 
 	private void createActionButtons() {
 		Font titleFont = new Font("Serif", Font.BOLD, 40);
-		/*JPanel panel = new JPanel();
+		JPanel panel = new JPanel();
 		panel.setPreferredSize(new Dimension(600, 800));
 		add(panel);
 		final int column = 2;
-		panel.setLayout(new GridLayout(0, column));*/
+		panel.setLayout(new GridLayout(0, column));
 		JButton rollForTurn = new JButton("Roll and Move");
 		rollForTurn.setFont(titleFont);
 		rollForTurn.addActionListener(new ActionListener() {
@@ -60,7 +60,7 @@ public class ActionMenuGUI extends JFrame {
 
 			}
 		});
-		add(rollForTurn);
+		panel.add(rollForTurn);
 		JButton beSuspicious = new JButton("Suspicion");
 		beSuspicious.setFont(titleFont);
 		beSuspicious.addActionListener(new ActionListener() {
@@ -73,7 +73,7 @@ public class ActionMenuGUI extends JFrame {
 				suggestion.getAnswers();
 			}
 		});
-		add(beSuspicious);
+		panel.add(beSuspicious);
 
 		JButton objection = new JButton("Make Accusation");
 		objection.setFont(titleFont);
@@ -87,7 +87,7 @@ public class ActionMenuGUI extends JFrame {
 						answers.get(2));
 			}
 		});
-		add(objection);
+		panel.add(objection);
 
 		JButton passTurn = new JButton("End Turn");
 		passTurn.setFont(titleFont);
@@ -98,6 +98,6 @@ public class ActionMenuGUI extends JFrame {
 				large.callMeMaybe();
 			}
 		});
-		add(passTurn);
+		panel.add(passTurn);
 	}
 }
