@@ -9,7 +9,6 @@ import edu.neumont.teamgift.clue.board.tiles.TileRegistry;
 import edu.neumont.teamgift.clue.cards.Dealer;
 import edu.neumont.teamgift.clue.front.MainManager;
 import edu.neumont.teamgift.clue.front.gui.ActionMenu;
-import edu.neumont.teamgift.clue.front.gui.GetNumPlayersGUI;
 import edu.neumont.teamgift.clue.front.gui.NotepadGui;
 import edu.neumont.teamgift.clue.interfaces.Updatable;
 
@@ -71,15 +70,19 @@ public class GameMaster implements Updatable {
 		System.out.print("Enter the path of the project directory: ");
 		// TODO make final variable that gets file from project dir.
 		String path = in.nextLine();
+
 		board = new Board(this, path);
+
 		SpriteLoader.pathToSprites = path + "/sprites";
 		SpriteLoader.init();
 		TileRegistry.init();
 
-//		new GetNumPlayersGUI(this);
 		Notepad.init(this);
+
 		playerList = new ArrayList<>();
 		createPlayers();
+
+//		new GetNumPlayersGUI(this);
 		runGame();
 	}
 	// }
