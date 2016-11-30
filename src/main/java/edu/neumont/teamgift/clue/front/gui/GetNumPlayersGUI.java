@@ -1,11 +1,6 @@
 package edu.neumont.teamgift.clue.front.gui;
 
-import java.awt.Button;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.GridLayout;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
+import edu.neumont.teamgift.clue.front.MainManager;
 
 import javax.swing.ButtonGroup;
 import javax.swing.JButton;
@@ -13,15 +8,18 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JRadioButton;
-
-import edu.neumont.teamgift.clue.board.GameMaster;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 
 public class GetNumPlayersGUI extends JFrame {
 
-	private GameMaster gameMaster;
+	private MainManager mainManager;
 
-	public void launchNumbPlayers(GameMaster gm) {
-		this.gameMaster = gm;
+	public void launchNumbPlayers(MainManager mm) {
+		this.mainManager = mm;
 		buildActionMenu();
 		createActionButtons();
 	}
@@ -75,7 +73,7 @@ public class GetNumPlayersGUI extends JFrame {
 					} else if (numPlayer.getSelection().equals("6")) {
 						number = 6;
 					}
-					gameMaster.setNumPlayers(number);
+					mainManager.createGameMaster(number);
 					dispose();
 				}
 			}
