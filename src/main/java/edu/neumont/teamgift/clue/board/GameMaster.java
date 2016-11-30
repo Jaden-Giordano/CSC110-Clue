@@ -10,6 +10,7 @@ import edu.neumont.teamgift.clue.cards.Dealer;
 import edu.neumont.teamgift.clue.front.MainManager;
 import edu.neumont.teamgift.clue.front.gui.ActionMenu;
 import edu.neumont.teamgift.clue.front.gui.NotepadGui;
+import edu.neumont.teamgift.clue.front.gui.RevealCardsGUI;
 import edu.neumont.teamgift.clue.interfaces.Updatable;
 
 import java.util.ArrayList;
@@ -295,6 +296,11 @@ public class GameMaster implements Updatable {
 		} else {
 			whoIsAccusing.setInGame(false);
 		}
+		ArrayList<String> reveal = new ArrayList<String>();
+		for(int i = 0; i < dealer.getKillerCaseFile().size(); i++){
+			reveal.add(dealer.getKillerCaseFile().get(i).getName());
+		}
+		new RevealCardsGUI(this, reveal);
 	}
 
 	public boolean isAccusationTrue(String player, String weapon, String room) {

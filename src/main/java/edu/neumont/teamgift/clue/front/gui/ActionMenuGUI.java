@@ -88,9 +88,12 @@ public class ActionMenuGUI extends JFrame {
 		objection.addActionListener(new ActionListener() {
 
 			public void actionPerformed(ActionEvent e) {
+				actionMenu.setActionState(ActionState.Accusation);
+				actionMenu.pushActionInProgress();
 				AccusationSuggestionMenu accusation = new AccusationSuggestionMenu(gameMaster,
 						gameMaster.getCurrentPlayer().getID(), "Suspicion");
 				ArrayList<String> answers = accusation.getAnswers();
+				System.out.println(answers.size());
 				gameMaster.makeAccusation(gameMaster.getCurrentPlayer(), answers.get(0), answers.get(1),
 						answers.get(2));
 			}
