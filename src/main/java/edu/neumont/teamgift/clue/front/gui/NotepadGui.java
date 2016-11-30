@@ -110,8 +110,8 @@ public final class NotepadGui extends JFrame {
         suspectsLabel.setFont(new Font("Serif", Font.PLAIN, LARGE_FONT));
         panel.add(suspectsLabel);
         JLabel organizationalSpace = new JLabel(" ");
-        organizationalSpace.setFont(new Font("Serif", Font.PLAIN, LARGE_FONT));
-        panel.add(organizationalSpace);
+        /*organizationalSpace.setFont(new Font("Serif", Font.PLAIN, LARGE_FONT));
+        panel.add(organizationalSpace);*/
         // JButton difWindow = new JButton("open new");
         // difWindow.addActionListener(new NewWindowButton(difWindow));
         int index = 0;
