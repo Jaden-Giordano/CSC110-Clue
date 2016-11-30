@@ -21,7 +21,7 @@ public class Door extends Tile implements PlayerContaining {
     @Override
     public final Player getContainingPlayer() {
         for (Player p : getBoard().getPlayers()) {
-            if (p.getPosition() == this.getPosition()) {
+            if (p.getPosition().compareTo(this.getPosition()) == 0) {
                 return p;
             }
         }

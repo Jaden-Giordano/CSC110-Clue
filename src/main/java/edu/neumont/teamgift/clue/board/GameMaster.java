@@ -141,9 +141,12 @@ public class GameMaster implements Updatable {
                     .pathToSprites + "/players/" + p.getName() + ".png"));
 
             for (Tile t : startTiles) {
-                if (((Start) t).getContainingPlayer() == null) {
-                    p.setPosition(t.getPosition());
-                }
+				if (((Start) t).getContainingPlayer() == null) {
+					System.out.println("Woah: " + t.getPosition());
+					p.setPosition(t.getPosition());
+					getBoard().addPlayer(p);
+					break;
+				}
             }
 
 			playerList.add(p);

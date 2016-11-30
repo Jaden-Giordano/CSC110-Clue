@@ -21,7 +21,9 @@ public class Start extends Tile implements PlayerContaining {
     @Override
     public final Player getContainingPlayer() {
         for (Player p : getBoard().getPlayers()) {
-            if (p.getPosition() == this.getPosition()) {
+            System.out.println("Player: " + p.getPosition().toString() + ", Tile: " + this
+                    .getPosition().toString());
+            if (p.getPosition().compareTo(this.getPosition()) == 0) {
                 return p;
             }
         }

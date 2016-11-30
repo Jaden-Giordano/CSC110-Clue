@@ -134,14 +134,14 @@ public class Board {
     }
 
     /**
-     * Adds a player to the board, generating an id, and setting the name.
+     * Adds a player to the board.
      *
-     * @param name The name of the new player.
+     * @param p The player.
      */
     @SuppressWarnings("unused")
-    public final void addPlayer(final String name) {
+    public final void addPlayer(final Player p) {
         // TODO make sure this code will work
-        this.players.add(new Player(this, players.size(), name, gameMaster));
+        this.players.add(p);
     }
 
     /**
