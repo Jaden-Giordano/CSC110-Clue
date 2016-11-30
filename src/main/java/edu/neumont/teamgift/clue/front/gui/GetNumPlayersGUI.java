@@ -13,6 +13,8 @@ import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.ArrayList;
+import java.util.List;
 
 public class GetNumPlayersGUI extends JFrame {
 
@@ -33,51 +35,57 @@ public class GetNumPlayersGUI extends JFrame {
 		JPanel panel = new JPanel();
 		panel.setPreferredSize(new Dimension(500, 700));
 		add(panel);
-		panel.setLayout(new GridLayout(0, 1));		
-		JLabel title = new JLabel("How many people are playing?");
+        panel.setLayout(new GridLayout(0, 1));
+        JLabel title = new JLabel("How many people are playing?");
 		title.setFont(titleFont);
 		panel.add(title);
 		JLabel organizationalSpace = new JLabel(" ");
 		panel.add(organizationalSpace);
 		ButtonGroup numPlayer = new ButtonGroup();
-		for (int i = 0; i < 6; i++) {
+        List<JRadioButton> selections = new ArrayList<>();
+        for (int i = 0; i < 6; i++) {
 			JRadioButton numPlayers = new JRadioButton("" + (i + 1));
 			numPlayers.setFont(titleFont);
 			numPlayer.add(numPlayers);
 			panel.add(numPlayers);
-			//panel.add(organizationalSpace);
+            selections.add(numPlayers);
+            //panel.add(organizationalSpace);
 		}
-
 		JButton save = new JButton("Save");
 		save.setFont(titleFont);
 		//save.setSize(300, 500);
 		save.setVisible(true);
-		save.addActionListener(new ActionListener() {
 
-			public void actionPerformed(ActionEvent e) {
-				if (numPlayer.getSelection() != null) {
-					int number = 0;
-                    System.out.println(numPlayer.getSelection());
-                    if (numPlayer.getSelection().equals("1")) {
-                        number = 1;
-					} else if (numPlayer.getSelection().equals("2")) {
-						number = 2;
-					} else if (numPlayer.getSelection().equals("3")) {
-						number = 3;
-					} else if (numPlayer.getSelection().equals("4")) {
-						number = 4;
-					} else if (numPlayer.getSelection().equals("5")) {
-						number = 5;
-                        System.out.println("hi");
-                    } else if (numPlayer.getSelection().equals("6")) {
-                        number = 6;
-					}
-                    ((MainManager) MainManager.getInstance()).createGameMaster(number);
-                    dispose();
-				}
-			}
-		});
-		panel.add(save);
-	}
+        JRadioButton[] arr = new JRadioButton[selections.size()];
+        arr = selections.toArray(arr);
+        save.addActionListener(new SaveButton(this, arr));
+        panel.add(save);
+    }
+
+    private class SaveButton implements ActionListener {
+
+        JFrame parent;
+
+        JRadioButton[] selections;
+
+        public SaveButton(JFrame parent, JRadioButton[] selections) {
+            this.parent = parent;
+            this.selections = selections;
+        }
+
+        @Override public void actionPerformed(ActionEvent e) {
+            int number = 0;
+            for (JRadioButton i : selections) {
+                if (i.isSelected()) {
+                    number = Integer.valueOf(i.getText());
+                    break;
+                }
+            }
+
+            ((MainManager) MainManager.getInstance()).createGameMaster(number);
+
+            parent.dispose();
+        }
+    }
 
 }
