@@ -32,6 +32,7 @@ public class ActionMenuGUI extends JFrame {
 		// this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(600, 800);
 		this.setVisible(true);
+		this.setLocation(1850, 0);
 	}
 
 	private void createActionButtons() {

@@ -28,6 +28,7 @@ public class GetNumPlayersGUI extends JFrame {
 		this.setSize(600, 800);
 		this.setVisible(true);
 		this.setAlwaysOnTop(true);
+		this.setTitle("Make this window full screen to set Numebnr of Players!");
 	}
 
 	private void createActionButtons() {
