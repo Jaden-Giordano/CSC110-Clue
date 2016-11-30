@@ -41,7 +41,8 @@ public class GameMaster implements Updatable {
 	 * The amount of players in the game.
 	 */
 	// noinspection CheckStyle
-	private int numPlayers;
+	private int numPlayers = 6
+			;
 
 	/**
 	 * The turn of the game.
@@ -71,11 +72,11 @@ public class GameMaster implements Updatable {
 		// TODO make final variable that gets file from project dir.
 		String path = in.nextLine();
 		board = new Board(this, path);
-		new GetNumPlayersGUI(this);
 		SpriteLoader.pathToSprites = path + "/sprites";
 		SpriteLoader.init();
 		TileRegistry.init();
 
+//		new GetNumPlayersGUI(this);
 		Notepad.init(this);
 		playerList = new ArrayList<>();
 		createPlayers();
