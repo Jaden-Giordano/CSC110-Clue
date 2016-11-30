@@ -69,6 +69,8 @@ public class ActionMenuGUI extends JFrame {
 				AccusationSuggestionMenu suggestion = new AccusationSuggestionMenu(gameMaster,
 						gameMaster.getCurrentPlayer().getID(), "Suspicion");
 				suggestion.getAnswers();
+				gameMaster.whoHasSuggested(gameMaster.getCurrentPlayer(), suggestion.getAnswers());
+				
 			}
 		});
 		panel.add(beSuspicious);

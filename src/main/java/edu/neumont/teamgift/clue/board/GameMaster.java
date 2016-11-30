@@ -245,16 +245,31 @@ public class GameMaster implements Updatable {
 			}
 		}
 	}
+	public ArrayList<String> whatMatches(Player whoSuggested, ArrayList<String> arrayList){
+		ArrayList<String> whatIsTheSame = new ArrayList<String>();
+		Player p = whoHasSuggested(whoSuggested, arrayList);
+		if(p.equals(whoSuggested)){
+			return whatIsTheSame;
+		}
+		for(int i = 0; i < arrayList.size(); i++){
+			for(int j = 0; j < p.getDeck().size(); j++){
+				if(arrayList.get(i).equals(p.getDeck().get(j))){
+					whatIsTheSame.add(arrayList.get(i));
+				}
+			}
+		}
+		return whatIsTheSame;
+	}
 
-	public Player whoHasSuggested(Player whoSuggested, String[] whatSuggested) {
+	public Player whoHasSuggested(Player whoSuggested, ArrayList<String> arrayList) {
 		int whereWeAre = numPlayers + whoSuggested.getID();
 		for (int i = whoSuggested.getID() + 1; i < numPlayers + whoSuggested.getID(); i++) {
 			if (whereWeAre > numPlayers) {
 				whereWeAre -= numPlayers;
 			}
 			for (int j = 0; j < getPlayer(whereWeAre).getDeck().size(); j++) {
-				for (int k = 0; k < whatSuggested.length; k++) {
-					if (getPlayer(whereWeAre).getDeck().get(j).getName().equals(whatSuggested[k])) {
+				for (int k = 0; k < arrayList.size(); k++) {
+					if (getPlayer(whereWeAre).getDeck().get(j).getName().equals(arrayList.get(k))) {
 						return getPlayer(whereWeAre);
 					}
 				}
