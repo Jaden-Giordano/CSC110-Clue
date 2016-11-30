@@ -261,7 +261,7 @@ public class GameMaster implements Updatable {
 		return whatIsTheSame;
 	}
 
-	public Player whoHasSuggested(Player whoSuggested, ArrayList<String> arrayList) {
+	private Player whoHasSuggested(Player whoSuggested, ArrayList<String> arrayList) {
 		int whereWeAre = numPlayers + whoSuggested.getID();
 		for (int i = whoSuggested.getID() + 1; i < numPlayers + whoSuggested.getID(); i++) {
 			if (whereWeAre > numPlayers) {

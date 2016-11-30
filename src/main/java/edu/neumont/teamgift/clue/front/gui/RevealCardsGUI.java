@@ -18,24 +18,13 @@ public class RevealCardsGUI extends JFrame {
 	private String revealedCard;
 
 	public void setupRevealCards(ArrayList<String> cards) {
-		if(cards.size() == 0){
-			JButton revealableCard = new JButton("No one has those cards: click me");
-			Font titleFont = new Font("Serif", Font.BOLD, 40);
-			revealableCard.setFont(titleFont);
-			revealableCard.addActionListener(new ActionListener() {
-				public void actionPerformed(ActionEvent e) {
-					dispose();
-				}
-			});
-			add(revealableCard);
-		}
 		for (int i = 0; i < cards.size(); i++) {
 			JButton revealableCard = new JButton(cards.get(i));
 			Font titleFont = new Font("Serif", Font.BOLD, 40);
 			revealableCard.setFont(titleFont);
 			revealableCard.addActionListener(new ActionListener() {
 				public void actionPerformed(ActionEvent e) {
-					
+					revealedCard = this.toString();
 				}
 			});
 			add(revealableCard);

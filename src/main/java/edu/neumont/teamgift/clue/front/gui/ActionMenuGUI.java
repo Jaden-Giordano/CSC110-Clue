@@ -9,9 +9,9 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
-import edu.neumont.teamgift.clue.Player;
 import edu.neumont.teamgift.clue.board.Die;
 import edu.neumont.teamgift.clue.board.GameMaster;
 
@@ -70,8 +70,14 @@ public class ActionMenuGUI extends JFrame {
 				AccusationSuggestionMenu suggestion = new AccusationSuggestionMenu(gameMaster,
 						gameMaster.getCurrentPlayer().getID(), "Suspicion");
 				suggestion.getAnswers();
-				Player p = gameMaster.whoHasSuggested(gameMaster.getCurrentPlayer(), suggestion.getAnswers());
-				
+				ArrayList<String> whatMatches = gameMaster.whatMatches(gameMaster.getCurrentPlayer(), suggestion.getAnswers());
+				if(whatMatches.size() == 0){
+					JLabel display = new JLabel("There are no matching cards!");
+					display.setFont(titleFont);
+					panel.add(display);
+				}else{
+					new RevealCardsGUI(whatMatches);
+				}
 			}
 		});
 		panel.add(beSuspicious);
