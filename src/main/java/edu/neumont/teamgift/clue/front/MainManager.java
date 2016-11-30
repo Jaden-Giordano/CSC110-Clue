@@ -24,7 +24,7 @@ public class MainManager extends FrontEndManager {
 
     @Override
     protected void superSecretInitialization() {
-        new GetNumPlayersGUI().launchNumbPlayers(this);
+        new GetNumPlayersGUI().launchNumbPlayers();
     }
 
     /**
@@ -32,9 +32,10 @@ public class MainManager extends FrontEndManager {
      */
     @Override
     protected void start() {
+        System.out.println(amountOfPlayers);
+        final int amt = amountOfPlayers;
+        gameMaster = new GameMaster(amt);
         super.start();
-        gameMaster = new GameMaster();
-        gameMaster.setNumPlayers(amountOfPlayers);
     }
 
     /**
@@ -82,9 +83,10 @@ public class MainManager extends FrontEndManager {
         //getDisplay().drawSprite(test, TileRegistry.getSprite(1));
     }
 
-    public void createGameMaster(final int amountOfPlayers) {
+    public void createGameMaster(final int numPlayers) {
+        System.out.println("Set at " + numPlayers);
         this.canRun = true;
-        this.amountOfPlayers = amountOfPlayers;
+        this.amountOfPlayers = numPlayers;
     }
 
 }

@@ -62,8 +62,10 @@ public class GameMaster implements Updatable {
 	 */
 	private Dealer dealer;
 
-	public GameMaster() {
-		MainManager.getInstance().registerUpdatable(this);
+    public GameMaster(final int numPlayers) {
+        MainManager.getInstance().registerUpdatable(this);
+
+        this.numPlayers = numPlayers;
 
 		Scanner in = new Scanner(System.in);
 		System.out.print("Enter the path of the project directory: ");
@@ -324,8 +326,9 @@ public class GameMaster implements Updatable {
 	 */
 	@Override
 	public void start() {
-		currentPlayer = playerList.get(turn % getNumPlayers());
-		currentPlayer.getNotepad().open();
+        System.out.println("Hi");
+        currentPlayer = playerList.get(turn % getNumPlayers());
+        currentPlayer.getNotepad().open();
 		currentActionMenu = new ActionMenu(this);
 	}
 }

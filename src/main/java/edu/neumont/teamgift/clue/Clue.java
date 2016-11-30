@@ -7,6 +7,8 @@ import edu.neumont.teamgift.clue.front.MainManager;
  */
 final class Clue {
 
+    volatile MainManager manager;
+
     /**
      * Start clue game.
      */
@@ -20,7 +22,7 @@ final class Clue {
         // Die d = new Die();
         // System.out.println(d.rollDie());
 
-        new MainManager();
+        manager = new MainManager();
     }
 
     /**

@@ -16,11 +16,8 @@ import java.awt.event.ActionListener;
 
 public class GetNumPlayersGUI extends JFrame {
 
-	private MainManager mainManager;
-
-	public void launchNumbPlayers(MainManager mm) {
-		this.mainManager = mm;
-		buildActionMenu();
+    public void launchNumbPlayers() {
+        buildActionMenu();
 		createActionButtons();
 	}
 
@@ -60,8 +57,9 @@ public class GetNumPlayersGUI extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				if (numPlayer.getSelection() != null) {
 					int number = 0;
-					if (numPlayer.getSelection().equals("1")) {
-						number = 1;
+                    System.out.println(numPlayer.getSelection());
+                    if (numPlayer.getSelection().equals("1")) {
+                        number = 1;
 					} else if (numPlayer.getSelection().equals("2")) {
 						number = 2;
 					} else if (numPlayer.getSelection().equals("3")) {
@@ -70,11 +68,12 @@ public class GetNumPlayersGUI extends JFrame {
 						number = 4;
 					} else if (numPlayer.getSelection().equals("5")) {
 						number = 5;
-					} else if (numPlayer.getSelection().equals("6")) {
-						number = 6;
+                        System.out.println("hi");
+                    } else if (numPlayer.getSelection().equals("6")) {
+                        number = 6;
 					}
-					mainManager.createGameMaster(number);
-					dispose();
+                    ((MainManager) MainManager.getInstance()).createGameMaster(number);
+                    dispose();
 				}
 			}
 		});
