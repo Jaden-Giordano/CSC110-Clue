@@ -20,7 +20,7 @@ public class LargeGUI extends JFrame{
     	
     }
 	public void setupAwkwardlyLargueGUI(){
-		Font titleFont = new Font("Serif", Font.BOLD, 80);
+		Font titleFont = new Font("Serif", Font.BOLD, 200);
 		JPanel willYouPlsWork = new JPanel();
 		add(willYouPlsWork);
 		JLabel playersTurn = new JLabel("It is the next player's turn");

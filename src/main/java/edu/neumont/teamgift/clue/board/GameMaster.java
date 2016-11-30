@@ -3,6 +3,8 @@ package edu.neumont.teamgift.clue.board;
 import edu.neumont.teamgift.clue.Notepad;
 import edu.neumont.teamgift.clue.Player;
 import edu.neumont.teamgift.clue.SpriteLoader;
+import edu.neumont.teamgift.clue.board.tiles.Start;
+import edu.neumont.teamgift.clue.board.tiles.Tile;
 import edu.neumont.teamgift.clue.board.tiles.TileRegistry;
 import edu.neumont.teamgift.clue.cards.Dealer;
 import edu.neumont.teamgift.clue.front.MainManager;
@@ -132,8 +134,18 @@ public class GameMaster implements Updatable {
 		 * The amount of players in the game. TODO Prompt for number of players
 		 */
 
-		for (int i = 0; i < numPlayers; i++) {
+        Tile[] startTiles = getBoard().getTiles(Start.class);
+        for (int i = 0; i < numPlayers; i++) {
 			Player p = new Player(board, i, people[i], this);
+            p.setSprite(SpriteLoader.getSprite(SpriteLoader
+                    .pathToSprites + "/players/" + p.getName() + ".png"));
+
+            for (Tile t : startTiles) {
+                if (((Start) t).getContainingPlayer() == null) {
+                    p.setPosition(t.getPosition());
+                }
+            }
+
 			playerList.add(p);
 			p.setNotepadGUI(new NotepadGui(this, p.getID()));
 		}
@@ -212,14 +224,15 @@ public class GameMaster implements Updatable {
 	 * @param p
 	 *            The player that is currently running its turn.
 	 */
-	public final void takeTurn(final Player p, int roll) {
-		// TODO output p.getName() turn
+    public final void takeTurn(final Player p, final int r) {
+        // TODO output p.getName() turn
 		// TODO add options: roll dice or travel through secret passage if
 		// present
 		// TODO Check if doors are blocked
 		// TODO add done button to turn
-		boolean checkValidMove = false; 
-		while (!checkValidMove) {
+        int roll = r;
+        boolean checkValidMove = false;
+        while (!checkValidMove) {
 			checkValidMove = true;
 			// TODO output to user how many moves
 			// TODO get Vector2i form somewhere

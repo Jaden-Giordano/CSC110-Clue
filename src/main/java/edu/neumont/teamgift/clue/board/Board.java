@@ -109,6 +109,7 @@ public class Board {
                 String[] sRow = currentLine.split(" ");
                 for (int j = 0; j < tiles[i].length; j++) {
                     tiles[i][j] = TileRegistry.getTile(this, Integer.parseInt(sRow[j]));
+                    tiles[i][j].setPosition(new Vector2i(j, i));
                     if (rooms.containsKey(tiles[i][j].getID())) {
                         Room r = rooms.get(tiles[i][j].getID());
                         r.addTile(tiles[i][j]);
