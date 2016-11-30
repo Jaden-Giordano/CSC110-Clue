@@ -32,12 +32,11 @@ public abstract class FrontEndManager {
      * Singleton instance.
      */
     private static FrontEndManager myInstance;
-
+    volatile boolean canRun = false;
     /**
      * LWJGL window.
      */
     private Display display;
-
     /**
      * List of updatable components.
      */
@@ -67,6 +66,8 @@ public abstract class FrontEndManager {
 
             new MouseHandler();
 
+            superSecretInitialization();
+
             loop();
 
             // Free the window callbacks and destroy the window
@@ -92,24 +93,33 @@ public abstract class FrontEndManager {
      * Setup and main game loop.
      */
     private void loop() {
-
-        start();
+        boolean first = true;
 
         // Run the rendering loop until the user has attempted to close
         // the window or has pressed the ESCAPE key.
         while (!glfwWindowShouldClose(display.getWindow())) {
-            update();
+            if (canRun) {
+                if (first) {
+                    start();
+                    first = false;
+                }
+                update();
 
-            display.clear();
+                display.clear();
 
-            draw();
+                draw();
 
-            display.swapBuffers();
+                display.swapBuffers();
 
-            // Poll for window events. The key callback above will only be
-            // invoked during this call.
-            glfwPollEvents();
+                // Poll for window events. The key callback above will only be
+                // invoked during this call.
+                glfwPollEvents();
+            }
         }
+    }
+
+    protected void superSecretInitialization() {
+
     }
 
     /**

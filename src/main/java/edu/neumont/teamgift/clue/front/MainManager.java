@@ -16,13 +16,25 @@ public class MainManager extends FrontEndManager {
      */
     private GameMaster gameMaster;
 
+    private volatile int amountOfPlayers;
+
+    public MainManager() {
+        super();
+    }
+
+    @Override
+    protected void superSecretInitialization() {
+        new GetNumPlayersGUI().launchNumbPlayers(this);
+    }
+
     /**
      * {@inheritDoc}
      */
     @Override
     protected void start() {
-        new GetNumPlayersGUI().launchNumbPlayers(this);
         super.start();
+        gameMaster = new GameMaster();
+        gameMaster.setNumPlayers(amountOfPlayers);
     }
 
     /**
@@ -71,8 +83,8 @@ public class MainManager extends FrontEndManager {
     }
 
     public void createGameMaster(final int amountOfPlayers) {
-        gameMaster = new GameMaster();
-        gameMaster.setNumPlayers(amountOfPlayers);
+        this.canRun = true;
+        this.amountOfPlayers = amountOfPlayers;
     }
 
 }
