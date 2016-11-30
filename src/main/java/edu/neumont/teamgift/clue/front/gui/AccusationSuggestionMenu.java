@@ -86,14 +86,12 @@ public class AccusationSuggestionMenu extends JFrame {
 		JLabel organizationalSpace = new JLabel(" ");
 		organizationalSpace.setFont(new Font("Serif", Font.PLAIN, LARGE_FONT));
 		panel.add(organizationalSpace);
-		int index = 0;
 		for (Suspects i : Suspects.values()) {
 			JRadioButton suspectButton = new JRadioButton("" + i);
 			suspectButton.setFont(regularFont);
 			suspectButton.setActionCommand("" + i); 
 			panel.add(suspectButton);
 			suspects.add(suspectButton);
-			index++;
 			organizationalSpace = new JLabel(" ");
 			organizationalSpace.setFont(new Font("Serif", Font.PLAIN, LARGE_FONT));
 			panel.add(organizationalSpace);
@@ -109,7 +107,6 @@ public class AccusationSuggestionMenu extends JFrame {
 			weaponButton.setFont(regularFont);
 			panel.add(weaponButton);
 			weapons.add(weaponButton);
-			index++;
 			organizationalSpace = new JLabel(" ");
 			organizationalSpace.setFont(new Font("Serif", Font.PLAIN, LARGE_FONT));
 			panel.add(organizationalSpace);
@@ -125,7 +122,6 @@ public class AccusationSuggestionMenu extends JFrame {
 			roomsButton.setFont(regularFont);
 			panel.add(roomsButton);
 			rooms.add(roomsButton);
-			index++;
 			organizationalSpace = new JLabel(" ");
 			organizationalSpace.setFont(new Font("Serif", Font.PLAIN, LARGE_FONT));
 			panel.add(organizationalSpace);

@@ -11,6 +11,7 @@ import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 
+import edu.neumont.teamgift.clue.Player;
 import edu.neumont.teamgift.clue.board.Die;
 import edu.neumont.teamgift.clue.board.GameMaster;
 
@@ -69,7 +70,7 @@ public class ActionMenuGUI extends JFrame {
 				AccusationSuggestionMenu suggestion = new AccusationSuggestionMenu(gameMaster,
 						gameMaster.getCurrentPlayer().getID(), "Suspicion");
 				suggestion.getAnswers();
-				gameMaster.whoHasSuggested(gameMaster.getCurrentPlayer(), suggestion.getAnswers());
+				Player p = gameMaster.whoHasSuggested(gameMaster.getCurrentPlayer(), suggestion.getAnswers());
 				
 			}
 		});
