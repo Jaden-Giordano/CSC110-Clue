@@ -84,9 +84,7 @@ public final class NotepadGui extends JFrame {
         cardLabel.setFont(new Font("Serif", Font.PLAIN, LARGE_FONT));
         panel.add(cardLabel);
         String cards = "1";
-        System.out.println(game.getPlayer(playerNumber).getDeck().size());
         for (int i = 0; i < game.getPlayer(playerNumber).getDeck().size(); i++) {
-        	System.out.println("looped");
             cards += game.getPlayer(playerNumber).getDeck().get(i).getName() + "\n";
         }
         JLabel cardDisplay = new JLabel(cards);

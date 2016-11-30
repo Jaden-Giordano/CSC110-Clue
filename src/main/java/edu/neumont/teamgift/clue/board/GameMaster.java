@@ -81,9 +81,10 @@ public class GameMaster implements Updatable {
 
 		playerList = new ArrayList<>();
 		createPlayers();
+		runGame();
+		setupNotepads();
 
 //		new GetNumPlayersGUI(this);
-		runGame();
 	}
 	// }
 
@@ -146,7 +147,6 @@ public class GameMaster implements Updatable {
 
 			for (Tile t : startTiles) {
 				if (((Start) t).getContainingPlayer() == null) {
-					System.out.println("Woah: " + t.getPosition());
 					p.setPosition(t.getPosition());
 					getBoard().addPlayer(p);
 					break;
@@ -154,7 +154,12 @@ public class GameMaster implements Updatable {
 			}
 
 			playerList.add(p);
-			p.setNotepadGUI(new NotepadGui(this, p.getID()));
+		}
+	}
+
+	private void setupNotepads() {
+		for (Player i : playerList) {
+			i.setNotepadGUI(new NotepadGui(this, i.getID()));
 		}
 	}
 
