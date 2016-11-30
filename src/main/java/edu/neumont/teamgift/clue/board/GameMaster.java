@@ -9,6 +9,7 @@ import edu.neumont.teamgift.clue.board.tiles.TileRegistry;
 import edu.neumont.teamgift.clue.cards.Dealer;
 import edu.neumont.teamgift.clue.front.MainManager;
 import edu.neumont.teamgift.clue.front.gui.ActionMenu;
+import edu.neumont.teamgift.clue.front.gui.GetNumPlayersGUI;
 import edu.neumont.teamgift.clue.front.gui.NotepadGui;
 import edu.neumont.teamgift.clue.interfaces.Updatable;
 
@@ -40,8 +41,7 @@ public class GameMaster implements Updatable {
 	 * The amount of players in the game.
 	 */
 	// noinspection CheckStyle
-	private int numPlayers = 6
-			;
+	private int numPlayers = 6;
 
 	/**
 	 * The turn of the game.
@@ -76,13 +76,13 @@ public class GameMaster implements Updatable {
 		SpriteLoader.pathToSprites = path + "/sprites";
 		SpriteLoader.init();
 		TileRegistry.init();
+		new GetNumPlayersGUI().launchNumbPlayers(this);
 
 		Notepad.init(this);
-
 		playerList = new ArrayList<>();
 		createPlayers();
 
-//		new GetNumPlayersGUI(this);
+		// new GetNumPlayersGUI(this);
 		runGame();
 	}
 	// }

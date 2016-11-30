@@ -33,8 +33,6 @@ public class ActionMenuGUI extends JFrame {
 		this.setVisible(true);
 	}
 
-
-
 	private void createActionButtons() {
 		Font titleFont = new Font("Serif", Font.BOLD, 40);
 		JPanel panel = new JPanel();
@@ -93,9 +91,9 @@ public class ActionMenuGUI extends JFrame {
 		passTurn.setFont(titleFont);
 		passTurn.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				large = new LargeGUI();
+				large = new LargeGUI(gameMaster, actionMenu);
 				gameMaster.nextTurn();
-				large.callMeMaybe();
+				dispose();
 			}
 		});
 		panel.add(passTurn);
