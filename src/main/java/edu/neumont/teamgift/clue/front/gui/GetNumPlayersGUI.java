@@ -30,15 +30,15 @@ public class GetNumPlayersGUI extends JFrame {
 		// this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setSize(600, 800);
 		this.setVisible(true);
+		this.setAlwaysOnTop(true);
 	}
 
 	private void createActionButtons() {
 		Font titleFont = new Font("Serif", Font.BOLD, 40);
 		JPanel panel = new JPanel();
-		panel.setPreferredSize(new Dimension(600, 800));
+		panel.setPreferredSize(new Dimension(500, 700));
 		add(panel);
-		final int column = 2;
-		panel.setLayout(new GridLayout(0, 2));		
+		panel.setLayout(new GridLayout(0, 1));		
 		JLabel title = new JLabel("How many people are playing?");
 		title.setFont(titleFont);
 		panel.add(title);

@@ -23,7 +23,7 @@ public class LargeGUI extends JFrame {
 		this.setSize(3000, 2000);
 		this.setVisible(true);
 		this.setLayout(new GridLayout(2, 1));
-
+		this.setAlwaysOnTop(true);
 	}
 
 	public void setupAwkwardlyLargueGUI() {
